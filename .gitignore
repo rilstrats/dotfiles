@@ -1,0 +1,14 @@
+[A-Z]*
+mega
+code
+.mozilla
+.var
+.minecraft
+.local
+.steam
+.mono
+.dotfiles
+.dotnet
+.config
+*
+
