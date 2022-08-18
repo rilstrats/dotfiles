@@ -1,6 +1,7 @@
 *
 !.gitignore
 !.gitmodule
+!.gitconfig
 !.p10k.zsh
 !.config/nvim
 .config/nvim/plugin
