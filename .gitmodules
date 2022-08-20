@@ -7,9 +7,6 @@
 [submodule ".config/zsh/plugin/zsh-syntax-highlighting"]
 	path = .config/zsh/plugin/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
-[submodule ".local/share/nvim/site/pack/packer/start/packer.nvim"]
-	path = .local/share/nvim/site/pack/packer/start/packer.nvim
-	url = https://github.com/wbthomason/packer.nvim
 [submodule ".config/zsh/plugin/zsh-autosuggestions"]
 	path = .config/zsh/plugin/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
