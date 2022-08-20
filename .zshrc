@@ -19,6 +19,7 @@ alias vim=nvim
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME'
 alias dfs=dotfiles
 alias minecraft='~/.minecraft/launcher/minecraft-launcher &'
+alias ls='ls --color'
 alias l='ls -la'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
