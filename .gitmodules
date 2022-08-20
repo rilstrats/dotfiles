@@ -1,15 +1,15 @@
 [submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
 	url = https://github.com/ohmyzsh/ohmyzsh
-[submodule ".config/zsh/plugin/powerlevel10k"]
-	path = .config/zsh/plugin/powerlevel10k
-	url = https://github.com/romkatv/powerlevel10k.git
+[submodule ".config/zsh/theme/powerlevel10k"]
+	path = .config/zsh/theme/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k
 [submodule ".config/zsh/plugin/zsh-vi-mode"]
 	path = .config/zsh/plugin/zsh-vi-mode
 	url = https://github.com/jeffreytse/zsh-vi-mode
-[submodule ".config/zsh/plugin/zsh-syntax-highlighting.git"]
+[submodule ".config/zsh/plugin/zsh-syntax-highlighting"]
 	path = .config/zsh/plugin/zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+	url = https://github.com/zsh-users/zsh-syntax-highlighting
 [submodule ".local/share/nvim/site/pack/packer/start/packer.nvim"]
 	path = .local/share/nvim/site/pack/packer/start/packer.nvim
 	url = https://github.com/wbthomason/packer.nvim
