@@ -1,7 +1,22 @@
-*
+# Ignore all files by default
+/*
+
+# git 
 !.gitignore
-!.gitmodule
-!.gitconfig
-!.p10k.zsh
-!.config/nvim
-.config/nvim/plugin
+!/.gitmodule
+!/.gitconfig
+
+# p10k config
+!/.p10k.zsh
+
+# .config
+!/.config
+/.config/*
+
+# nvim
+!/.config/nvim
+/.config/nvim/plugin/*
+
+# zsh
+!/.config/zsh
+
