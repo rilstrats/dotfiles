@@ -5,19 +5,31 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export HISTFILE="$HOME/.zsh_history"
+# History
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
 
+# Something to do with vim
+bindkey -v
+
+# Autocomplete
+zstyle :compinstall filename '/home/rilstrats/.zshrc'
+autoload -Uz compinit
+compinit
+
+# Themes and Plugins
 export ZSH="$HOME/.config/zsh"
-
 source $ZSH/theme/powerlevel10k/powerlevel10k.zsh-theme
-
 source $ZSH/plugin/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source $ZSH/plugin/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH/plugin/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+# Editor
 export EDITOR=nvim
 alias vim=nvim
 
+# Aliases
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME'
 alias dfs=dotfiles
 alias minecraft='~/.minecraft/launcher/minecraft-launcher &'
