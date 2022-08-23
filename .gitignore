@@ -27,3 +27,6 @@
 # wallpaper
 !/.config/wallpaper
 
+# alacritty
+!/.config/alacritty
+
