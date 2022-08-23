@@ -19,8 +19,6 @@ exec feh --bg-fill .config/wallpaper/christ-calling-fishermen.21:9.jpeg --bg-fil
 # transparency
 exec picom -b
 
-bindsym $mod+Shift+q kill
-
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
@@ -161,14 +159,27 @@ bar {
 bindsym $mod+Shift+period exec systemctl suspend
 
 
+########
+# gaps #
+########
+
+gaps inner 10
+gaps outer -4
+
+smart_gaps on
+smart_borders on
+
+# border_radius 4
+
+
 #########################
 # weird primeagen stuff #
 #########################
 
 # GET DEM BORDERS OUT OF HERE
-#for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 2
                           # class                 border  backgr. text    indicator child_border
-# for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4   #285577
+for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4   #285577
 # bindsym $mod+space exec "/home/theprimeagen/dotfiles/awesome-streamerrc/ThePrimeagen/tmux2"
 
 # Alsa audio controls.
