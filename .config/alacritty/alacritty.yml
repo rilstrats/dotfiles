@@ -1,7 +1,8 @@
 window:
-   dimensions:
-     columns: 128
-     lines: 32
+  opacity: 0.9
+  dimensions:
+    columns: 128
+    lines: 32
 
 font:
   normal:
