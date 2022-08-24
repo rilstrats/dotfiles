@@ -10,6 +10,9 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
+# Go
+export GOPATH="$HOME/code"
+
 # Something to do with vim
 bindkey -v
 
