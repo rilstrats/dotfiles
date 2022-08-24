@@ -1,8 +1,15 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
-  use 'folke/tokyonight.nvim'
-  -- use 'Mofiqul/vscode.nvim'
+    -- packer
+    use 'wbthomason/packer.nvim'
+
+    -- color theme
+    use 'folke/tokyonight.nvim'
+    -- use 'Mofiqul/vscode.nvim'
+
+    -- telescope
+    -- use 'nvim-lua/plenary.nvim'
+    -- use {'nvim-telescope/telescope.nvim', tag = '0.1.0'}
+      
 end)
