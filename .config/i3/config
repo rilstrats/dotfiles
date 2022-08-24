@@ -19,6 +19,9 @@ exec feh --bg-fill .config/wallpaper/christ-calling-fishermen.21:9.jpeg --bg-fil
 # transparency
 exec picom -b
 
+# megasync
+exec megasync
+
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
