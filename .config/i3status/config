@@ -21,25 +21,31 @@ order += "tztime local"
 wireless _first_ {
     format_up = "W: (%quality at %essid) %ip"
     format_down = "W: down"
+    separator_block_width = 20
 }
 
 battery all {
     format = "%status %percentage %remaining"
+    separator_block_width = 20
 }
 
 tztime local {
-    format = "%Y-%b-%d %I:%M %p"
+    format = "%Y-%b-%d %I:%M %p "
+    separator_block_width = 20
 }
 
 load {
     format = "%1min"
+    separator_block_width = 20
 }
 
 disk "/" {
     format = "/ %avail"
+    separator_block_width = 20
 }
 
 disk "/home" {
     format = "~ %avail"
+    separator_block_width = 20
 }
 
