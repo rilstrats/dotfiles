@@ -104,7 +104,7 @@ workspace 6 output DP-4
 workspace 7 output DP-4 
 workspace 8 output DP-4 
 workspace 9 output DP-4 
-workspace 0 output DP-4 
+workspace 10 output DP-4 
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
