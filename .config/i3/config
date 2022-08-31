@@ -14,7 +14,7 @@ set $mod Mod4
 font pango:MesloLGS NF 15px
 
 # wallpaper
-exec feh --bg-fill .config/wallpaper/christ-calling-fishermen.21:9.jpeg --bg-fill .config/wallpaper/christ-calling-fishermen.16:9.jpeg
+exec feh --bg-fill .config/wallpaper/christ-calling-fishermen.2560x1080.jpeg --bg-fill .config/wallpaper/christ-calling-fishermen.1920x1080.jpeg
 
 # transparency
 exec picom -b
