@@ -12,6 +12,9 @@ SAVEHIST=1000
 
 # go
 export GOPATH="$HOME/code"
+export GOSRC="$GOPATH/src"
+export GOBIN="$GOPATH/bin"
+export GOGH="$GOSRC/github.com"
 
 # something to do with vim
 bindkey -v

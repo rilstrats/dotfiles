@@ -40,3 +40,12 @@
 # rgb
 !/.rgb.sh
 
+# .local/bin
+!/.local
+/.local/*
+!/.local/bin
+/.local/bin/*
+
+# tmux-sessionizer
+!/.local/bin/tmux-sessionizer
+
