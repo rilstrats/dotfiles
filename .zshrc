@@ -5,34 +5,34 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# History
+# history
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
-# Go
+# go
 export GOPATH="$HOME/code"
 
-# Something to do with vim
+# something to do with vim
 bindkey -v
 
-# Autocomplete
+# autocomplete
 zstyle :compinstall filename '/home/rilstrats/.zshrc'
 autoload -Uz compinit
 compinit
 
-# Themes and Plugins
+# themes and plugins
 export ZSH="$HOME/.config/zsh"
 source $ZSH/theme/powerlevel10k/powerlevel10k.zsh-theme
 source $ZSH/plugin/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source $ZSH/plugin/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH/plugin/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# Editor
+# editor
 export EDITOR=nvim
 alias vim=nvim
 
-# Aliases
+# aliases
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME'
 alias dfs=dotfiles
 
@@ -43,7 +43,6 @@ alias l='ls -la'
 
 alias rs='cd $HOME/code/src/github.com/rilstrats/'
 alias csa='cd $HOME/code/src/github.com/byui-csa/'
-#
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
