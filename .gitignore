@@ -37,3 +37,6 @@
 # awesome
 !/.config/awesome
 
+# rgb
+!/.rgb.sh
+
