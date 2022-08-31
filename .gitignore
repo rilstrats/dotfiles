@@ -30,3 +30,6 @@
 # alacritty
 !/.config/alacritty
 
+# awesome
+!/.config/awesome
+
