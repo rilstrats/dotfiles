@@ -6,19 +6,20 @@
 !/.gitmodule
 !/.gitconfig
 
-# p10k config
-!/.p10k.zsh
-
 # .config
 !/.config
 /.config/*
+
+# zsh
+!/.config/zsh
+!/.zshrc
 
 # nvim
 !/.config/nvim
 /.config/nvim/plugin/*
 
-# zsh
-!/.config/zsh
+# p10k config
+!/.p10k.zsh
 
 # i3
 !/.config/i3
@@ -29,6 +30,9 @@
 
 # alacritty
 !/.config/alacritty
+
+# tmux
+!/.tmux.conf
 
 # awesome
 !/.config/awesome
