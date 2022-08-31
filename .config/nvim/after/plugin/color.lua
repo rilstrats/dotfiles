@@ -3,6 +3,7 @@ vim.g.tokyonight_transparent = true
 vim.opt.background = "dark"
 
 vim.cmd("colorscheme tokyonight")
+-- vim.cmd("colorscheme OceanicNext")
 
 -- VS Code theme
 -- vim.o.background = 'dark'

@@ -6,6 +6,7 @@ return require('packer').startup(function(use)
 
     -- color theme
     use 'folke/tokyonight.nvim'
+    use 'mhartington/oceanic-next'
     -- use 'Mofiqul/vscode.nvim'
 
     -- telescope
