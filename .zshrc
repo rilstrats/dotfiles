@@ -15,22 +15,25 @@ export GOPATH="$HOME/code"
 export GOSRC="$GOPATH/src"
 export GOBIN="$GOPATH/bin"
 
-alias gogh='cd $GOSRC/github.com'
-alias gors='cd $GOSRC/github.com/rilstrats'
-alias gors='cd $GOSRC/github.com/byui-csa'
+alias gogh="cd $GOSRC/github.com"
+alias gors="cd $GOSRC/github.com/rilstrats"
+alias gors="cd $GOSRC/github.com/byui-csa"
 
 # export GOGH="$GOSRC/github.com"
 # export GORS="$GOGH/rilstrats"
 # export GOCSA="$GOGH/byui-csa"
-# alias gogh='cd $GOGH'
-# alias gors='cd $GORS'
-# alias gocsa='cd $GOCSA'
+# alias gogh="cd $GOGH"
+# alias gors="cd $GORS"
+# alias gocsa="cd $GOCSA"
+
+# path
+export PATH="$PATH:$GOBIN:$HOME/.local/bin"
 
 # something to do with vim
 bindkey -v
 
 # autocomplete
-zstyle :compinstall filename '/home/rilstrats/.zshrc'
+zstyle :compinstall filename "$HOME/.zshrc"
 autoload -Uz compinit
 compinit
 

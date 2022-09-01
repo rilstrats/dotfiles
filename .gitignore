@@ -10,6 +10,12 @@
 !/.config
 /.config/*
 
+# .local/bin
+!/.local
+/.local/*
+!/.local/bin
+/.local/bin/*
+
 # zsh
 !/.config/zsh
 !/.zshrc
@@ -26,7 +32,10 @@
 !/.config/i3status
 
 # wallpaper
-!/.config/wallpaper
+!/.wallpapers
+
+# fonts
+!/.fonts
 
 # alacritty
 !/.config/alacritty
@@ -38,13 +47,7 @@
 !/.config/awesome
 
 # rgb
-!/.rgb.sh
-
-# .local/bin
-!/.local
-/.local/*
-!/.local/bin
-/.local/bin/*
+!/.local/bin/rgb
 
 # tmux-sessionizer
 !/.local/bin/tmux-sessionizer
