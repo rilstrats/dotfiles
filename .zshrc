@@ -1,6 +1,9 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+# tmux
+if [ -z "$TMUX" ]; then
+    tmux 
+fi 
+
+# p10k instant prompt (things with output above, no output below)
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -9,25 +12,6 @@ fi
 HISTFILE=$HOME/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-
-# go
-export GOPATH="$HOME/code"
-export GOSRC="$GOPATH/src"
-export GOBIN="$GOPATH/bin"
-
-alias gogh="cd $GOSRC/github.com"
-alias gors="cd $GOSRC/github.com/rilstrats"
-alias gors="cd $GOSRC/github.com/byui-csa"
-
-# export GOGH="$GOSRC/github.com"
-# export GORS="$GOGH/rilstrats"
-# export GOCSA="$GOGH/byui-csa"
-# alias gogh="cd $GOGH"
-# alias gors="cd $GORS"
-# alias gocsa="cd $GOCSA"
-
-# path
-export PATH="$PATH:$GOBIN:$HOME/.local/bin"
 
 # something to do with vim
 bindkey -v
@@ -44,18 +28,44 @@ source $ZSH/plugin/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source $ZSH/plugin/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH/plugin/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+# go
+export GOPATH="$HOME/code"
+export GOSRC="$GOPATH/src"
+export GOBIN="$GOPATH/bin"
+
+export GOGH="$GOSRC/github.com"
+export GORS="$GOGH/rilstrats"
+export GOCSA="$GOGH/byui-csa"
+
+alias gogh="cd $GOGH"
+alias gors="cd $GORS"
+alias gocsa="cd $GOCSA"
+
+# path
+export PATH="$PATH:$GOBIN:$HOME/.local/bin"
+
+# mega
+export MEGA="$HOME/mega"
+export MEGACOL="$MEGA/college"
+export MEGASEM="$MEGACOL/2022-3.summer"
+
+alias mega="cd $MEGA"
+alias megacol="cd $MEGACOL"
+alias megasem="cd $MEGASEM"
+
 # editor
-export EDITOR=nvim
-alias vim=nvim
+export EDITOR='/bin/nvim'
+alias vim='/bin/nvim'
+alias vimp='/bin/vim'
 
 # aliases
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME'
 alias dfs=dotfiles
 
-alias minecraft='~/.minecraft/launcher/minecraft-launcher &'
-
 alias ls='ls --color'
 alias l='ls -la'
+
+alias minecraft='~/.minecraft/launcher/minecraft-launcher &'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
