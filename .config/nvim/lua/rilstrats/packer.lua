@@ -22,6 +22,6 @@ return require('packer').startup(function(use)
     use 'kyazdani42/nvim-web-devicons'
     
     -- harpoon
-    use {'ThePrimagen/harpoon', requires = {{'nvim-lua/plenary.nvim'}}}
+    use {'ThePrimeagen/harpoon', requires = {{'nvim-lua/plenary.nvim'}}}
       
 end)
