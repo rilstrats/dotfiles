@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # history
-HISTFILE=~/.histfile
+HISTFILE=$HOME/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
@@ -14,7 +14,17 @@ SAVEHIST=1000
 export GOPATH="$HOME/code"
 export GOSRC="$GOPATH/src"
 export GOBIN="$GOPATH/bin"
-export GOGH="$GOSRC/github.com"
+
+alias gogh='cd $GOSRC/github.com'
+alias gors='cd $GOSRC/github.com/rilstrats'
+alias gors='cd $GOSRC/github.com/byui-csa'
+
+# export GOGH="$GOSRC/github.com"
+# export GORS="$GOGH/rilstrats"
+# export GOCSA="$GOGH/byui-csa"
+# alias gogh='cd $GOGH'
+# alias gors='cd $GORS'
+# alias gocsa='cd $GOCSA'
 
 # something to do with vim
 bindkey -v
@@ -43,9 +53,6 @@ alias minecraft='~/.minecraft/launcher/minecraft-launcher &'
 
 alias ls='ls --color'
 alias l='ls -la'
-
-alias rs='cd $HOME/code/src/github.com/rilstrats/'
-alias csa='cd $HOME/code/src/github.com/byui-csa/'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
