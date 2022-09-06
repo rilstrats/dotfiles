@@ -1,10 +1,18 @@
 #!/bin/zsh
 
-if [[ $# -eq 1 ]]; then
-    selected=$1
-else
-    selected=$(find $GORS $GOCSA $MEGASEM -mindepth 1 -maxdepth 1 -type d | fzf)
+if [[ -z $MEGASEM ]]; then
+    source .zshrc
 fi
+
+directories=($GORS $GOCSA $MEGASEM)
+
+# if [[ $# -eq 1 ]]; then
+#     selected=$1
+# else
+#     selected=$(find $directories -mindepth 1 -maxdepth 1 -type d | fzf)
+# fi
+
+selected=$(find $directories -mindepth 1 -maxdepth 1 -type d | fzf)
 
 if [[ -z $selected ]]; then
     exit 0

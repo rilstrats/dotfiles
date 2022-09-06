@@ -20,25 +20,29 @@ order += "battery all"
 order += "time"
 
 wireless _first_ {
-    format_up = "W: (%quality at %essid) %ip"
+    format_up = "W: %essid %quality (%ip)"
     format_down = ""
     separator_block_width = 20
 }
 
 ethernet _first_ {
-    format_up = "E: %ip (%speed)"
+    format_up = "E: %speed (%ip)"
     format_down = ""
     separator_block_width = 20
 }
 
 battery all {
-    format = "B: %status %percentage %remaining"
+    last_full_capacity = true
+    format = "B: %status %percentage (%remaining)"
+    status_chr = "⚡"
+    status_full = "💯"
+    status_bat = "🔋"
     format_down = ""
     separator_block_width = 20
 }
 
 time {
-    format = "%-d-%b-%Y %-I:%M %p "
+    format = "%a %-d-%b-%Y %-I:%M %p "
     separator_block_width = 20
 }
 
@@ -52,19 +56,21 @@ tztime America/Phoenix {
     separator_block_width = 20
 }
 
-# load {
-#    format = "%1min"
-#    separator_block_width = 20
-#}
+load {
+    format = "%1min"
+    separator_block_width = 20
+}
 
 disk "/" {
-    format = "/: %avail / %total"
+    format = "/: %avail"
+    # format = "/: %avail / %total"
     prefix_type = binary 
     separator_block_width = 20
 }
 
 disk "/home" {
-    format = "~: %avail / %total"
+    format = "~: %avail"
+    # format = "~: %avail / %total"
     prefix_type = binary 
     separator_block_width = 20
 }
