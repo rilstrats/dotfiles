@@ -8,26 +8,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# history
-HISTFILE=$HOME/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-
-# something to do with vim
-bindkey -v
-
-# autocomplete
-zstyle :compinstall filename "$HOME/.zshrc"
-autoload -Uz compinit
-compinit
-
-# themes and plugins
-export ZSH="$HOME/.config/zsh"
-source $ZSH/theme/powerlevel10k/powerlevel10k.zsh-theme
-source $ZSH/plugin/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-source $ZSH/plugin/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $ZSH/plugin/zsh-autosuggestions/zsh-autosuggestions.zsh
-
 # go
 export GOPATH="$HOME/code"
 export GOSRC="$GOPATH/src"
@@ -57,6 +37,44 @@ alias megasem="cd $MEGASEM"
 export EDITOR='/bin/nvim'
 alias vim='/bin/nvim'
 alias vimp='/bin/vim'
+
+# history
+HISTFILE=$HOME/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+
+# something to do with vim
+bindkey -v
+
+# autocomplete
+zstyle :compinstall filename "$HOME/.zshrc"
+autoload -Uz compinit
+compinit
+
+# themes and plugins
+export ZSH="$HOME/.config/zsh"
+source $ZSH/theme/powerlevel10k/powerlevel10k.zsh-theme
+source $ZSH/plugin/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+source $ZSH/plugin/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZSH/plugin/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# files
+if [[ "$XDG_CURRENT_DESKTOP" == "KDE" && ! -z $(command -v dolphin) ]]; then
+    alias files='dolphin . &> /dev/null &'
+elif [[ "$XDG_CURRENT_DESKTOP" == "GNOME" && $(command -v nautilus) ]]; then
+    alias files='nautilus . &> /dev/null &'
+elif [[ "$XDG_CURRENT_DESKTOP" == "i3" && ! -z $(command -v thunar) ]]; then
+    alias files='thunar . &> /dev/null &'
+
+elif [[ "$XDG_CURRENT_DESKTOP" == "i3" && ! -z $(command -v dolphin) ]]; then
+    alias files='dolphin . &> /dev/null &'
+elif [[ "$XDG_CURRENT_DESKTOP" == "i3" && ! -z $(command -v nautilus) ]]; then
+    alias files='nautilus . &> /dev/null &'
+
+else
+    alias files="echo 'Unsupported Desktop Environment'"
+fi
+
 
 # aliases
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME'
