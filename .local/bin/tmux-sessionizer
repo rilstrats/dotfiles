@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 if [[ -z $MEGASEM ]]; then
-    source .zshrc
+    source $HOME/.zshrc
 fi
 
 directories=($GORS $GOCSA $MEGASEM)
