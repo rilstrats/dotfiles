@@ -16,6 +16,9 @@ font pango:MesloLGS NF 16px
 # wallpaper
 exec feh --bg-fill .wallpapers/christ-calling-fishermen.2560x1080.jpeg --bg-fill .wallpapers/christ-calling-fishermen.1920x1080.jpeg
 
+# polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 # transparency
 exec picom -b
 
@@ -156,10 +159,11 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-        tray_output primary
-}
+# bar {
+#         status_command i3status
+#         tray_output primary
+#    polybar
+# }
 
 # Suspend
 bindsym $mod+Shift+period exec systemctl suspend

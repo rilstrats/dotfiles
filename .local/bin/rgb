@@ -7,4 +7,4 @@ else
     color=$1
 fi
 
-openrgb -m static -c $color
+openrgb -m static -c $color &> /dev/null
