@@ -76,7 +76,6 @@ else
     alias files="echo 'Unsupported Desktop Environment'"
 fi
 
-
 # aliases
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME'
 alias dfs=dotfiles
@@ -85,6 +84,8 @@ alias ls='ls --color'
 alias l='ls -la'
 
 alias minecraft='~/.minecraft/launcher/minecraft-launcher &'
+
+alias hollywood='sudo docker run --rm -it bcbcarl/hollywood'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
