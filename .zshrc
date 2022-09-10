@@ -1,6 +1,7 @@
 # tmux
 if [ -z "$TMUX" ]; then
-    tmux 
+    # tmux attach || tmux
+    tmux
 fi 
 
 # p10k instant prompt (things with output above, no output below)
