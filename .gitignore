@@ -24,6 +24,10 @@
 !/.config/nvim
 /.config/nvim/plugin/*
 
+# lvim
+!/.config/lvim
+/.config/lvim/plugin/*
+
 # p10k config
 !/.p10k.zsh
 
