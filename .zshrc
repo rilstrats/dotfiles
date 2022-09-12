@@ -28,16 +28,16 @@ export PATH="$PATH:$GOBIN:$HOME/.local/bin"
 # mega
 export MEGA="$HOME/mega"
 export MEGACOL="$MEGA/college"
-export MEGASEM="$MEGACOL/2022-3.summer"
+export MEGASEM="$MEGACOL/2022-4.fall"
 
 alias mega="cd $MEGA"
 alias megacol="cd $MEGACOL"
 alias megasem="cd $MEGASEM"
 
 # editor
-export EDITOR='/bin/nvim'
-alias vim='/bin/nvim'
-alias vimp='/bin/vim'
+export EDITOR="$HOME/.local/bin/lvim"
+alias vim=$EDITOR
+alias vimp='/usr/bin/vim'
 
 # history
 HISTFILE=$HOME/.histfile
