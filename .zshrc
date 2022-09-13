@@ -9,6 +9,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# xdg
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
 # go
 export GOPATH="$HOME/code"
 export GOSRC="$GOPATH/src"
@@ -80,8 +86,12 @@ fi
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME'
 alias dfs=dotfiles
 
-alias l='ls -la'
-alias la='ls -la'
+alias ls='ls --color=auto'
+alias l='ls -la --color=auto'
+alias la='ls -a --color=auto'
+alias ll='ls -l --color=auto'
+alias l.='ls -d .* --color=auto'
+alias ll.='ls -l -d .* --color=auto'
 
 alias minecraft='~/.minecraft/launcher/minecraft-launcher &'
 
@@ -89,4 +99,8 @@ alias hollywood='sudo docker run --rm -it bcbcarl/hollywood'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
