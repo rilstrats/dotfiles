@@ -80,8 +80,8 @@ fi
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME'
 alias dfs=dotfiles
 
-alias ls='ls --color'
 alias l='ls -la'
+alias la='ls -la'
 
 alias minecraft='~/.minecraft/launcher/minecraft-launcher &'
 
