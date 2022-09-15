@@ -14,9 +14,9 @@ lvim.format_on_save = true
 lvim.colorscheme = "tokyonight"
 lvim.transparent_window = true
 
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
-vim.opt.relativenumber = true
+-- vim.opt.shiftwidth = 4
+-- vim.opt.tabstop = 4
+-- vim.opt.relativenumber = true
 vim.opt.wrap = true
 -- vim.opt.backup = false
 -- vim.opt.writebackup = true
@@ -77,18 +77,18 @@ lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
-  "bash",
-  "c",
-  "javascript",
-  "json",
-  "lua",
-  "python",
-  "typescript",
-  "tsx",
-  "css",
-  "rust",
-  "java",
-  "yaml",
+    "bash",
+    "c",
+    "javascript",
+    "json",
+    "lua",
+    "python",
+    "typescript",
+    "tsx",
+    "css",
+    "rust",
+    "java",
+    "yaml",
 }
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
@@ -171,11 +171,11 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- Additional Plugins
 lvim.plugins = {
-  { "folke/tokyonight.nvim" },
-  --     {
-  --       "folke/trouble.nvim",
-  --       cmd = "TroubleToggle",
-  --     },
+    { "folke/tokyonight.nvim" },
+    --     {
+    --       "folke/trouble.nvim",
+    --       cmd = "TroubleToggle",
+    --     },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
