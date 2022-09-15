@@ -1,5 +1,5 @@
 # tmux
-if [ -z "$TMUX" ]; then
+if [[ -z "$TMUX" && "$TERM" != "xterm-256color" ]]; then
     # tmux attach || tmux
     tmux
 fi 
@@ -21,23 +21,22 @@ export GOSRC="$GOPATH/src"
 export GOBIN="$GOPATH/bin"
 
 export GOGH="$GOSRC/github.com"
-export GORS="$GOGH/rilstrats"
-export GOCSA="$GOGH/byui-csa"
-
 alias gogh="cd $GOGH"
+
+export GORS="$GOGH/rilstrats"
 alias gors="cd $GORS"
-alias gocsa="cd $GOCSA"
 
 # path
 export PATH="$PATH:$GOBIN:$HOME/.local/bin"
 
 # mega
 export MEGA="$HOME/mega"
-export MEGACOL="$MEGA/college"
-export MEGASEM="$MEGACOL/2022-4.fall"
-
 alias mega="cd $MEGA"
+
+export MEGACOL="$MEGA/college"
 alias megacol="cd $MEGACOL"
+
+export MEGASEM="$MEGACOL/2022-4.fall"
 alias megasem="cd $MEGASEM"
 
 # editor
@@ -66,21 +65,33 @@ source $ZSH/plugin/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH/plugin/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # files
-if [[ "$XDG_CURRENT_DESKTOP" == "KDE" && ! -z $(command -v dolphin) ]]; then
-    alias files='dolphin . &> /dev/null &'
-elif [[ "$XDG_CURRENT_DESKTOP" == "GNOME" && $(command -v nautilus) ]]; then
-    alias files='nautilus . &> /dev/null &'
-elif [[ "$XDG_CURRENT_DESKTOP" == "i3" && ! -z $(command -v thunar) ]]; then
-    alias files='thunar . &> /dev/null &'
+case $XDG_CURRENT_DESKTOP in
+    KDE)
+        alias files='dolphin . &> /dev/null &'
+        ;;
 
-elif [[ "$XDG_CURRENT_DESKTOP" == "i3" && ! -z $(command -v dolphin) ]]; then
-    alias files='dolphin . &> /dev/null &'
-elif [[ "$XDG_CURRENT_DESKTOP" == "i3" && ! -z $(command -v nautilus) ]]; then
-    alias files='nautilus . &> /dev/null &'
+    GNOME)
+        alias files='nautilus . &> /dev/null &'
+        ;;
 
-else
-    alias files="echo 'Unsupported Desktop Environment'"
-fi
+    i3 | XFCE)
+
+        if [[ ! -z $(command -v thunar) ]]; then
+            alias files='thunar . &> /dev/null &'
+
+        elif [[ ! -z $(command -v nautilus) ]]; then
+            alias files='nautilus . &> /dev/null &'
+
+        elif [[ ! -z $(command -v dolphin) ]]; then
+            alias files='dolphin . &> /dev/null &'
+            
+        fi
+        ;;
+
+    *)
+        alias files="echo 'Unsupported Desktop Environment'"
+        ;;
+esac
 
 # aliases
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME'
@@ -94,17 +105,21 @@ alias l.='ls -d .* --color=auto'
 alias ll.='ls -l -d .* --color=auto'
 
 alias minecraft='~/.minecraft/launcher/minecraft-launcher &'
-
 alias hollywood='sudo docker run --rm -it bcbcarl/hollywood'
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# secrets
+[[ -f $HOME/.secret.zsh ]] && source $HOME/.secret.zsh
 
 # nvm
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if [[ ! -z $(command -v nvm) ]]; then
+    export NVM_DIR="$HOME/.config/nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# angular autocompletion
-source <(ng completion script)
+    # angular autocompletion
+    [[ ! -z $(command -v ng) ]] && source <(ng completion script)
+fi
+
+# p10k config
+[[ -f "$HOME/.p10k.zsh" ]] && source "$HOME/.p10k.zsh"
 
