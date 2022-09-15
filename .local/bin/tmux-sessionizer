@@ -4,7 +4,7 @@ if [[ -z $MEGASEM ]]; then
     source $HOME/.zshrc
 fi
 
-directories=($GORS $GOCSA $MEGASEM)
+directories=($GORS $GOCSA $GOSUB $MEGASEM)
 
 # if [[ $# -eq 1 ]]; then
 #     selected=$1
