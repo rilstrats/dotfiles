@@ -13,6 +13,15 @@ lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.colorscheme = "tokyonight"
 lvim.transparent_window = true
+
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.relativenumber = true
+vim.opt.wrap = true
+-- vim.opt.backup = false
+-- vim.opt.writebackup = true
+vim.opt.swapfile = true
+
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
