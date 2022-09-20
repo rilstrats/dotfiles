@@ -9,6 +9,16 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# history
+HISTFILE=$HOME/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+
+# autocomplete
+zstyle :compinstall filename "$HOME/.zshrc"
+autoload -Uz compinit
+compinit
+
 # xdg
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -36,26 +46,13 @@ alias mega="cd $MEGA"
 export MEGACOL="$MEGA/college"
 alias megacol="cd $MEGACOL"
 
-export MEGASEM="$MEGACOL/2022-4.fall"
+export MEGASEM="$MEGACOL/22-9.fall"
 alias megasem="cd $MEGASEM"
 
 # editor
 export EDITOR="$HOME/.local/bin/lvim"
 alias vim=$EDITOR
 alias vimp='/usr/bin/vim'
-
-# history
-HISTFILE=$HOME/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-
-# something to do with vim
-bindkey -v
-
-# autocomplete
-zstyle :compinstall filename "$HOME/.zshrc"
-autoload -Uz compinit
-compinit
 
 # themes and plugins
 export ZSH="$HOME/.config/zsh"
