@@ -1,7 +1,7 @@
 # tmux
 if [[ -z "$TMUX" && "$TERM" != "xterm-256color" ]]; then
-    # tmux attach || tmux
-    tmux
+  # tmux attach || tmux
+  tmux
 fi 
 
 # p10k instant prompt (things with output above, no output below)
@@ -63,31 +63,31 @@ source $ZSH/plugin/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # files
 case $XDG_CURRENT_DESKTOP in
-    KDE)
-        alias files='dolphin . &> /dev/null &'
-        ;;
+  KDE)
+    alias files='dolphin . &> /dev/null &'
+    ;;
 
-    GNOME)
-        alias files='nautilus . &> /dev/null &'
-        ;;
+  GNOME)
+    alias files='nautilus . &> /dev/null &'
+    ;;
 
-    i3 | XFCE)
+  i3 | XFCE)
 
-        if [[ ! -z $(command -v thunar) ]]; then
-            alias files='thunar . &> /dev/null &'
+    if [[ ! -z $(command -v thunar) ]]; then
+      alias files='thunar . &> /dev/null &'
 
-        elif [[ ! -z $(command -v nautilus) ]]; then
-            alias files='nautilus . &> /dev/null &'
+    elif [[ ! -z $(command -v nautilus) ]]; then
+      alias files='nautilus . &> /dev/null &'
 
-        elif [[ ! -z $(command -v dolphin) ]]; then
-            alias files='dolphin . &> /dev/null &'
-            
-        fi
-        ;;
+    elif [[ ! -z $(command -v dolphin) ]]; then
+      alias files='dolphin . &> /dev/null &'
 
-    *)
-        alias files="echo 'Unsupported Desktop Environment'"
-        ;;
+    fi
+    ;;
+
+  *)
+    alias files="echo 'Unsupported Desktop Environment'"
+    ;;
 esac
 
 # aliases
@@ -109,12 +109,11 @@ alias hollywood='sudo docker run --rm -it bcbcarl/hollywood'
 
 # nvm
 if [[ -d "$HOME/.config/nvm" ]]; then
-    export NVM_DIR="$HOME/.config/nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  export NVM_DIR="$HOME/.config/nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"  # loads nvm autocompletion (bash_completion)
 
-    # angular autocompletion
-    [[ ! -z $(command -v ng) ]] && source <(ng completion script)
+  [[ ! -z $(command -v ng) ]] && source <(ng completion script) # loads angular autocompletion
 fi
 
 # p10k config
