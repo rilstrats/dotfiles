@@ -10,9 +10,11 @@ polybar-msg cmd quit
 date >> /tmp/polybar.log
 for monitor in $(polybar -m | sed 's/:.*$//g'); do 
     export MONITOR=$monitor
-    polybar example &>> /tmp/polybar.log & disown
+    polybar first &>> /tmp/polybar.log & disown
+    sleep 0.1
 done
 
-export MONITOR=""
+unset MONITOR
 
-echo "Bars launched..."
+# echo "Bars launched..."
+
