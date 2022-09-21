@@ -6,7 +6,9 @@ This repo is used to store my personal dotfiles. Enjoy!
 
 ### Packages
 
-`sudo dnf install i3-gaps rofi polybar tmux alacritty nvim zsh`
+```bash
+sudo dnf install i3-gaps rofi polybar tmux alacritty nvim zsh
+```
 
 ### Submodules
 
@@ -45,3 +47,10 @@ alias dfs=dotfiles" >> $HOME/.zshrc
 
 This enables you to use commands such as `dfs status` just like `git status` to manage the dotfiles.
 
+### Laptop
+
+On a laptop with a high DPI screen, you will want to run this command
+
+```bash
+ln $HOME/.Xresources.laptop $HOME/.Xresources
+```
