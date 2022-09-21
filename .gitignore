@@ -6,6 +6,9 @@
 !/.gitmodule
 !/.gitconfig
 
+# github 
+!.github/
+
 # .config
 !/.config
 /.config/*
