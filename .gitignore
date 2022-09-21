@@ -1,13 +1,16 @@
 # Ignore all files by default
 /*
 
-# git 
+# git files 
 !.gitignore
 !/.gitmodule
 !/.gitconfig
 
-# github 
+# .github 
 !.github/
+
+# .Xresources
+!/.Xresources.laptop
 
 # .config
 !/.config

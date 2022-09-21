@@ -1,20 +1,25 @@
 #!/bin/bash
 
-# Terminate already running bar instances
-# If all your bars have ipc enabled, you can use 
+# kill previous bars
 polybar-msg cmd quit
-# Otherwise you can use the nuclear option:
 # killall -q polybar
 
-# Launch bar1 and bar2
+# log
 date >> /tmp/polybar.log
+
+# loop through each monitor
 for monitor in $(polybar -m | sed 's/:.*$//g'); do 
     export MONITOR=$monitor
-    polybar first &>> /tmp/polybar.log & disown
+
+    if [[ "$monitor" == "eDP-1" ]]; then
+      polybar laptop &>> /tmp/polybar.log & disown
+
+    else
+      polybar desktop &>> /tmp/polybar.log & disown
+    fi
+
     sleep 0.1
 done
 
 unset MONITOR
-
-# echo "Bars launched..."
 
