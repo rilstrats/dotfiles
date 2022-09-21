@@ -6,6 +6,8 @@ This repo is used to store my personal dotfiles. Enjoy!
 
 ### Packages
 
+Fedora: 
+
 ```bash
 sudo dnf install i3-gaps rofi polybar tmux alacritty nvim zsh
 ```
@@ -28,6 +30,8 @@ You will have to go follow these links and install them to use them:
 
 ## Install
 
+Run the following commands to bare clone this repo, checkout this files, and install the submodules.
+
 ```bash
 git clone --bare https://github.com/rilstrats/.dotfiles.git $HOME/.dotfiles.git
 
@@ -49,7 +53,7 @@ This enables you to use commands such as `dfs status` just like `git status` to 
 
 ### Laptop
 
-On a laptop with a high DPI screen, you will want to run this command
+On a laptop with a high DPI screen, you will want to run this command.
 
 ```bash
 ln $HOME/.Xresources.laptop $HOME/.Xresources
