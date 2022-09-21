@@ -46,6 +46,7 @@
 
 # fonts
 !/.fonts
+/.fonts/.uuid
 
 # alacritty
 !/.config/alacritty
