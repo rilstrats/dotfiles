@@ -101,8 +101,10 @@ alias ll='ls -l --color=auto'
 alias l.='ls -d .* --color=auto'
 alias ll.='ls -l -d .* --color=auto'
 
-alias minecraft='~/.minecraft/launcher/minecraft-launcher &'
-alias hollywood='sudo docker run --rm -it bcbcarl/hollywood'
+alias minecraft="$HOME/.minecraft/launcher/minecraft-launcher &"
+
+alias hollywood='docker run --rm -it bcbcarl/hollywood'
+alias kali='docker run --rm -it kalilinux/kali-rolling'
 
 # secrets
 [[ -f $HOME/.secret.zsh ]] && source $HOME/.secret.zsh
