@@ -4,6 +4,12 @@ window:
     columns: 128
     lines: 32
 
+cursor:
+  style:
+    shape: Beam
+  vi_mode_style:
+    shape: Block
+
 font:
   normal:
     family: MesloLGS NF
