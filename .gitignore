@@ -46,6 +46,7 @@
 
 # wallpaper
 !/.wallpapers
+/.wallpapers/*.png
 
 # fonts
 !/.fonts
