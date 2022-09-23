@@ -9,6 +9,15 @@
 # font
 font pango:MesloLGS NF 16px
 
+# megasync
+exec --no-startup-id megasync
+
+# transparency
+exec_always --no-startup-id picom -b
+
+# wallpaper
+exec_always --no-startup-id $HOME/.config/i3/wallpaper.sh 
+
 # polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
@@ -17,15 +26,6 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #          status_command i3status
 #          tray_output primary
 #  }
-
-# transparency
-exec_always --no-startup-id picom -b
-
-# megasync
-exec --no-startup-id megasync
-
-# wallpaper
-exec_always --no-startup-id $HOME/.config/i3/screen.sh 
 
 
 #########
@@ -36,10 +36,10 @@ exec_always --no-startup-id $HOME/.config/i3/screen.sh
 exec xset dpms 300 300 300
 
 # suspend after 10 minutes
-exec xautolock -time 10 -locker "systemctl suspend"
+exec xautolock -time 10 -locker "systemctl suspend" &
 
 # lock when waking
-exec xss-lock -- $HOME/.config/i3/i3lock-fancy/i3lock-fancy
+exec xss-lock -- $HOME/.config/i3/lock.sh &
 
 
 ########

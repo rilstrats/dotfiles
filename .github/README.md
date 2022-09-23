@@ -9,7 +9,7 @@ This repo is used to store my personal dotfiles. Enjoy!
 Fedora: 
 
 ```bash
-sudo dnf install i3-gaps rofi polybar tmux alacritty nvim zsh xss-lock xautolock xset scrot wmctrl
+sudo dnf install i3-gaps rofi polybar tmux alacritty nvim zsh xss-lock xautolock xset scrot wmctrl ImageMagick
 ```
 
 ### Submodules
@@ -39,6 +39,8 @@ git clone --bare https://github.com/rilstrats/.dotfiles.git $HOME/.dotfiles.git
 /usr/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME checkout -f
 /usr/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME submodule init
 /usr/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME submodule update
+
+cd $HOME/.config/i3/i3lock-fancy; sudo make install
 ```
 
 ### Permanent Aliases
