@@ -9,7 +9,7 @@ This repo is used to store my personal dotfiles. Enjoy!
 Fedora: 
 
 ```bash
-sudo dnf install i3-gaps rofi polybar tmux alacritty nvim zsh
+sudo dnf install i3-gaps rofi polybar tmux alacritty nvim zsh xss-lock xautolock xset scrot wmctrl
 ```
 
 ### Submodules
@@ -20,6 +20,7 @@ By cloning these dotfiles and setting up the submodules, you are also installing
 - https://github.com/zsh-users/zsh-autosuggestions/tree/master
 - https://github.com/zsh-users/zsh-syntax-highlighting/tree/master
 - https://github.com/jeffreytse/zsh-vi-mode/tree/master
+- https://github.com/meskarune/i3lock-fancy
 
 ### Other
 
