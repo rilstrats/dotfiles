@@ -28,6 +28,20 @@ exec --no-startup-id megasync
 exec_always --no-startup-id $HOME/.config/i3/screen.sh 
 
 
+#########
+# power #
+#########
+
+# screen off after 5 minutes
+exec xset dpms 300 300 300
+
+# suspend after 10 minutes
+exec xautolock -time 10 -locker "systemctl suspend"
+
+# lock when waking
+exec xss-lock -- $HOME/.config/i3/i3lock-fancy/i3lock-fancy
+
+
 ########
 # gaps #
 ########

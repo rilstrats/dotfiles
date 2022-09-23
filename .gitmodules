@@ -10,3 +10,6 @@
 [submodule ".config/zsh/plugin/zsh-autosuggestions"]
 	path = .config/zsh/plugin/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule ".config/i3/i3lock-fancy"]
+	path = .config/i3/i3lock-fancy
+	url = https://github.com/meskarune/i3lock-fancy.git
