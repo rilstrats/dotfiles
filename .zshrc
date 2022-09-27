@@ -9,23 +9,36 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# history
-HISTFILE=$HOME/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-
-# autocomplete
-zstyle :compinstall filename "$HOME/.zshrc"
-autoload -Uz compinit
-compinit
-
 # xdg
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_RUNTIME_DIR="$HOME/.local/bin"
 
-# go
+# zsh
+setopt autocd beep extendedglob nomatch notify
+bindkey -v # vim
+export ZSH="$XDG_CONFIG_HOME/zsh"
+
+# themes and plugins
+source $ZSH/theme/powerlevel10k/powerlevel10k.zsh-theme
+source $ZSH/plugin/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+source $ZSH/plugin/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZSH/plugin/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# history
+HISTFILE="$ZSH/histfile"
+HISTSIZE=1000
+SAVEHIST=1000
+
+# autocomplete
+zstyle ':completion:*' completer _complete _ignored _approximate
+zstyle :compinstall filename "$HOME/.zshrc"
+autoload -Uz compinit
+compinit
+
+# code (go conventions)
 export GOPATH="$HOME/code"
 export GOSRC="$GOPATH/src"
 export GOBIN="$GOPATH/bin"
@@ -37,7 +50,29 @@ export GORS="$GOGH/rilstrats"
 alias gors="cd $GORS"
 
 # path
-export PATH="$PATH:$GOBIN:$HOME/.local/bin"
+export PATH="$PATH:$GOBIN:$XDG_RUNTIME_DIR"
+
+# git
+g () {
+  if [[ -z $(git status 2> /dev/null) ]]; then
+    /bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME $*
+  else
+    /bin/git $*
+  fi
+}
+
+gs () {g status}
+gd () {g diff}
+
+ga () {g add $*}
+gcm () {g commit -m $1}
+gp () {g push}
+
+gf () {g fetch}
+gpu () {g pull}
+
+gacm () {g add .; g commit -m $1}
+gacmp () {g add .; g commit -m $1; g push}
 
 # mega
 export MEGA="$HOME/mega"
@@ -50,16 +85,17 @@ export MEGASEM="$MEGACOL/22-9.fall"
 alias megasem="cd $MEGASEM"
 
 # editor
-export EDITOR="$HOME/.local/bin/lvim"
-alias vim=$EDITOR
-alias vimp='/usr/bin/vim'
+if [[ ! -z $(command -v lvim) ]]; then
+  export EDITOR="$XDG_RUNTIME_DIR/lvim"
+elif [[ ! -z $(command -v nvim) ]]; then
+  export EDITOR="/bin/nvim"
+elif [[ ! -z $(command -v vim) ]]; then
+  export EDITOR="/bin/vim"
+else
+  export EDITOR="/bin/vi"
+fi
 
-# themes and plugins
-export ZSH="$HOME/.config/zsh"
-source $ZSH/theme/powerlevel10k/powerlevel10k.zsh-theme
-source $ZSH/plugin/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-source $ZSH/plugin/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $ZSH/plugin/zsh-autosuggestions/zsh-autosuggestions.zsh
+alias vim=$EDITOR
 
 # files
 case $XDG_CURRENT_DESKTOP in
@@ -90,28 +126,33 @@ case $XDG_CURRENT_DESKTOP in
     ;;
 esac
 
-# aliases
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME'
+# dotfiles
+alias dotfiles='/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME'
 alias dfs=dotfiles
 
+# ls
 alias ls='ls --color=auto'
 alias l='ls -la --color=auto'
+
 alias la='ls -a --color=auto'
 alias ll='ls -l --color=auto'
+
 alias l.='ls -d .* --color=auto'
 alias ll.='ls -l -d .* --color=auto'
 
-alias minecraft="$HOME/.minecraft/launcher/minecraft-launcher &"
+# games
+alias minecraft="$HOME/.minecraft/launcher/minecraft-launcher & &> /dev/null"
 
+# docker
 alias hollywood='docker run --rm -it bcbcarl/hollywood'
 alias kali='docker run --rm -it kalilinux/kali-rolling'
 
-# secrets
-[[ -f $HOME/.secret.zsh ]] && source $HOME/.secret.zsh
+# secret
+[[ -f "$HOME/.config/zsh/secret.zsh" ]] && source $HOME/.config/zsh/secret.zsh
 
 # nvm
-if [[ -d "$HOME/.config/nvm" ]]; then
-  export NVM_DIR="$HOME/.config/nvm"
+if [[ -d "$XDG_CONFIG_HOME/nvm" ]]; then
+  export NVM_DIR="$XDG_CONFIG_HOME/nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"  # loads nvm autocompletion (bash_completion)
 
