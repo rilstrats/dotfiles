@@ -52,53 +52,6 @@ alias gors="cd $GORS"
 # path
 export PATH="$PATH:$GOBIN:$XDG_RUNTIME_DIR"
 
-# dotfiles
-alias dotfiles='/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME'
-alias dfs=dotfiles
-
-# git
-g () {
-  if [[ -z $(git status 2> /dev/null) ]]; then
-    /bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME $*
-  else
-    /bin/git $*
-  fi
-}
-
-gs () {g status}
-gd () {g diff}
-
-ga () {g add $*}
-gc () {g commit -m $1}
-gp () {g push}
-
-gf () {g fetch}
-gpu () {g pull}
-
-gac () {ga .; gc $1}
-gacp () {ga .; gc $1; gp}
-
-grv () {g remote -v}
-grso () {g remote set-url origin $1}
-
-gssh () {
-  repo=$(git remote -v | head -n 1 | sed "s/^.*\.com[/:]//g" | sed "s/ (.*$//g" | sed "s/\.git$//g")
-  read "?Is git@github.com:$repo.git correct? [Y/n]: " input
-  correct=`echo ${input:0:1} | tr '[:upper:]' '[:lower:]'`
-  echo
-
-  if [[ "$correct" == "n" ]]; then
-    echo "Origin not updated, please update with either command: "
-    echo "git remote set-url origin git@github.com:USER/REPO.git"
-    echo "grso git@github.com:USER/REPO.git"
-    return
-  fi
-
-  git remote set-url origin git@github.com:$repo.git
-  echo "Origin updated to:"
-  git remote -v
-}
-
 # mega
 export MEGA="$HOME/mega"
 alias mega="cd $MEGA"
@@ -151,6 +104,17 @@ case $XDG_CURRENT_DESKTOP in
     ;;
 esac
 
+# dotfiles
+export DOTFILES="$HOME/.dotfiles.git/"
+alias dotfiles='/bin/git --git-dir=$DOTFILES --work-tree=$HOME'
+alias dfs=dotfiles
+
+# git
+[[ -f "$ZSH/git.zsh" ]] && source $ZSH/git.zsh
+
+# secret
+[[ -f "$ZSH/secret.zsh" ]] && source $ZSH/secret.zsh
+
 # ls
 alias ls='ls --color=auto'
 alias l='ls -la --color=auto'
@@ -167,9 +131,6 @@ alias minecraft="$HOME/.minecraft/launcher/minecraft-launcher & &> /dev/null"
 # docker
 alias hollywood='docker run --rm -it bcbcarl/hollywood'
 alias kali='docker run --rm -it kalilinux/kali-rolling'
-
-# secret
-[[ -f "$HOME/.config/zsh/secret.zsh" ]] && source $HOME/.config/zsh/secret.zsh
 
 # nvm
 if [[ -d "$XDG_CONFIG_HOME/nvm" ]]; then
