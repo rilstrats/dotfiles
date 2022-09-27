@@ -52,6 +52,10 @@ alias gors="cd $GORS"
 # path
 export PATH="$PATH:$GOBIN:$XDG_RUNTIME_DIR"
 
+# dotfiles
+alias dotfiles='/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME'
+alias dfs=dotfiles
+
 # git
 g () {
   if [[ -z $(git status 2> /dev/null) ]]; then
@@ -71,8 +75,27 @@ gp () {g push}
 gf () {g fetch}
 gpu () {g pull}
 
-gacm () {g add .; g commit -m $1}
-gacmp () {g add .; g commit -m $1; g push}
+gacm () {ga .; gcm $1}
+gacmp () {ga .; gcm $1; gp}
+
+grv () {g remote -v}
+
+grso-ssh () {
+  repo=$(git remote -v | head -n 1 | sed "s/^.*\.com[/:]//g" | sed "s/ (.*$//g" | sed "s/\.git$//g")
+  read "?Is git@github.com:$repo.git correct? [Y/n]: " input
+  correct=`echo ${input:0:1} | tr '[:upper:]' '[:lower:]'`
+  echo
+
+  if [[ "$correct" == "n" ]]; then
+    echo "Origin not updated, please update by hand with: "
+    echo "git remote set-url origin git@github.com:USER/REPO.git"
+    return
+  fi
+
+  git remote set-url origin git@github.com:$repo.git
+  echo "Origin updated to:"
+  git remote -v
+}
 
 # mega
 export MEGA="$HOME/mega"
@@ -126,10 +149,6 @@ case $XDG_CURRENT_DESKTOP in
     ;;
 esac
 
-# dotfiles
-alias dotfiles='/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME'
-alias dfs=dotfiles
-
 # ls
 alias ls='ls --color=auto'
 alias l='ls -la --color=auto'
@@ -138,7 +157,7 @@ alias la='ls -a --color=auto'
 alias ll='ls -l --color=auto'
 
 alias l.='ls -d .* --color=auto'
-alias ll.='ls -l -d .* --color=auto'
+alias ll.='ls -ld .* --color=auto'
 
 # games
 alias minecraft="$HOME/.minecraft/launcher/minecraft-launcher & &> /dev/null"
