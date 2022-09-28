@@ -13,7 +13,8 @@ font pango:MesloLGS NF 16px
 exec --no-startup-id megasync
 
 # dunst (notifications)
-exec /bin/dunst
+exec --no-startup-id dbus-launch dunst
+# exec --no-startup-id dbus-launch dunst --config $HOME/.config/dunst/dunstrc
 
 # transparency
 exec_always --no-startup-id picom -b
