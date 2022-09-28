@@ -16,7 +16,7 @@ lvim.transparent_window = true
 
 -- vim.opt.shiftwidth = 4
 -- vim.opt.tabstop = 4
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 vim.opt.wrap = true
 -- vim.opt.backup = false
 -- vim.opt.writebackup = true
