@@ -23,8 +23,9 @@
 /.local/bin/*
 
 # zsh
-!/.config/zsh
 !/.zshrc
+!/.config/zsh
+/.config/zsh/histfile
 
 # nvim
 !/.config/nvim
