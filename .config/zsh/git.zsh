@@ -9,12 +9,14 @@ g () {
 gs () {g status}
 gd () {g diff}
 
+gm () {g mv $*}
+
 ga () {g add $*}
 gc () {g commit -m $1}
-gp () {g push}
+gpush () {g push}
 
 gf () {g fetch}
-gpu () {g pull}
+gpull () {g pull}
 
 gac () {ga .; gc $1}
 gacp () {ga .; gc $1; gp}
