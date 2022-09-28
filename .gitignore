@@ -26,6 +26,7 @@
 !/.zshrc
 !/.config/zsh
 /.config/zsh/histfile
+/.config/zsh/secret.zsh
 
 # nvim
 !/.config/nvim
@@ -57,7 +58,7 @@
 !/.config/alacritty
 
 # tmux
-!/.tmux.conf
+!/.config/tmux/
 
 # awesome
 !/.config/awesome
