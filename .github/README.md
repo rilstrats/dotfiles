@@ -9,7 +9,7 @@ This repo is used to store my personal dotfiles. Enjoy!
 Fedora: 
 
 ```bash
-sudo dnf install i3-gaps rofi polybar tmux alacritty nvim zsh xss-lock xautolock xset scrot wmctrl ImageMagick dunst gh
+sudo dnf install i3-gaps rofi polybar tmux alacritty nvim zsh xss-lock xautolock xset scrot wmctrl ImageMagick dunst gh brightnessctl
 ```
 
 ### Submodules
