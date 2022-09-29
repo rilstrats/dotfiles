@@ -8,16 +8,16 @@ g () {
   fi
 }
 
-gs () {grvo; echo; g status}
-gd () {grvo; g diff}
+gs () {grvo; g status}
+gd () {g diff}
 gm () {g mv $*}
 
 ga () {g add $*}
 gc () {g commit -m $1}
 gpush () {g push}
 
-gf () {grvo; echo; g fetch}
-gpull () {grvo; echo; g pull}
+gf () {g fetch}
+gpull () {g pull}
 
 gac () {ga .; gc $1}
 gacp () {ga .; gc $1; gpush}
@@ -29,17 +29,15 @@ grso () {g remote set-url origin $1}
 
 gssh () {
   repo=$(grvo | sed "s/^.*\.com[/:]//g" | sed "s/\.git$//g")
-  read "?Is git@github.com:$repo.git correct? [Y/n]: " input
-  correct=`echo ${input:0:1} | tr '[:upper:]' '[:lower:]'`
-  echo
+  read "input?Is git@github.com:$repo.git correct? [y/N]: "
+  update=`echo ${input:0:1} | tr '[:upper:]' '[:lower:]'`
 
-  if [[ "$correct" == "n" ]]; then
-    echo "Origin not updated, please update with this command: "
+  if [[ ! "$update" == "y" ]]; then
+    echo "Origin not updated. Update using: "
     echo "grso git@github.com:USER/REPO.git"
   else
     grso git@github.com:$repo.git
-    echo "Origin updated to:"
-    git remote -v
+    echo "Origin updated to $(grvo)"
   fi
 }
 
