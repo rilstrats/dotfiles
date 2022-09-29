@@ -41,16 +41,16 @@ autoload -Uz compinit
 compinit
 
 # go
-[[ -f "$ZSH/code.zsh" ]] && source "$ZSH/code.zsh"
+[[ -f "$ZSH/go.zsh" ]] && source "$ZSH/go.zsh"
 
 # path
 export PATH="$PATH:$GOBIN:$XDG_RUNTIME_DIR"
 
 # secret
-[[ -f "$ZSH/secret.zsh" ]] && source $ZSH/secret.zsh
+[[ -f "$ZSH/secret.zsh" ]] && source "$ZSH/secret.zsh"
 
 # mega
-[[ -f "$ZSH/code.zsh" ]] && source "$ZSH/code.zsh"
+[[ -f "$ZSH/mega.zsh" ]] && source "$ZSH/mega.zsh"
 
 # dotfiles
 export DOTFILES="$HOME/.dotfiles.git/"
