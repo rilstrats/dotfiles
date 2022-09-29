@@ -1,0 +1,15 @@
+[submodule ".config/zsh/theme/powerlevel10k"]
+	path = .config/zsh/theme/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k
+[submodule ".config/zsh/plugin/zsh-vi-mode"]
+	path = .config/zsh/plugin/zsh-vi-mode
+	url = https://github.com/jeffreytse/zsh-vi-mode
+[submodule ".config/zsh/plugin/zsh-syntax-highlighting"]
+	path = .config/zsh/plugin/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting
+[submodule ".config/zsh/plugin/zsh-autosuggestions"]
+	path = .config/zsh/plugin/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule ".config/i3/i3lock-fancy"]
+	path = .config/i3/i3lock-fancy
+	url = https://github.com/meskarune/i3lock-fancy.git
