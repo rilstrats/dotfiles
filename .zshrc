@@ -46,19 +46,19 @@ compinit
 # path
 export PATH="$PATH:$GOBIN:$XDG_RUNTIME_DIR"
 
-# mega
-[[ -f "$ZSH/code.zsh" ]] && source "$ZSH/code.zsh"
-
 # secret
 [[ -f "$ZSH/secret.zsh" ]] && source $ZSH/secret.zsh
 
-# git
-[[ -f "$ZSH/git.zsh" ]] && source $ZSH/git.zsh
+# mega
+[[ -f "$ZSH/code.zsh" ]] && source "$ZSH/code.zsh"
 
 # dotfiles
 export DOTFILES="$HOME/.dotfiles.git/"
 alias dotfiles='/bin/git --git-dir=$DOTFILES --work-tree=$HOME'
 alias dfs=dotfiles
+
+# git
+[[ -f "$ZSH/git.zsh" ]] && source $ZSH/git.zsh
 
 # editor
 if [[ ! -z $(command -v lvim) ]]; then

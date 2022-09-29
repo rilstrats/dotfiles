@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 if [[ -z $MEGASEM ]]; then
-  ZSH="$HOME/zsh"
+  ZSH="$HOME/.config/zsh"
   source $ZSH/go.zsh
   source $ZSH/secret.zsh
   source $ZSH/mega.zsh
