@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # tmux
 if [[ -z "$TMUX" && "$TERM" != "xterm-256color" ]]; then
   # tmux attach || tmux
@@ -17,7 +19,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_RUNTIME_DIR="$HOME/.local/bin"
 
 # zsh
-setopt autocd beep extendedglob nomatch notify
+# setopt autocd beep extendedglob nomatch notify
 bindkey -v # vim
 export ZSH="$XDG_CONFIG_HOME/zsh"
 
@@ -33,34 +35,30 @@ HISTSIZE=1000
 SAVEHIST=1000
 
 # autocomplete
-zstyle ':completion:*' completer _complete _ignored _approximate
+# zstyle ':completion:*' completer _complete _ignored _approximate
 zstyle :compinstall filename "$HOME/.zshrc"
 autoload -Uz compinit
 compinit
 
-# code (go conventions)
-export GOPATH="$HOME/code"
-export GOSRC="$GOPATH/src"
-export GOBIN="$GOPATH/bin"
-
-export GOGH="$GOSRC/github.com"
-alias gogh="cd $GOGH"
-
-export GORS="$GOGH/rilstrats"
-alias gors="cd $GORS"
+# go
+[[ -f "$ZSH/code.zsh" ]] && source "$ZSH/code.zsh"
 
 # path
 export PATH="$PATH:$GOBIN:$XDG_RUNTIME_DIR"
 
 # mega
-export MEGA="$HOME/mega"
-alias mega="cd $MEGA"
+[[ -f "$ZSH/code.zsh" ]] && source "$ZSH/code.zsh"
 
-export MEGACOL="$MEGA/college"
-alias megacol="cd $MEGACOL"
+# secret
+[[ -f "$ZSH/secret.zsh" ]] && source $ZSH/secret.zsh
 
-export MEGASEM="$MEGACOL/22-9.fall"
-alias megasem="cd $MEGASEM"
+# git
+[[ -f "$ZSH/git.zsh" ]] && source $ZSH/git.zsh
+
+# dotfiles
+export DOTFILES="$HOME/.dotfiles.git/"
+alias dotfiles='/bin/git --git-dir=$DOTFILES --work-tree=$HOME'
+alias dfs=dotfiles
 
 # editor
 if [[ ! -z $(command -v lvim) ]]; then
@@ -103,17 +101,6 @@ case $XDG_CURRENT_DESKTOP in
     alias files="echo 'Unsupported Desktop Environment'"
     ;;
 esac
-
-# dotfiles
-export DOTFILES="$HOME/.dotfiles.git/"
-alias dotfiles='/bin/git --git-dir=$DOTFILES --work-tree=$HOME'
-alias dfs=dotfiles
-
-# git
-[[ -f "$ZSH/git.zsh" ]] && source $ZSH/git.zsh
-
-# secret
-[[ -f "$ZSH/secret.zsh" ]] && source $ZSH/secret.zsh
 
 # ls
 alias ls='ls --color=auto'
