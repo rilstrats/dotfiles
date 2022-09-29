@@ -1,5 +1,8 @@
-# Ignore all files by default
+# ignore all by default
 /*
+
+# ignore secret files
+*secret*
 
 # git files 
 !.gitignore
@@ -7,7 +10,7 @@
 !/.gitconfig
 
 # .github 
-!.github/
+!/.github/
 
 # .Xresources
 !/.Xresources.laptop
@@ -26,7 +29,6 @@
 !/.zshrc
 !/.config/zsh
 /.config/zsh/histfile
-/.config/zsh/secret.zsh
 
 # nvim
 !/.config/nvim

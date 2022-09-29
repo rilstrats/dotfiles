@@ -1,10 +1,13 @@
 #!/bin/zsh
 
 if [[ -z $MEGASEM ]]; then
-    source $HOME/.zshrc
+  ZSH="$HOME/zsh"
+  source $ZSH/go.zsh
+  source $ZSH/secret.zsh
+  source $ZSH/mega.zsh
 fi
 
-directories=($GORS $GOCSA $GOSUB $MEGASEM)
+directories=($GORS $GOCSA $MEGASEM)
 
 # if [[ $# -eq 1 ]]; then
 #     selected=$1
