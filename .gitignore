@@ -7,7 +7,7 @@
 # git files 
 !.gitignore
 !/.gitmodule
-!/.gitconfig
+!/.config/git
 
 # .github 
 !/.github/
