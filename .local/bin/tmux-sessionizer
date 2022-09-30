@@ -11,10 +11,10 @@ directories=($GORS $GOCSA $MEGASEM)
 
 if [[ $# -eq 1 ]]; then
   selected=$1
-elif [[ ! -z $(command -v fd)]]; then
-  selected=$(fd --exact-depth 1 --type d | fzf)
+elif [[ ! -z $(command -v fd) ]]; then
+  selected=$(fd . $directories --exact-depth 1 --type d | fzf)
 else
-  selected=$(find $directories -mindepth 1 -maxdepth 1 -type d | fzf)
+  selected=$(find $directories -mindepth 1 -maxdepth 1 -type d | sort | fzf)
 fi
 
 if [[ -z $selected ]]; then
