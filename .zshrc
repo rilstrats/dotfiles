@@ -16,7 +16,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
-export XDG_RUNTIME_DIR="$HOME/.local/bin"
 
 # zsh
 # setopt autocd beep extendedglob nomatch notify
@@ -44,7 +43,7 @@ compinit
 [[ -f "$ZSH/go.zsh" ]] && source "$ZSH/go.zsh"
 
 # path
-export PATH="$PATH:$GOBIN:$XDG_RUNTIME_DIR"
+export PATH="$HOME/.local/bin:$GOBIN:$PATH"
 
 # secret
 [[ -f "$ZSH/secret.zsh" ]] && source "$ZSH/secret.zsh"
@@ -62,7 +61,7 @@ alias dfs=dotfiles
 
 # editor
 if [[ ! -z $(command -v lvim) ]]; then
-  export EDITOR="$XDG_RUNTIME_DIR/lvim"
+  export EDITOR="$HOME/.local/bin/lvim"
 elif [[ ! -z $(command -v nvim) ]]; then
   export EDITOR="/bin/nvim"
 elif [[ ! -z $(command -v vim) ]]; then
@@ -104,13 +103,13 @@ esac
 
 # ls
 alias ls='ls --color=auto'
-alias l='ls -la --color=auto'
+alias l='ls -lha --color=auto'
 
 alias la='ls -a --color=auto'
-alias ll='ls -l --color=auto'
+alias ll='ls -lh --color=auto'
 
 alias l.='ls -d .* --color=auto'
-alias ll.='ls -ld .* --color=auto'
+alias ll.='ls -lhd .* --color=auto'
 
 # games
 alias minecraft="$HOME/.minecraft/launcher/minecraft-launcher & &> /dev/null"
