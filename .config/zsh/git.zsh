@@ -12,6 +12,8 @@ gs () {grvo; g status}
 gd () {g diff}
 gm () {g mv $*}
 
+gp () {echo "Use gpull or gpush"}
+
 ga () {g add $*}
 gc () {g commit -m $1}
 gpush () {g push}
