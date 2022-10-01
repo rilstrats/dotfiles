@@ -8,26 +8,26 @@ g () {
   fi
 }
 
-gs () {grvo; g status}
-gd () {g diff}
+gs () {grvo; g status $*}
+gd () {g diff $*}
 gm () {g mv $*}
 
 gp () {echo "Use gpull or gpush"}
 
 ga () {g add $*}
-gc () {g commit -m $1}
-gpush () {g push}
+gc () {g commit -m $*}
+gpush () {g push $*}
 
-gf () {g fetch}
-gpull () {g pull}
+gf () {g fetch $*}
+gpull () {g pull $*}
 
 gac () {ga .; gc $1}
 gacp () {ga .; gc $1; gpush}
 
-grv () {g remote -v}
+grv () {g remote -v $*}
 grvo () {grv | grep origin | head -n 1 | sed "s/^.*\t//g" | sed "s/ (.*$//g"}
 
-grso () {g remote set-url origin $1}
+grso () {g remote set-url origin $*}
 
 gssh () {
   repo=$(grvo | sed "s/^.*\.com[/:]//g" | sed "s/\.git$//g")
