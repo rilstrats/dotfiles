@@ -45,6 +45,12 @@ exec xautolock -time 10 -locker "systemctl suspend" &
 # lock when waking
 exec xss-lock -- $HOME/.config/i3/lock.sh &
 
+# touchpad sesnsitivity
+exec --no-startup-id xinput set-prop "Microsoft Surface Keyboard Touchpad" 'libinput Accel Speed' 0.5
+
+# starting brightness
+exec --no-startup-id brightnessctl set 50% # increase screen brightness
+
 
 ########
 # gaps #
@@ -169,6 +175,19 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 
+#########
+# FKeys #
+#########
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# # Sreen brightness controls
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5% # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%- # decrease screen brightness
+
+
 ##############
 # workspaces #
 ##############
@@ -228,20 +247,10 @@ for_window [class="^.*"] client.focused          #ff0000 #ffff00 #00ff00 #00ffff
 # bindsym $mod+comma exec ~/.config/i3/scripts/alsa up Headphone
 # bindsym $mod+m move workspace to output left
 
-# FKeys
-# Pulse Audio controls
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
-
 # exec --no-startup-id nm-applet
 
 # bindsym $mod+Shift+s exec --no-startup-id ~/dotfiles/bin/monitor
 # bindsym $mod+Shift+n exec --no-startup-id ~/dotfiles/bin/resolution
-
-# # Sreen brightness controls
-# bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-# bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # NOTE: This is some real tom fooliery with my keyboard layout
 #  ZMK will send a shift mod with the items that require a shift key on a
