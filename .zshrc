@@ -2,8 +2,9 @@
 
 # tmux
 if [[ -z "$TMUX" && "$TERM" != "xterm-256color" ]]; then
-  # tmux attach || tmux
-  tmux
+  # tmux # new-session
+  $HOME/.local/bin/tmux-sessionizer $HOME
+  # tmux attach-session || $HOME/.local/bin/tmux-sessionizer $HOME
 fi 
 
 # p10k instant prompt (things with output above, no output below)
@@ -103,13 +104,13 @@ esac
 
 # ls
 alias ls='ls --color=auto'
-alias l='ls -lha --color=auto'
+alias l='ls -ohA --color=auto'
 
-alias la='ls -a --color=auto'
-alias ll='ls -lh --color=auto'
+alias la='ls -A --color=auto'
+alias ll='ls -oh --color=auto'
 
 alias l.='ls -d .* --color=auto'
-alias ll.='ls -lhd .* --color=auto'
+alias ll.='ls -ohd .* --color=auto'
 
 # games
 alias minecraft="$HOME/.minecraft/launcher/minecraft-launcher & &> /dev/null"
