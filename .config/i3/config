@@ -12,6 +12,8 @@ font pango:MesloLGS NF 16px
 # megasync
 exec --no-startup-id megasync
 
+exec --no-startup-id nm-applet
+
 # dunst (notifications)
 exec --no-startup-id dbus-launch dunst
 # exec --no-startup-id dbus-launch dunst --config $HOME/.config/dunst/dunstrc
