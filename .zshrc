@@ -73,6 +73,8 @@ else
 fi
 
 alias vim=$EDITOR
+alias sudovim="sudo $EDITOR"
+
 
 # files
 case $XDG_CURRENT_DESKTOP in
