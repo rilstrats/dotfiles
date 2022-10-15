@@ -172,10 +172,12 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- Additional Plugins
 lvim.plugins = {
   { "folke/tokyonight.nvim" },
-  { "iamcco/markdown-preview.nvim",
+  {
+    "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",
     setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
-    ft = { "markdown" } }
+    ft = { "markdown" }
+  },
   --     {
   --       "folke/trouble.nvim",
   --       cmd = "TroubleToggle",
