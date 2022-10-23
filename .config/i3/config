@@ -80,6 +80,9 @@ floating_modifier $mod
 # rofi
 bindsym $mod+d exec --no-startup-id rofi -show drun
 
+# scrot
+bindsym Print exec scrot -us $HOME/Pictures/$(date +%Y-%m-%d.%H-%M-%S).scrot.png
+
 # dmenu
 # bindsym $mod+d exec --no-startup-id i3-dmenu
 
