@@ -5,7 +5,7 @@ if [[ -z "$TMUX" && "$TERM" != "xterm-256color" ]]; then
   # tmux # new-session
   # $HOME/.local/bin/tmux-sessionizer $HOME
   # tmux attach-session || $HOME/.local/bin/tmux-sessionizer $HOME
-  tmux attach-session -t "home" || tmux new-session -s "home" -c $HOME 
+  tmux attach-session -t home || tmux new-session -s home -c $HOME 
 fi 
 
 # p10k instant prompt (things with output above, no output below)
