@@ -12,19 +12,27 @@ cursor:
 
 font:
   normal:
-    family: MesloLGS NF
+    # family: MesloLGS NF
+    family: Go Mono Nerd Font Mono
+    # family: Hack Nerd Font Mono
     style: Regular
 
   bold:
-    family: MesloLGS NF
+    # family: MesloLGS NF
+    family: Go Mono Nerd Font Mono
+    # family: Hack Nerd Font Mono
     style: Bold
 
   italic:
-    family: MesloLGS NF
+    # family: MesloLGS NF
+    family: Go Mono Nerd Font Mono
+    # family: Hack Nerd Font Mono
     style: Italic
 
   bold_italic:
-    family: MesloLGS NF
+    # family: MesloLGS NF
+    family: Go Mono Nerd Font Mono
+    # family: Hack Nerd Font Mono
     style: Bold Italic
 
   size: 12
