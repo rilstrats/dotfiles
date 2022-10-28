@@ -53,6 +53,9 @@ export PATH="$HOME/.local/bin:$GOBIN:$PATH"
 # mega
 [[ -f "$ZSH/mega.zsh" ]] && source "$ZSH/mega.zsh"
 
+# colab
+[[ -f "$ZSH/colab.zsh" ]] && source "$ZSH/colab.zsh"
+
 # dotfiles
 export DOTFILES="$HOME/.dotfiles.git/"
 alias dotfiles='/bin/git --git-dir=$DOTFILES --work-tree=$HOME'
