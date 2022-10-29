@@ -1,12 +1,38 @@
 #!/bin/zsh
 
-if [[ -d "$XDG_CONFIG_HOME/nvm" ]]; then
-  export NVM_DIR="$XDG_CONFIG_HOME/nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"  # loads nvm autocompletion (bash_completion)
-
-  [[ ! -z $(command -v ng) ]] && source <(ng completion script) # loads angular autocompletion
+if [[ -z $(command -v nvm) ]]; then
+  nvm () {
+    [[ -z $(echo $NVM_DIR) ]] && nvm-setup
+    nvm $*
+  }
 fi
+
+npm () {
+  [[ -z $(echo $NVM_DIR) ]] && nvm-setup
+  $NODE_PATH/npm $*
+}
+
+node () {
+  [[ -z $(echo $NVM_DIR) ]] && nvm-setup
+  $NODE_PATH/node $*
+}
+
+ng () {
+  [[ -z $(echo $NVM_DIR) ]] && nvm-setup
+  $NODE_PATH/ng $*
+}
+
+nvm-setup () {
+  export NVM_DIR="$XDG_CONFIG_HOME/nvm"
+  [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"  # loads nvm
+  # [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"  # loads nvm autocompletion (bash_completion)
+
+  # [[ ! -z $(command -v ng) ]] && source $(ng completion script) # loads angular autocompletion
+}
+
+node-path () {
+  export NODE_PATH=$(echo $PATH | tr ':' '\n' | grep nvm)
+}
 
 # lazy load script
 # nvm() {
