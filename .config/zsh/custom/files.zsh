@@ -10,14 +10,18 @@ alias gogh="cd $GOGH"
 export GORS="$GOGH/rilstrats"
 alias gors="cd $GORS"
 
-export MEGA="$HOME/mega"
-alias mega="cd $MEGA"
+if [[ -d $HOME/mega ]]; then
 
-export MEGACOL="$MEGA/college"
-alias megacol="cd $MEGACOL"
+  export MEGA="$HOME/mega"
+  alias mega="cd $MEGA"
 
-export MEGASEM="$MEGACOL/22-9.fall"
-alias megasem="cd $MEGASEM"
+  export MEGACOL="$MEGA/college"
+  alias megacol="cd $MEGACOL"
+
+  export MEGASEM="$MEGACOL/22-9.fall"
+  alias megasem="cd $MEGASEM"
+
+fi
 
 # files alias
 case $XDG_CURRENT_DESKTOP in

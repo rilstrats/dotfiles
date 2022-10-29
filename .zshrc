@@ -3,6 +3,8 @@ if [[ -z "$TMUX" && "$TERM" != "xterm-256color" ]]; then
   tmux attach-session -t home || tmux new-session -s home -c $HOME 
 fi
 
+alias tmuxh="tmux attach-session -t home || tmux new-session -s home -c $HOME"
+
 # xdg
 [[ -f "$HOME/.config/zsh/custom/xdg.zsh" ]] && \
   source "$HOME/.config/zsh/custom/xdg.zsh"
