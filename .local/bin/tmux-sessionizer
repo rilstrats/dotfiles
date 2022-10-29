@@ -2,8 +2,8 @@
 
 if [[ -z $MEGASEM ]]; then
   ZSH_C="$HOME/.config/zsh/custom"
-  source $ZSH_C/files.zsh
-  source $ZSH_C/secret.zsh
+  [[ -f "$ZSH_C/files.zsh" ]] && source "$ZSH_C/files.zsh"
+  [[ -f "$ZSH_C/secret.zsh" ]] && source "$ZSH_C/secret.zsh"
 fi
 
 directories=($GORS $GOCSA $MEGASEM)
