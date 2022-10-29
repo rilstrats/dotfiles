@@ -1,10 +1,9 @@
 #!/bin/zsh
 
 if [[ -z $MEGASEM ]]; then
-  ZSH="$HOME/.config/zsh"
-  source $ZSH/go.zsh
-  source $ZSH/secret.zsh
-  source $ZSH/mega.zsh
+  ZSH_C="$HOME/.config/zsh/custom"
+  source $ZSH_C/files.zsh
+  source $ZSH_C/secret.zsh
 fi
 
 directories=($GORS $GOCSA $MEGASEM)
