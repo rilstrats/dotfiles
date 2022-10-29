@@ -14,12 +14,8 @@ lvim.format_on_save = true
 lvim.colorscheme = "tokyonight"
 lvim.transparent_window = true
 
--- vim.opt.shiftwidth = 4
--- vim.opt.tabstop = 4
 vim.opt.relativenumber = true
 vim.opt.wrap = true
--- vim.opt.backup = false
--- vim.opt.writebackup = true
 vim.opt.swapfile = true
 
 -- to disable icons and use a minimalist setup, uncomment the following
@@ -54,6 +50,10 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 --   },
 -- }
 
+-- Change theme settings
+-- lvim.builtin.theme.options.dim_inactive = true
+-- lvim.builtin.theme.options.style = "storm"
+
 -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 -- lvim.builtin.which_key.mappings["t"] = {
@@ -70,7 +70,6 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
-lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
@@ -92,13 +91,13 @@ lvim.builtin.treesitter.ensure_installed = {
 }
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
-lvim.builtin.treesitter.highlight.enabled = true
+lvim.builtin.treesitter.highlight.enable = true
 
 -- generic LSP settings
 
 -- -- make sure server will always be installed even if the server is in skipped_servers list
 -- lvim.lsp.installer.setup.ensure_installed = {
---     "sumeko_lua",
+--     "sumneko_lua",
 --     "jsonls",
 -- }
 -- -- change UI setting of `LspInstallInfo`
@@ -171,7 +170,6 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- Additional Plugins
 lvim.plugins = {
-  { "folke/tokyonight.nvim" },
   {
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",
