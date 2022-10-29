@@ -55,9 +55,6 @@ export PATH="$HOME/.local/bin:$GOBIN:$PATH"
 # editor
 [[ -f "$ZSH_C/editor.zsh" ]] && source "$ZSH_C/editor.zsh"
 
-# colab
-[[ -f "$ZSH_C/colab.zsh" ]] && source "$ZSH_C/colab.zsh"
-
 # legacy dotfile management
 [[ -f "$ZSH_C/dotfiles.zsh" ]] && source "$ZSH_C/dotfiles.zsh"
 
@@ -71,8 +68,10 @@ export PATH="$HOME/.local/bin:$GOBIN:$PATH"
 [[ -f "$ZSH_C/nvm.zsh" ]] && source "$ZSH_C/nvm.zsh"
 
 # conda (lazy loaded)
-# [[ -f "$ZSH_C/conda.zsh" ]] && source "$ZSH_C/conda.zsh"
-[[ -f "$ZSH_C/miniconda.zsh" ]] && source "$ZSH_C/miniconda.zsh"
+[[ -f "$ZSH_C/conda.zsh" ]] && source "$ZSH_C/conda.zsh"
+
+# colab
+[[ -f "$ZSH_C/colab.zsh" ]] && source "$ZSH_C/colab.zsh"
 
 # p10k config
 [[ -f "$HOME/.p10k.zsh" ]] && source "$HOME/.p10k.zsh"
