@@ -25,9 +25,12 @@ ng () {
 nvm-setup () {
   export NVM_DIR="$XDG_CONFIG_HOME/nvm"
   [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"  # loads nvm
-  # [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"  # loads nvm autocompletion (bash_completion)
 
+  # [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"  # loads nvm autocompletion (bash_completion)
   # [[ ! -z $(command -v ng) ]] && source $(ng completion script) # loads angular autocompletion
+  
+  nvm use default
+  node-path
 }
 
 node-path () {
