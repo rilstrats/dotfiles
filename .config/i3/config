@@ -10,16 +10,16 @@
 font pango:MesloLGS NF 16px
 
 # megasync
-exec --no-startup-id megasync
+exec --no-startup-id /usr/bin/megasync
 
-exec --no-startup-id nm-applet
+exec --no-startup-id /usr/bin/nm-applet
 
 # dunst (notifications)
 exec --no-startup-id dbus-launch dunst
 # exec --no-startup-id dbus-launch dunst --config $HOME/.config/dunst/dunstrc
 
 # transparency
-exec --no-startup-id picom -b
+exec --no-startup-id /usr/bin/picom -b
 
 # wallpaper
 exec_always --no-startup-id $HOME/.config/i3/wallpaper.sh 
@@ -39,19 +39,19 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #########
 
 # screen off after 5 minutes
-exec --no-startup-id xset dpms 300 300 300
+exec --no-startup-id /usr/bin/xset dpms 300 300 300
 
 # suspend after 10 minutes
-exec --no-startup-id xautolock -time 10 -locker "systemctl suspend" &
+exec --no-startup-id /usr/bin/xautolock -time 10 -locker "systemctl suspend" &
 
 # lock when waking
-exec --no-startup-id xss-lock -- $HOME/.config/i3/lock.sh &
+exec --no-startup-id /usr/bin/xss-lock -- $HOME/.config/i3/lock.sh &
 
 # touchpad sesnsitivity
-exec --no-startup-id xinput set-prop "Microsoft Surface Keyboard Touchpad" 'libinput Accel Speed' 0.5
+exec --no-startup-id /usr/bin/xinput set-prop "Microsoft Surface Keyboard Touchpad" 'libinput Accel Speed' 0.5
 
 # starting brightness
-exec --no-startup-id brightnessctl set 50% # increase screen brightness
+exec --no-startup-id /usr/bin/brightnessctl set 50% # increase screen brightness
 
 
 ########
@@ -78,16 +78,18 @@ set $mod Mod4
 floating_modifier $mod
 
 # rofi
-bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+d exec --no-startup-id /usr/bin/rofi -show drun
 
 # scrot
-bindsym Print exec scrot -us $HOME/Pictures/$(date +%Y-%m-%d.%H-%M-%S).scrot.png
+bindsym Print exec /usr/bin/scrot -us $HOME/Pictures/$(date +%Y-%m-%d.%H-%M-%S).scrot.png
 
 # dmenu
 # bindsym $mod+d exec --no-startup-id i3-dmenu
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec /usr/bin/alacritty
+
+bindsym $mod+b exec /usr/bin/brave-browser-stable --password-store=gnome
 
 # kill focused window
 bindsym $mod+q kill
