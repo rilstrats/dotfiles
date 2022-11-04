@@ -4,22 +4,26 @@ if [[ -z $(command -v nvm) ]]; then
   nvm () {
     [[ -z $(echo $NVM_DIR) ]] && nvm-setup
     nvm $*
+    # node-path
   }
 fi
 
 npm () {
   [[ -z $(echo $NVM_DIR) ]] && nvm-setup
-  $NODE_PATH/npm $*
+  # $NODE_PATH/npm $*
+  npm $*
 }
 
 node () {
   [[ -z $(echo $NVM_DIR) ]] && nvm-setup
-  $NODE_PATH/node $*
+  # $NODE_PATH/node $*
+  node $*
 }
 
 ng () {
   [[ -z $(echo $NVM_DIR) ]] && nvm-setup
-  $NODE_PATH/ng $*
+  # $NODE_PATH/ng $*
+  ng $*
 }
 
 nvm-setup () {
@@ -30,12 +34,14 @@ nvm-setup () {
   # [[ ! -z $(command -v ng) ]] && source $(ng completion script) # loads angular autocompletion
   
   nvm use default
-  node-path
+  # node-path
 }
 
 node-path () {
   export NODE_PATH=$(echo $PATH | tr ':' '\n' | grep nvm)
 }
+
+# deprecated
 
 # lazy load script
 # nvm() {

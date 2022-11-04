@@ -17,3 +17,5 @@ alias minecraft="$HOME/.minecraft/launcher/minecraft-launcher & &> /dev/null"
 alias hollywood='docker run --rm -it bcbcarl/hollywood'
 alias kali='docker run --rm -it kalilinux/kali-rolling'
 
+# owd
+alias owd='cd $OLDPWD'
