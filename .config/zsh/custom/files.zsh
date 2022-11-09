@@ -1,27 +1,48 @@
 #!/bin/zsh
 
+# go file conventions
 export GOPATH="$HOME/code"
 export GOSRC="$GOPATH/src"
 export GOBIN="$GOPATH/bin"
 
-export GOGH="$GOSRC/github.com"
-alias gogh="cd $GOGH"
+# development file system (using go conventions)
+export DEVPATH="$GOPATH"
+export DEVSRC="$GOSRC"
+export DEVBIN="$GOBIN"
 
-export GORS="$GOGH/rilstrats"
-alias gors="cd $GORS"
+export DEVGH="$DEVSRC/github.com"
+alias devgh="cd $DEVGH"
+
+export DEVRS="$DEVGH/rilstrats"
+alias devrs="cd $DEVRS"
 
 if [[ -d $HOME/mega ]]; then
 
-  export MEGA="$HOME/mega"
-  alias mega="cd $MEGA"
+  export NAS="$HOME/mega"
+  alias nas="cd $NAS"
 
-  export MEGACOL="$MEGA/college"
-  alias megacol="cd $MEGACOL"
+  export NASCOL="$NAS/college"
+  alias nascol="cd $NASCOL"
 
-  export MEGASEM="$MEGACOL/22-9.fall"
-  alias megasem="cd $MEGASEM"
+  export NASSEM="$NASCOL/22-9.fall"
+  alias nassem="cd $NASSEM"
+
+  export NASCYBER="$NAS/cyber"
+  alias nascyber="cd $NASCYBER"
+
+  export NASCOMP="$NASCYBER/competitions"
+  alias nascomp="cd $NASCOMP"
+
+  export NASNOTES="$NASCYBER/notes"
+  export nasnotes="cd $NASNOTES"
 
 fi
+
+# secret (for sensitive configuration files)
+[[ -f "$ZSH_C/secret.zsh" ]] && source "$ZSH_C/secret.zsh"
+
+# shortcuts (used by tmux-sessionizer)
+export SHORTCUTS=($NASSEM $NASCOMP $NASNOTES $DEVRS $DEVSEC)
 
 # files alias
 case $XDG_CURRENT_DESKTOP in

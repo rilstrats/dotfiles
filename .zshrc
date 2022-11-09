@@ -48,9 +48,6 @@ compinit
 # file shortcuts (and go variables)
 [[ -f "$ZSH_C/files.zsh" ]] && source "$ZSH_C/files.zsh"
 
-# secret (for sensitive configuration files)
-[[ -f "$ZSH_C/secret.zsh" ]] && source "$ZSH_C/secret.zsh"
-
 # path
 export PATH="$HOME/.local/bin:$GOBIN:$PATH"
 
