@@ -39,7 +39,7 @@ if [[ -d $HOME/mega ]]; then
 fi
 
 # secret (for sensitive configuration files)
-[[ -f "$ZSH_C/secret.zsh" ]] && source "$ZSH_C/secret.zsh"
+[[ -f "$ZSH/secret.zsh" ]] && source "$ZSH/secret.zsh"
 
 # shortcuts (used by tmux-sessionizer)
 export SHORTCUTS=($NASSEM $NASCOMP $NASNOTES $DEVRS $DEVSEC)
