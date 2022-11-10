@@ -28,7 +28,8 @@
 # zsh
 !/.zshenv
 !/.config/zsh
-/.config/zsh/histfile
+histfile
+.zcompdump
 
 # nvim
 !/.config/nvim
