@@ -1,8 +1,7 @@
 #!/bin/zsh
 
 if [[ -z $SHORTCUTS ]]; then
-  ZSH="$HOME/.config/zsh"
-  [[ -f "$ZSH/files.zsh" ]] && source "$ZSH/files.zsh"
+  [[ -f "$ZDOTDIR/shortcuts.zsh" ]] && source "$ZDOTDIR/shortcuts.zsh"
 fi
 
 # debugging
