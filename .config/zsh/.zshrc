@@ -1,6 +1,6 @@
 # tmux
 if [[ -z "$TMUX" && "$TERM" == "alacritty" ]]; then
-  # same as tmuxh function, just didn't want to define this early
+  # same as tmuxh function, just didn't want to define early
   if [[ -z $(tmux list-sessions | grep home) ]]; then
     tmux new-session -s home -c $HOME 
   else
@@ -62,7 +62,7 @@ alias sudovim="sudo $EDITOR"
 
 alias tmuxer=$HOME/.local/bin/tmux-sessionizer
 
-#ls
+# ls
 alias ls='ls --color=auto'
 alias l='ls -ohA --color=auto'
 alias la='ls -A --color=auto'
