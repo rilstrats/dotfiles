@@ -44,32 +44,3 @@ fi
 # shortcuts (used by tmux-sessionizer)
 export SHORTCUTS=($NASSEM $NASCOMP $NASNOTES $DEVRS $DEVSEC)
 
-# files alias
-case $XDG_CURRENT_DESKTOP in
-  KDE)
-    alias files='dolphin . &> /dev/null &'
-    ;;
-
-  GNOME)
-    alias files='nautilus . &> /dev/null &'
-    ;;
-
-  i3 | XFCE)
-
-    if [[ ! -z $(command -v thunar) ]]; then
-      alias files='thunar . &> /dev/null &'
-
-    elif [[ ! -z $(command -v nautilus) ]]; then
-      alias files='nautilus . &> /dev/null &'
-
-    elif [[ ! -z $(command -v dolphin) ]]; then
-      alias files='dolphin . &> /dev/null &'
-
-    fi
-    ;;
-
-  *)
-    alias files="echo 'Unsupported Desktop Environment'"
-    ;;
-esac
-
