@@ -26,7 +26,7 @@
 /.local/bin/*
 
 # zsh
-!/.zshrc
+!/.zshenv
 !/.config/zsh
 /.config/zsh/histfile
 
