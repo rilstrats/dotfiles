@@ -15,22 +15,19 @@ fi
 # setopt autocd beep extendedglob nomatch notify
 bindkey -v # vim
 export ZSH="$XDG_CONFIG_HOME/zsh"
-export ZSH_T="$ZSH/theme"
-export ZSH_P="$ZSH/plugin"
-export ZSH_C="$ZSH/custom"
 
 # themes and plugins
-[[ -f "$ZSH_T/powerlevel10k/powerlevel10k.zsh-theme" ]] && \
-  source "$ZSH_T/powerlevel10k/powerlevel10k.zsh-theme"
+[[ -f "$ZSH/powerlevel10k/powerlevel10k.zsh-theme" ]] && \
+  source "$ZSH/powerlevel10k/powerlevel10k.zsh-theme"
 
-[[ -f "$ZSH_P/zsh-vi-mode/zsh-vi-mode.plugin.zsh" ]] && \
-  source "$ZSH_P/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
+[[ -f "$ZSH/zsh-vi-mode/zsh-vi-mode.plugin.zsh" ]] && \
+  source "$ZSH/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
 
-[[ -f "$ZSH_P/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] && \
-  source "$ZSH_P/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+[[ -f "$ZSH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] && \
+  source "$ZSH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
-[[ -f "$ZSH_P/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] && \
-  source "$ZSH_P/zsh-autosuggestions/zsh-autosuggestions.zsh"
+[[ -f "$ZSH/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] && \
+  source "$ZSH/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # history
 HISTFILE="$ZSH/histfile"
@@ -44,31 +41,31 @@ autoload -Uz compinit
 compinit
 
 # file shortcuts (and go variables)
-[[ -f "$ZSH_C/files.zsh" ]] && source "$ZSH_C/files.zsh"
+[[ -f "$ZSH/files.zsh" ]] && source "$ZSH/files.zsh"
 
 # path
 export PATH="$HOME/.local/bin:$GOBIN:$PATH"
 
 # editor
-[[ -f "$ZSH_C/editor.zsh" ]] && source "$ZSH_C/editor.zsh"
+[[ -f "$ZSH/editor.zsh" ]] && source "$ZSH/editor.zsh"
 
 # legacy dotfile management
-[[ -f "$ZSH_C/dotfiles.zsh" ]] && source "$ZSH_C/dotfiles.zsh"
+[[ -f "$ZSH/dotfiles.zsh" ]] && source "$ZSH/dotfiles.zsh"
 
 # git (includes new dotfile management)
-[[ -f "$ZSH_C/git.zsh" ]] && source "$ZSH_C/git.zsh"
+[[ -f "$ZSH/git.zsh" ]] && source "$ZSH/git.zsh"
 
 # aliases
-[[ -f "$ZSH_C/aliases.zsh" ]] && source "$ZSH_C/aliases.zsh"
+[[ -f "$ZSH/aliases.zsh" ]] && source "$ZSH/aliases.zsh"
 
 # nvm (lazy loaded)
-[[ -f "$ZSH_C/nvm.zsh" ]] && source "$ZSH_C/nvm.zsh"
+[[ -f "$ZSH/nvm.zsh" ]] && source "$ZSH/nvm.zsh"
 
 # conda (lazy loaded)
-[[ -f "$ZSH_C/conda.zsh" ]] && source "$ZSH_C/conda.zsh"
+[[ -f "$ZSH/conda.zsh" ]] && source "$ZSH/conda.zsh"
 
 # colab
-[[ -f "$ZSH_C/colab.zsh" ]] && source "$ZSH_C/colab.zsh"
+[[ -f "$ZSH/colab.zsh" ]] && source "$ZSH/colab.zsh"
 
 # p10k config
 [[ -f "$HOME/.p10k.zsh" ]] && source "$HOME/.p10k.zsh"
