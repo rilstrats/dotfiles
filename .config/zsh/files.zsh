@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # go file conventions
-export GOPATH="$HOME/code"
+export GOPATH="$HOME/dev"
 export GOSRC="$GOPATH/src"
 export GOBIN="$GOPATH/bin"
 
@@ -16,9 +16,9 @@ alias devgh="cd $DEVGH"
 export DEVRS="$DEVGH/rilstrats"
 alias devrs="cd $DEVRS"
 
-if [[ -d $HOME/mega ]]; then
+if [[ -d $HOME/nas ]]; then
 
-  export NAS="$HOME/mega"
+  export NAS="$HOME/nas"
   alias nas="cd $NAS"
 
   export NASCOL="$NAS/college"

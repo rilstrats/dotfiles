@@ -1,8 +1,8 @@
 #!/bin/zsh
 
 if [[ -z $SHORTCUTS ]]; then
-  ZSH_C="$HOME/.config/zsh/custom"
-  [[ -f "$ZSH_C/files.zsh" ]] && source "$ZSH_C/files.zsh"
+  ZSH="$HOME/.config/zsh"
+  [[ -f "$ZSH/files.zsh" ]] && source "$ZSH/files.zsh"
 fi
 
 # debugging
