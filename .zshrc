@@ -4,8 +4,8 @@ if [[ -z "$TMUX" && "$TERM" != "xterm-256color" ]]; then
 fi
 
 # xdg
-[[ -f "$HOME/.config/zsh/custom/xdg.zsh" ]] && \
-  source "$HOME/.config/zsh/custom/xdg.zsh"
+[[ -f "$HOME/.config/zsh/xdg.zsh" ]] && \
+  source "$HOME/.config/zsh/xdg.zsh"
 
 # p10k instant prompt (things with output above, no output below)
 [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]] && \
