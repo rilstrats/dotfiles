@@ -36,7 +36,7 @@ if [[ -d $HOME/nas ]]; then
 fi
 
 # secret (for sensitive configuration files)
-[[ -f "$ZDOTDIR/secrets.zsh" ]] && source "$ZDOTDIR/secrets.zsh"
+[[ -f "$ZDOTDIR/.secrets.zsh" ]] && source "$ZDOTDIR/.secrets.zsh"
 
 # shortcuts (used by tmux-sessionizer)
 export SHORTCUTS=($NASSEM $NASCOMP $NASNOTES $DEVRS $DEVSEC)
