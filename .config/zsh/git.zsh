@@ -1,5 +1,4 @@
-#!/bin/zsh
-
+# git
 g () {
   if [[ -z $(git status 2> /dev/null) ]]; then
     /bin/git --git-dir=$DOTFILES --work-tree=$HOME $*
@@ -43,7 +42,8 @@ gssh () {
   fi
 }
 
-# dotfiles
+
+# legacy dotfiles
 export DOTFILES="$HOME/.dotfiles.git/"
 alias dotfiles='/bin/git --git-dir=$DOTFILES --work-tree=$HOME'
 alias dfs=dotfiles
