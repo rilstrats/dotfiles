@@ -34,7 +34,7 @@ if [[ -d $HOME/nas ]]; then
   alias nascomp="cd $NASCOMP"
 
   export NASNOTES="$NASCYBER/notes"
-  export nasnotes="cd $NASNOTES"
+  alias nasnotes="cd $NASNOTES"
 
 fi
 
