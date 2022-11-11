@@ -12,24 +12,6 @@ fi
 [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]] && \
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 
-# p10k config
-[[ -f "$ZDOTDIR/.p10k.zsh" ]] && source "$ZDOTDIR/.p10k.zsh"
-
-# shell
-# setopt autocd beep extendedglob nomatch notify
-bindkey -v # vim
-
-# history
-HISTFILE="$ZDOTDIR/histfile"
-HISTSIZE=1000
-SAVEHIST=1000
-
-# autocomplete
-# zstyle ':completion:*' completer _complete _ignored _approximate
-zstyle :compinstall filename "$HOME/.zshrc"
-autoload -Uz compinit
-compinit
-
 # plugins
 [[ -f "$ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme" ]] && \
   source "$ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme"
@@ -112,4 +94,27 @@ case $XDG_CURRENT_DESKTOP in
     alias files="echo 'Unsupported Desktop Environment'"
     ;;
 esac
+
+
+#######
+# zsh #
+#######
+
+# shell
+# setopt autocd beep extendedglob nomatch notify
+bindkey -v # vim
+
+# history
+HISTFILE="$ZDOTDIR/histfile"
+HISTSIZE=1000
+SAVEHIST=1000
+
+# autocomplete
+# zstyle ':completion:*' completer _complete _ignored _approximate
+zstyle :compinstall filename "$ZDOTDIR/.zshrc"
+autoload -Uz compinit
+compinit
+
+# p10k config
+[[ -f "$ZDOTDIR/.p10k.zsh" ]] && source "$ZDOTDIR/.p10k.zsh"
 
