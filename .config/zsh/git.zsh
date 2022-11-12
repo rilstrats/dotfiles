@@ -1,25 +1,32 @@
-#!/bin/zsh
+# legacy dotfiles
+export DOTFILES="$HOME/.dotfiles.git/"
+dotfiles () {/usr/bin/git --git-dir=$DOTFILES --work-tree=$HOME $*}
+alias dfs=dotfiles
 
+
+# git
 g () {
   if [[ -z $(git status 2> /dev/null) ]]; then
-    /bin/git --git-dir=$DOTFILES --work-tree=$HOME $*
+    dotfiles $*
   else
-    /bin/git $*
+    /usr/bin/git $*
   fi
 }
 
 gs () {grvo; g status $*}
 gd () {g diff $*}
 gm () {g mv $*}
+gr () {g restore $*}
+gp () {echo "Use gpull/gpl or gpush/gps"}
 
-gp () {echo "Use gpull or gpush"}
+gf () {g fetch $*}
+gpull () {g pull $*}
+alias gpl=gpull
 
 ga () {g add $*}
 gc () {g commit -m $*}
 gpush () {g push $*}
-
-gf () {g fetch $*}
-gpull () {g pull $*}
+alias gps=gpush
 
 gac () {ga .; gc $1}
 gacp () {ga .; gc $1; gpush}
@@ -28,7 +35,6 @@ grv () {g remote -v $*}
 grvo () {grv | grep origin | head -n 1 | sed "s/^.*\t//g" | sed "s/ (.*$//g"}
 
 grso () {g remote set-url origin $*}
-
 gssh () {
   repo=$(grvo | sed "s/^.*\.com[/:]//g" | sed "s/\.git$//g")
   read "input?Is git@github.com:$repo.git correct? [y/N]: "
@@ -42,9 +48,4 @@ gssh () {
     echo "Origin updated to $(grvo)"
   fi
 }
-
-# dotfiles
-export DOTFILES="$HOME/.dotfiles.git/"
-alias dotfiles='/bin/git --git-dir=$DOTFILES --work-tree=$HOME'
-alias dfs=dotfiles
 

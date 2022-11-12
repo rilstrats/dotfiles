@@ -59,5 +59,5 @@ This enables you to use commands such as `dfs status` just like `git status` to 
 On a laptop with a high DPI screen, you will want to run this command.
 
 ```bash
-ln $HOME/.Xresources.laptop $HOME/.Xresources
+ln $HOME/.config/.Xresources.hi-dpi $HOME/.Xresources
 ```

@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 # go file conventions
 export GOPATH="$HOME/dev"
 export GOSRC="$GOPATH/src"
@@ -16,8 +14,8 @@ alias devgh="cd $DEVGH"
 export DEVRS="$DEVGH/rilstrats"
 alias devrs="cd $DEVRS"
 
+# nas files
 if [[ -d $HOME/nas ]]; then
-
   export NAS="$HOME/nas"
   alias nas="cd $NAS"
 
@@ -39,7 +37,7 @@ if [[ -d $HOME/nas ]]; then
 fi
 
 # secret (for sensitive configuration files)
-[[ -f "$ZDOTDIR/secrets.zsh" ]] && source "$ZDOTDIR/secrets.zsh"
+[[ -f "$ZDOTDIR/.secrets.zsh" ]] && source "$ZDOTDIR/.secrets.zsh"
 
 # shortcuts (used by tmux-sessionizer)
 export SHORTCUTS=($NASSEM $NASCOMP $NASNOTES $DEVRS $DEVSEC)

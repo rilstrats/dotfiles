@@ -74,7 +74,6 @@ conda-setup () {
 # colab #
 #########
 
-
 colab-conda-install () {
   curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o $HOME/Downloads/miniconda3.sh
   bash $HOME/Downloads/miniconda3.sh
@@ -115,3 +114,4 @@ colab () {
     --NotebookApp.port_retries=0 \
     --NotebookApp.open_browser=False
 }
+
