@@ -3,6 +3,10 @@ window:
   dimensions:
     columns: 128
     lines: 32
+  padding:
+    x: 8
+    y: 8
+  dynamic_padding: true
 
 cursor:
   style:
@@ -27,6 +31,8 @@ font:
   #   style: Bold Italic
 
   size: 12
+
+  scale_with_dpi: true
 
 # TokyoNight Alacritty Colors
 colors:
