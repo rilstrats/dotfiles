@@ -1,17 +1,53 @@
 # delete this file and run i3-config-wizard to start from default (or if you change keyboard layouts)
 # visi http://i3wm.org/docs/userguide.html for documentation
 
+##########
+# colors #
+##########
+
+set_from_resource $background  background
+set_from_resource $foreground  foreground
+set_from_resource $black       color0
+set_from_resource $gray        color8
+set_from_resource $darkred     color1  #000000
+set_from_resource $red         color9  #000000
+set_from_resource $darkgreen   color2  #000000
+set_from_resource $green       color10 #000000
+set_from_resource $darkyellow  color3  #000000
+set_from_resource $yellow      color11 #000000
+set_from_resource $darkblue    color4  #000000
+set_from_resource $blue        color12 #000000
+set_from_resource $darkmagenta color5  #000000
+set_from_resource $magenta     color13 #000000
+set_from_resource $darkcyan    color6  #000000
+set_from_resource $cyan        color14 #000000
+set_from_resource $darkwhite   color7  #000000
+set_from_resource $white       color15 #000000
+
+#                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
+client.focused          $black      $black      $darkwhite  $darkblack  $darkblack
+client.unfocused        $black      $black      $white      $darkblack  $darkblack
+client.focused_inactive $black      $black      $white      $darkblack  $darkblack
+client.urgent           $darkred    $darkred    $black      $darkred    $darkred
+client.background       $black
 
 ###########
 # general #
 ###########
 
-# font
-font pango:MesloLGS NF 16px
+font pango:Go Mono Nerd Font Mono 16px
+
+# touchpad sesnsitivity
+exec --no-startup-id /usr/bin/xinput set-prop "Microsoft Surface Keyboard Touchpad" 'libinput Accel Speed' 0.5
+
+#############
+# autostart #
+#############
 
 # megasync
 exec --no-startup-id /usr/bin/megasync
 
+# network manager
 exec --no-startup-id /usr/bin/nm-applet
 
 # dunst (notifications)
@@ -27,12 +63,6 @@ exec_always --no-startup-id $HOME/.config/i3/wallpaper.sh
 # polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-# i3bar
-#  bar {
-#          status_command i3status
-#          tray_output primary
-#  }
-
 
 #########
 # power #
@@ -46,9 +76,6 @@ exec --no-startup-id /usr/bin/xautolock -time 10 -locker "systemctl suspend" &
 
 # lock when waking
 exec --no-startup-id /usr/bin/xss-lock -- $HOME/.config/i3/lock.sh &
-
-# touchpad sesnsitivity
-exec --no-startup-id /usr/bin/xinput set-prop "Microsoft Surface Keyboard Touchpad" 'libinput Accel Speed' 0.5
 
 # starting brightness
 exec --no-startup-id /usr/bin/brightnessctl set 50% # increase screen brightness
@@ -80,11 +107,11 @@ floating_modifier $mod
 # rofi
 bindsym $mod+d exec --no-startup-id /usr/bin/rofi -show drun
 
-# scrot
-bindsym Print exec /usr/bin/scrot -us $HOME/Pictures/$(date +%Y-%m-%d.%H-%M-%S).scrot.png
-
 # dmenu
 # bindsym $mod+d exec --no-startup-id i3-dmenu
+
+# scrot
+bindsym Print exec /usr/bin/scrot -us $HOME/Pictures/$(date +%Y-%m-%d.%H-%M-%S).scrot.png
 
 # start a terminal
 bindsym $mod+Return exec /usr/bin/alacritty
@@ -144,7 +171,7 @@ bindsym $mod+a focus parent
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# restart i3
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
@@ -243,9 +270,9 @@ bindsym $mod+Shift+0 move container to workspace 10
 #########################
 
 # GET DEM BORDERS OUT OF HERE
-for_window [class="^.*"] border pixel 2
+# for_window [class="^.*"] border pixel 2
                           # class                 border  backgr. text    indicator child_border
-for_window [class="^.*"] client.focused          #ff0000 #ffff00 #00ff00 #00ffff   #0000ff
+# for_window [class="^.*"] client.focused          #ff0000 #ffff00 #00ff00 #00ffff   #0000ff
 # bindsym $mod+space exec "/home/theprimeagen/dotfiles/awesome-streamerrc/ThePrimeagen/tmux2"
 
 # Alsa audio controls.
