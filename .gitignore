@@ -41,9 +41,6 @@ histfile
 !/.config/lvim/config.lua
 # /.config/lvim/plugin
 
-# p10k config
-!/.p10k.zsh
-
 # i3
 !/.config/i3
 !/.config/i3status
@@ -67,4 +64,7 @@ histfile
 
 # awesome
 !/.config/awesome
+
+# gtk themes
+!/.config/gtk-*.0
 
