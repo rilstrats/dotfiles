@@ -5,31 +5,34 @@
 # colors #
 ##########
 
-set_from_resource $background  background
-set_from_resource $foreground  foreground
-set_from_resource $black       color0
-set_from_resource $gray        color8
-set_from_resource $darkred     color1  #000000
-set_from_resource $red         color9  #000000
-set_from_resource $darkgreen   color2  #000000
-set_from_resource $green       color10 #000000
-set_from_resource $darkyellow  color3  #000000
-set_from_resource $yellow      color11 #000000
-set_from_resource $darkblue    color4  #000000
-set_from_resource $blue        color12 #000000
-set_from_resource $darkmagenta color5  #000000
-set_from_resource $magenta     color13 #000000
-set_from_resource $darkcyan    color6  #000000
-set_from_resource $cyan        color14 #000000
-set_from_resource $darkwhite   color7  #000000
-set_from_resource $white       color15 #000000
+set_from_resource $background    background #000000
+set_from_resource $foreground    foreground #000000
+set_from_resource $black         color0     #000000
+set_from_resource $brightblack   color8     #000000
+set_from_resource $red           color1     #000000
+set_from_resource $brightred     color9     #000000
+set_from_resource $green         color2     #000000
+set_from_resource $brightgreen   color10    #000000
+set_from_resource $yellow        color3     #000000
+set_from_resource $brightyellow  color11    #000000
+set_from_resource $blue          color4     #000000
+set_from_resource $brightblue    color12    #000000
+set_from_resource $magenta       color5     #000000
+set_from_resource $brightmagenta color13    #000000
+set_from_resource $cyan          color6     #000000
+set_from_resource $brightcyan    color14    #000000
+set_from_resource $white         color7     #000000
+set_from_resource $brightwhite   color15    #000000
 
-#                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
-client.focused          $black      $black      $darkwhite  $darkblack  $darkblack
-client.unfocused        $black      $black      $white      $darkblack  $darkblack
-client.focused_inactive $black      $black      $white      $darkblack  $darkblack
-client.urgent           $darkred    $darkred    $black      $darkred    $darkred
-client.background       $black
+#                       BORDER       BACKGROUND   TEXT        INDICATOR CHILD_BORDER
+client.focused          $blue        $blue        $foreground $cyan     $blue
+# client.focused_inactive $yellow      $yellow      $foreground $green    $yellow
+client.focused_inactive $brightblack $brightblack $foreground $white    $brightblack
+client.unfocused        $brightblack $brightblack $foreground $white    $brightblack
+client.urgent           $red         $red         $foreground $magenta  $red
+client.background       $background
+
+for_window [class="^.*"] border pixel 4
 
 ###########
 # general #
@@ -89,7 +92,7 @@ gaps inner 8
 # gaps outer 2
 
 # smart_gaps on
-smart_borders on
+# smart_borders on
 
 # border_radius 4
 
@@ -270,7 +273,6 @@ bindsym $mod+Shift+0 move container to workspace 10
 #########################
 
 # GET DEM BORDERS OUT OF HERE
-# for_window [class="^.*"] border pixel 2
                           # class                 border  backgr. text    indicator child_border
 # for_window [class="^.*"] client.focused          #ff0000 #ffff00 #00ff00 #00ffff   #0000ff
 # bindsym $mod+space exec "/home/theprimeagen/dotfiles/awesome-streamerrc/ThePrimeagen/tmux2"
