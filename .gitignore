@@ -67,4 +67,8 @@ histfile
 
 # gtk themes
 !/.config/gtk-*.0
+/.config/gtk-*.0/gtkfilechooser.ini
+/.config/gtk-*.0/bookmarks
+/.config/gtk-*.0/settings.ini
+
 
