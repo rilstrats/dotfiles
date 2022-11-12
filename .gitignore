@@ -12,18 +12,20 @@
 # .github 
 !/.github/
 
-# .Xresources
-!/.Xresources.laptop
-
 # .config
 !/.config
 /.config/*
+
+# .Xresources
+!/.config/Xresources
 
 # .local/bin
 !/.local
 /.local/*
 !/.local/bin
 /.local/bin/*
+!/.local/bin/rgb
+!/.local/bin/tmux-sessionizer
 
 # zsh
 !/.zshenv
@@ -65,10 +67,4 @@ histfile
 
 # awesome
 !/.config/awesome
-
-# rgb
-!/.local/bin/rgb
-
-# tmux-sessionizer
-!/.local/bin/tmux-sessionizer
 
