@@ -39,8 +39,8 @@ export PATH="$DEVBIN:$PATH"
 # aliases #
 ###########
 
-alias vim=$EDITOR
-alias sudovim="sudo $EDITOR"
+alias vim="nvm use default > /dev/null; $EDITOR"
+alias sudovim="nvm use default > /dev/null; sudo $EDITOR"
 
 alias tmuxer=$HOME/.local/bin/tmux-sessionizer
 

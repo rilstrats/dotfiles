@@ -4,39 +4,41 @@
 
 if [[ -z $(command -v nvm) ]]; then
   nvm () {
-    [[ -z $(echo $NVM_DIR) ]] && nvm-setup
+    [[ -z $(echo $PATH | grep nvm) ]] && nvm-setup
     nvm $*
-    # node-path
   }
 fi
 
 npm () {
-  [[ -z $(echo $NVM_DIR) ]] && nvm-setup
+  [[ -z $(echo $PATH | grep nvm) ]] && nvm-setup
+  # node-path
   # $NODE_PATH/npm $*
-  npm $*
+  /usr/bin/env npm $*
 }
 
 node () {
-  [[ -z $(echo $NVM_DIR) ]] && nvm-setup
+  [[ -z $(echo $PATH | grep nvm) ]] && nvm-setup
+  # node-path
   # $NODE_PATH/node $*
-  node $*
+  /usr/bin/env node $*
 }
 
 ng () {
-  [[ -z $(echo $NVM_DIR) ]] && nvm-setup
+  [[ -z $(echo $PATH | grep nvm) ]] && nvm-setup
+  # node-path
   # $NODE_PATH/ng $*
-  ng $*
+  /usr/bin/env ng $*
 }
 
 nvm-setup () {
   export NVM_DIR="$XDG_CONFIG_HOME/nvm"
   [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"  # loads nvm
 
-  # [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"  # loads nvm autocompletion (bash_completion)
-  # [[ ! -z $(command -v ng) ]] && source $(ng completion script) # loads angular autocompletion
-  
   nvm use default
   # node-path
+
+  # [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"  # loads nvm autocompletion (bash_completion)
+  # [[ ! -z $(command -v ng) ]] && source $(ng completion script) # loads angular autocompletion
 }
 
 node-path () {
