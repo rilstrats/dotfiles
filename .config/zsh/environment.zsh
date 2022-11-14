@@ -89,7 +89,7 @@ colab-setup () {
   mkdir -p $CONDA_PREFIX/etc/conda/activate.d
   echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/' > $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
   pip install --upgrade pip
-  pip install pandas numpy altair seaborn matplotlib sklearn xgboost tensorflow jupyter_http_over_ws
+  pip install pandas numpy altair seaborn matplotlib sklearn xgboost tensorflow jupyter_http_over_ws scikit-learn
   jupyter serverextension enable --py jupyter_http_over_ws
 }
 
