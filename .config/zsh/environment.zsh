@@ -34,7 +34,7 @@ nvm-setup () {
   export NVM_DIR="$XDG_CONFIG_HOME/nvm"
   [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"  # loads nvm
 
-  nvm use default
+  # nvm use default
   # node-path
 
   # [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"  # loads nvm autocompletion (bash_completion)
