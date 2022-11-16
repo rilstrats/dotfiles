@@ -39,8 +39,13 @@ export PATH="$DEVBIN:$PATH"
 # aliases #
 ###########
 
-alias vim="nvm use default > /dev/null; $EDITOR"
-alias sudovim="nvm use default > /dev/null; sudo $EDITOR"
+if [[ "$EDITOR" == "$HOME/.local/bin/lvim" ]]; then
+  vim () {[[ -z $(echo $PATH | grep nvm) ]] && nvm-setup; $EDITOR $*}
+  sudovim () {[[ -z $(echo $PATH | grep nvm) ]] && nvm-setup; sudo $EDITOR $*}
+else
+  alias vim="$EDITOR"
+  alias sudovim="sudo $EDITOR"
+fi
 
 alias tmuxer=$HOME/.local/bin/tmux-sessionizer
 
