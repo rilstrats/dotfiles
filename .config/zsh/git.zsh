@@ -6,14 +6,14 @@ alias dfs=dotfiles
 
 # git
 g () {
-  if [[ -z $(git status 2> /dev/null) ]]; then
+  if [[ $PWD == $HOME || $PWD == $XDG_CONFIG_HOME* ]]; then
     dotfiles $*
   else
     /usr/bin/git $*
   fi
 }
 
-gs () {grvo; g status $*}
+gs () {grvo 2> /dev/null; g status $*}
 gd () {g diff $*}
 gm () {g mv $*}
 gr () {g restore $*}
