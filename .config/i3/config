@@ -1,8 +1,5 @@
-# delete this file and run i3-config-wizard to start from default (or if you change keyboard layouts)
-# visi http://i3wm.org/docs/userguide.html for documentation
-
 ##########
-# colors #
+# ricing #
 ##########
 
 set_from_resource $background    background #000000
@@ -34,32 +31,7 @@ client.background       $background
 
 for_window [class="^.*"] border pixel 4
 
-###########
-# general #
-###########
-
 font pango:Go Mono Nerd Font Mono 16px
-
-# touchpad sesnsitivity
-exec --no-startup-id /usr/bin/xinput set-prop "Microsoft Surface Keyboard Touchpad" 'libinput Accel Speed' 0.5
-
-#############
-# autostart #
-#############
-
-# megasync
-exec --no-startup-id /usr/bin/megasync
-
-# network manager
-exec --no-startup-id /usr/bin/nm-applet
-
-# dunst (notifications)
-exec --no-startup-id dunst &
-# exec --no-startup-id dbus-launch dunst
-# exec --no-startup-id dbus-launch dunst --config $HOME/.config/dunst/dunstrc
-
-# transparency
-exec --no-startup-id /usr/bin/picom -b
 
 # wallpaper
 exec_always --no-startup-id $HOME/.config/i3/wallpaper.sh 
@@ -67,163 +39,127 @@ exec_always --no-startup-id $HOME/.config/i3/wallpaper.sh
 # polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
+# transparency
+exec --no-startup-id /usr/bin/picom -b
 
-#########
-# power #
-#########
-
-# screen off after 5 minutes
-exec --no-startup-id /usr/bin/xset dpms 300 300 300
-
-# suspend after 10 minutes
-exec --no-startup-id /usr/bin/xautolock -time 10 -locker "systemctl suspend" &
-
-# lock when waking
-exec --no-startup-id /usr/bin/xss-lock -- $HOME/.config/i3/lock.sh &
-
-# starting brightness
-exec --no-startup-id /usr/bin/brightnessctl set 50% # increase screen brightness
-
-
-########
-# gaps #
-########
-
+# gaps
 gaps inner 8
 # gaps outer 2
-
 # smart_gaps on
 # smart_borders on
-
 # border_radius 4
 
 
-###############
-# keybindings #
-###############
+########
+# apps #
+########
 
-# Mod4 is win/super, Mod1 is alt
+# megasync
+exec --no-startup-id /usr/bin/megasync
+
+# network manager
+exec --no-startup-id /usr/bin/nm-applet
+
+# launcher
+bindsym $mod+d exec --no-startup-id /usr/bin/rofi -show drun
+# bindsym $mod+d exec --no-startup-id i3-dmenu
+
+# terminal
+bindsym $mod+Return exec /usr/bin/alacritty
+
+# screenshot
+bindsym Print exec /usr/bin/spectacle
+# bindsym Print exec /usr/bin/scrot -us $HOME/Pictures/$(date +%Y-%m-%d.%H-%M-%S).scrot.png
+
+# browser
+bindsym $mod+b exec /usr/bin/brave-browser-stable
+
+# files
+bindsym $mod+n exec /usr/bin/thunar
+
+
+##########
+# system #
+##########
+
+# dunst (notifications)
+exec --no-startup-id dunst & disown
+
+# touchpad sesnsitivity
+exec --no-startup-id /usr/bin/xinput set-prop "Microsoft Surface Keyboard Touchpad" 'libinput Accel Speed' 0.5
+
+# power
+exec --no-startup-id $HOME/.config/i3/power.sh
+
+# brightness
+exec --no-startup-id /usr/bin/brightnessctl set 50%
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+
+# suspend
+bindsym $mod+Shift+period exec systemctl suspend
+
+# volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+
+
+######
+# i3 #
+######
+
+# Mod4 is win/super/meta
+# Mod1 is alt
 set $mod Mod4
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# rofi
-bindsym $mod+d exec --no-startup-id /usr/bin/rofi -show drun
-
-# dmenu
-# bindsym $mod+d exec --no-startup-id i3-dmenu
-
-# scrot
-bindsym Print exec /usr/bin/scrot -us $HOME/Pictures/$(date +%Y-%m-%d.%H-%M-%S).scrot.png
-
-# start a terminal
-bindsym $mod+Return exec /usr/bin/alacritty
-
-bindsym $mod+b exec /usr/bin/brave-browser-stable
-
 # kill focused window
 bindsym $mod+q kill
 
-# change focus
+# focus
 bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
+bindsym $mod+j focus down
 bindsym $mod+Down focus down
+bindsym $mod+k focus up
 bindsym $mod+Up focus up
+bindsym $mod+l focus right
 bindsym $mod+Right focus right
+bindsym $mod+a focus parent
+# bindsym $mod+d focus child
 
-# move focused window
+# move
 bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+j move down
 bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+k move up
 bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+l move right
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
+# split
 bindsym $mod+z split h
-
-# split in vertical orientation
 bindsym $mod+v split v
 
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
+# window type
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
-
-# toggle tiling / floating
+bindsym $mod+f fullscreen toggle
 bindsym $mod+Shift+space floating toggle
 
-# focus the parent container
-bindsym $mod+a focus parent
-
-# focus the child container
-# bindsym $mod+d focus child
-
-# reload the configuration file
+# reload config
 bindsym $mod+Shift+c reload
 
 # restart i3
 bindsym $mod+Shift+r restart
 
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
-# suspend
-bindsym $mod+Shift+period exec systemctl suspend
-
-
-# resize mode (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-# enter resize mode
-bindsym $mod+r mode "resize"
-
-
-#########
-# FKeys #
-#########
-# Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
-
-# # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5% # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%- # decrease screen brightness
+# exit i3
+bindsym rmod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'No' 'pkill i3-nagbar' -b 'Yes' 'i3-msg exit'"
 
 
 ##############
@@ -266,69 +202,4 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
-
-
-
-#########################
-# weird primeagen stuff #
-#########################
-
-# GET DEM BORDERS OUT OF HERE
-                          # class                 border  backgr. text    indicator child_border
-# for_window [class="^.*"] client.focused          #ff0000 #ffff00 #00ff00 #00ffff   #0000ff
-# bindsym $mod+space exec "/home/theprimeagen/dotfiles/awesome-streamerrc/ThePrimeagen/tmux2"
-
-# Alsa audio controls.
-# bindsym $mod+Shift+comma exec ~/.config/i3/scripts/alsa restore
-# bindsym $mod+semicolon exec ~/.config/i3/scripts/alsa down Headphone
-# bindsym $mod+comma exec ~/.config/i3/scripts/alsa up Headphone
-# bindsym $mod+m move workspace to output left
-
-# exec --no-startup-id nm-applet
-
-# bindsym $mod+Shift+s exec --no-startup-id ~/dotfiles/bin/monitor
-# bindsym $mod+Shift+n exec --no-startup-id ~/dotfiles/bin/resolution
-
-# NOTE: This is some real tom fooliery with my keyboard layout
-#  ZMK will send a shift mod with the items that require a shift key on a
-#  regular keyboard.  so though it defines a keycode as "LEFT_BRACE" it really
-#  is shift_L + LEFT_BRACE.  So you will notice the odd peppering of shifts and
-#  non shifts
-# switch to workspace
-# bindsym $mod+Shift+plus workspace 1
-# bindsym $mod+bracketleft workspace 2
-# bindsym $mod+Shift+braceleft workspace 3
-# bindsym $mod+Shift+parenleft workspace 4
-# bindsym $mod+Shift+ampersand workspace 5
-# bindsym $mod+equal workspace 6
-# bindsym $mod+Shift+parenright workspace 7
-# bindsym $mod+Shift+braceright workspace 8
-# bindsym $mod+bracketright workspace 9
-# bindsym $mod+Shift+asterisk workspace 10
-
-# # NOTE: since i have to press shift to get these symbols
-# # move focused container to workspace.
-# #  I wanted to use this as my method of moving spaces around, but it doesn't
-# #  seem to work, but when i provide the keycode + shift it seems to work well.
-# # bindsym $mod+Shift+kp_1 move container to workspace 1
-# # bindsym $mod+Shift+kp_2 move container to workspace 2
-# # bindsym $mod+Shift+kp_3 move container to workspace 3
-# # bindsym $mod+Shift+kp_4 move container to workspace 4
-# # bindsym $mod+Shift+kp_5 move container to workspace 5
-# # bindsym $mod+Shift+kp_6 move container to workspace 6
-# # bindsym $mod+Shift+kp_7 move container to workspace 7
-# # bindsym $mod+Shift+kp_8 move container to workspace 8
-# # bindsym $mod+Shift+kp_9 move container to workspace 9
-# # bindsym $mod+Shift+kp_0 move container to workspace 10
-
-# bindcode $mod+Shift+87 move container to workspace 1
-# bindcode $mod+Shift+88 move container to workspace 2
-# bindcode $mod+Shift+89 move container to workspace 3
-# bindcode $mod+Shift+83 move container to workspace 4
-# bindcode $mod+Shift+84 move container to workspace 5
-# bindcode $mod+Shift+85 move container to workspace 6
-# bindcode $mod+Shift+79 move container to workspace 7
-# bindcode $mod+Shift+80 move container to workspace 8
-# bindcode $mod+Shift+81 move container to workspace 9
-# bindcode $mod+Shift+90 move container to workspace 10
 
