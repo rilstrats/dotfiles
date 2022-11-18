@@ -120,7 +120,7 @@ bindsym Print exec /usr/bin/scrot -us $HOME/Pictures/$(date +%Y-%m-%d.%H-%M-%S).
 # start a terminal
 bindsym $mod+Return exec /usr/bin/alacritty
 
-bindsym $mod+b exec /usr/bin/brave-browser-stable --password-store=gnome
+bindsym $mod+b exec /usr/bin/brave-browser-stable
 
 # kill focused window
 bindsym $mod+q kill
