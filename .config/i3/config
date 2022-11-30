@@ -61,7 +61,8 @@ exec --no-startup-id /usr/bin/megasync
 exec --no-startup-id /usr/bin/nm-applet
 
 # polkit
-exec --no-startup-id /usr/libexec/kf5/polkit-kde-authentication-agent-1
+exec --no-startup-id /usr/libexec/kf5/polkit-kde-authentication-agent-1 & disown
+exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1 & disown
 
 # launcher
 bindsym $mod+d exec --no-startup-id /usr/bin/rofi -show drun
