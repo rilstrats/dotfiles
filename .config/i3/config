@@ -60,6 +60,9 @@ exec --no-startup-id /usr/bin/megasync
 # network manager
 exec --no-startup-id /usr/bin/nm-applet
 
+# polkit
+exec --no-startup-id /usr/libexec/kf5/polkit-kde-authentication-agent-1
+
 # launcher
 bindsym $mod+d exec --no-startup-id /usr/bin/rofi -show drun
 # bindsym $mod+d exec --no-startup-id i3-dmenu
@@ -159,7 +162,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit i3
-bindsym rmod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'No' 'pkill i3-nagbar' -b 'Yes' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'No' 'pkill i3-nagbar' -b 'Yes' 'i3-msg exit'"
 
 
 ##############
