@@ -3,8 +3,8 @@
 	; helper = 
 	; helper = /usr/local/share/gcm-core/git-credential-manager-core
 [user]
-	email = riley.s.stratton@outlook.com
-	name = Riley Stratton
+	email = rilstrats@pm.me
+	name = Riley
 [color]
 	ui = auto
 [init]
