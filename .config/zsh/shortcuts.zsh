@@ -1,21 +1,33 @@
-# go file conventions
-export GOPATH="$HOME/dev"
-export GOSRC="$GOPATH/src"
-export GOBIN="$GOPATH/bin"
+# development
+export DEVPATH="$HOME/dev"
+alias dev="cd $DEVPATH"
+export GOPATH="$DEVPATH"
 
-# development file system (using go conventions)
-export DEVPATH="$GOPATH"
-export DEVSRC="$GOSRC"
-export DEVBIN="$GOBIN"
+export DEVSRC="$DEVPATH/src"
+alias devsrc="cd $DEVSRC"
+export GOSRC="$DEVSRC"
+
+export DEVBIN="$DEVPATH/bin"
+alias devbin="cd $DEVBIN"
+export GOBIN="$DEVBIN"
 
 export DEVGH="$DEVSRC/github.com"
 alias devgh="cd $DEVGH"
 
-export DEVRS="$DEVGH/rilstrats"
-alias devrs="cd $DEVRS"
+export DEVGHRS="$DEVGH/rilstrats"
+alias devghrs="cd $DEVGHRS"
+alias ghrs="cd $DEVGHRS"
 
-# nas files
+export DEVGL="$DEVSRC/gitlab.com"
+alias devgl="cd $DEVGL"
+
+export DEVGLRS="$DEVGL/rilstrats"
+alias devglrs="cd $DEVGLRS"
+alias glrs="cd $DEVGLRS"
+
+# nas
 if [[ -d $HOME/nas ]]; then
+
   export NAS="$HOME/nas"
   alias nas="cd $NAS"
 
@@ -40,5 +52,5 @@ fi
 [[ -f "$ZDOTDIR/.secrets.zsh" ]] && source "$ZDOTDIR/.secrets.zsh"
 
 # shortcuts (used by tmux-sessionizer)
-export SHORTCUTS=($NASSEM $NASCOMP $NASNOTES $DEVRS $DEVSEC)
+export SHORTCUTS=($NASSEM $NASCOMP $NASNOTES $DEVGHRS $DEVGLRS $DEVSEC)
 
