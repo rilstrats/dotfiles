@@ -4,10 +4,9 @@
 # ignore secret files
 *secret*
 
-# git files 
+# repo
 !.gitignore
 !/.gitmodule
-!/.config/git
 
 # .github 
 !/.github/
@@ -15,6 +14,9 @@
 # .config
 !/.config
 /.config/*
+
+# git
+!/.config/git
 
 # .Xresources
 !/.config/Xresources
@@ -68,4 +70,8 @@ histfile
 # gtk themes
 # !/.config/gtk-*.0
 
+# vagrant
+!/.vagrant.d
+/.vagrant.d/*
+!/.vagrant.d/Vagrantfile
 
