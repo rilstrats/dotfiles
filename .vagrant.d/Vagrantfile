@@ -1,10 +1,13 @@
+# should be placed in $HOME/.vagrant.d/Vagrantfile
 Vagrant.configure("2") do |config|
+  config.vagrant.plugins = ["vagrant-libvirt"]
+  config.vm.synced_folder ".", "/vagrant", type: "rsync"
   config.vm.provider :libvirt do |lv|
     lv.cpus = 1
     lv.memory = 2048
     lv.driver = "kvm"
     lv.video_vram = 128
-    lv.video_accel3d = true
+    # lv.video_accel3d = true # TODO: Fix erros this causes
     lv.video_type = "virtio"
     lv.graphics_type = "spice"
     lv.qemu_use_session = false
