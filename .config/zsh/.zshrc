@@ -2,7 +2,7 @@
 if [[ -z "$TMUX" && "$TERM" == "alacritty" ]]; then
   # same as tmuxh function, just didn't want to define early
   if [[ -z $(tmux list-sessions | grep home) ]]; then
-    tmux new-session -s home -c $HOME 
+    tmux new-session -s home -c $HOME -e TMUX_DIR=$HOME
   else
     tmux attach-session -t home
   fi
@@ -72,11 +72,13 @@ alias oldpwd='echo $OLDPWD'
 alias tmuxer="$HOME/.local/bin/tmux-sessionizer"
 tmuxh () {
   if [[ -z $(tmux list-sessions | grep home) ]]; then
-    tmux new-session -s home -c $HOME 
+    tmux new-session -s home -c $HOME -e TMUX_DIR=$HOME
   else
     tmux attach-session -t home
   fi
 }
+
+alias td='cd $TMUX_DIR'
 
 # files
 case $XDG_CURRENT_DESKTOP in
