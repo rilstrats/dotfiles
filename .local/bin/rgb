@@ -1,10 +1,25 @@
 #!/bin/bash
-sudo modprobe i2c-dev
-
-if [[ -z $1 ]]; then
-    read -p "Enter color code: " color
-else
-    color=$1
+if [[ -z $(lsmod | grep i2c_dev) ]]; then
+  sudo modprobe i2c-dev
 fi
 
-openrgb -m static -c $color &> /dev/null
+COLOR=$1
+
+if [[ -z $COLOR ]]; then
+  read -p "Enter color code: " COLOR
+fi
+
+RAM=$(openrgb -l | grep 'ENE DRAM' | cut -d ':' -f 1)
+
+COMMAND="openrgb"
+
+for DEVICE in $RAM; do
+  COMMAND="$COMMAND -d $DEVICE -m static -c $COLOR"
+done
+
+GPU=$(openrgb -l | grep 'RTX 3070' | cut -d ':' -f 1)
+
+COMMAND="$COMMAND -d $GPU -m static -c ff0000"
+
+$COMMAND
+
