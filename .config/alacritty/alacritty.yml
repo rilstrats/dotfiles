@@ -19,16 +19,6 @@ font:
     # family: MesloLGS NF
     family: Go Mono Nerd Font Mono
     # family: Hack Nerd Font Mono
-    style: Regular
-
-  # bold:
-  #   style: Bold
-
-  # italic:
-  #   style: Italic
-
-  # bold_italic:
-  #   style: Bold Italic
 
   size: 12
 
