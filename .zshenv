@@ -5,7 +5,15 @@ export XDG_STATE_HOME="$HOME/.local/state"
 
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
-export PATH="$HOME/.local/bin:$PATH"
+export GOBIN="$XDG_CONFIG_HOME/go/bin"
+
+export GEM_HOME="$XDG_CONFIG_HOME/gems"
+export GEM_PATH="$XDG_CONFIG_HOME/gems"
+
+export CARGO_HOME="$XDG_CONFIG_HOME/cargo"
+export RUSTUP_HOME="$XDG_CONFIG_HOME/rustup"
+
+export PATH="$CARGO_HOME/bin:$GOBIN:$HOME/.local/bin:$PATH"
 
 if [[ ! -z $(command -v lvim) ]]; then
   export EDITOR="$HOME/.local/bin/lvim"

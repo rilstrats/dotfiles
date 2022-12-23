@@ -5,11 +5,9 @@ export GOPATH="$DEVPATH"
 
 export DEVSRC="$DEVPATH/src"
 alias devsrc="cd $DEVSRC"
-export GOSRC="$DEVSRC"
 
 export DEVBIN="$DEVPATH/bin"
 alias devbin="cd $DEVBIN"
-export GOBIN="$DEVBIN"
 
 export DEVGH="$DEVSRC/github.com"
 alias devgh="cd $DEVGH"
@@ -24,6 +22,7 @@ alias devgl="cd $DEVGL"
 export DEVGLRS="$DEVGL/rilstrats"
 alias devglrs="cd $DEVGLRS"
 alias glrs="cd $DEVGLRS"
+
 
 # nas
 if [[ -d $HOME/nas ]]; then

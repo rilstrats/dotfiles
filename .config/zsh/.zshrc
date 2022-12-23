@@ -90,11 +90,11 @@ case $XDG_CURRENT_DESKTOP in
     ;;
   i3 | XFCE)
     if [[ ! -z $(command -v thunar) ]]; then
-      alias files='thunar . &> /dev/null &'
+      alias files='thunar . &> /dev/null & disown'
     elif [[ ! -z $(command -v nautilus) ]]; then
-      alias files='nautilus . &> /dev/null &'
+      alias files='nautilus . &> /dev/null & disown'
     elif [[ ! -z $(command -v dolphin) ]]; then
-      alias files='dolphin . &> /dev/null &'
+      alias files='dolphin . &> /dev/null & disown'
     fi
     ;;
   *)
@@ -109,6 +109,7 @@ esac
 
 # shell
 # setopt autocd beep extendedglob nomatch notify
+setopt inc_append_history
 bindkey -v # vim
 
 # history

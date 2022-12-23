@@ -61,3 +61,23 @@ On a laptop with a high DPI screen, you will want to run this command.
 ```bash
 ln $HOME/.config/.Xresources.hi-dpi $HOME/.Xresources
 ```
+
+### Touchpad
+
+Edit `/usr/share/X11/xorg.conf.d/40-libinput.conf` to have these in the touchpad section.
+
+```
+        Option "NaturalScrolling" "True"
+        Option "Tapping" "on"
+        Option "TappingButtonMap" "lrm"
+        Option "AccelSpeed" "0.5"
+```
+
+### Power Button Sleep
+
+Edit `/etc/systemd/logind.conf` to have this line
+
+```
+HandlePowerKey=suspend
+```
+
