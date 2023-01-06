@@ -1,5 +1,5 @@
 # tmux
-if [[ -z "$TMUX" && "$TERM" == "alacritty" ]]; then
+if [[ -z $TMUX && $TERM == alacritty ]]; then
   # same as tmuxh function, just didn't want to define early
   if [[ -z $(tmux list-sessions | grep home) ]]; then
     tmux new-session -s home -c $HOME -e TMUX_DIR=$HOME
@@ -9,42 +9,42 @@ if [[ -z "$TMUX" && "$TERM" == "alacritty" ]]; then
 fi
 
 # p10k instant prompt (output above, no output below)
-[[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]] && \
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+[[ -r ${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh ]] && \
+  source ${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh
 
 # plugins
-[[ -f "$ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme" ]] && \
-  source "$ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme"
-[[ -f "$ZDOTDIR/zsh-vi-mode/zsh-vi-mode.plugin.zsh" ]] && \
-  source "$ZDOTDIR/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
-[[ -f "$ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] && \
-  source "$ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-[[ -f "$ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] && \
-  source "$ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
+[[ -f $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme ]] && \
+  source $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme
+[[ -f $ZDOTDIR/zsh-vi-mode/zsh-vi-mode.plugin.zsh ]] && \
+  source $ZDOTDIR/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+[[ -f $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
+  source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[[ -f $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && \
+  source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # git (includes dotfile management)
-[[ -f "$ZDOTDIR/git.zsh" ]] && source "$ZDOTDIR/git.zsh"
+[[ -f $ZDOTDIR/git.zsh ]] && source $ZDOTDIR/git.zsh
 
 # environment (nvm and conda, lazy loaded)
-[[ -f "$ZDOTDIR/environment.zsh" ]] && source "$ZDOTDIR/environment.zsh"
+[[ -f $ZDOTDIR/environment.zsh ]] && source $ZDOTDIR/environment.zsh
 
 # shortcuts (and go variables)
-[[ -f "$ZDOTDIR/shortcuts.zsh" ]] && source "$ZDOTDIR/shortcuts.zsh"
+[[ -f $ZDOTDIR/shortcuts.zsh ]] && source $ZDOTDIR/shortcuts.zsh
 
 # path
-export PATH="$DEVBIN:$PATH"
+export PATH=$DEVBIN:$PATH
 
 
 ###########
 # aliases #
 ###########
 
-if [[ "$EDITOR" == "$HOME/.local/bin/lvim" ]]; then
+if [[ $EDITOR == $HOME/.local/bin/lvim ]]; then
   vim () {[[ -z $(echo $PATH | grep nvm) ]] && nvm-setup; $EDITOR $*}
   sudovim () {[[ -z $(echo $PATH | grep nvm) ]] && nvm-setup; sudo $EDITOR $*}
 else
-  alias vim="$EDITOR"
-  alias sudovim="sudo $EDITOR"
+  vim () {$EDITOR}
+  sudovim () {sudo $EDITOR}
 fi
 
 alias tmuxer=$HOME/.local/bin/tmux-sessionizer
@@ -58,7 +58,7 @@ alias l.='ls -d .* --color=auto'
 alias ll.='ls -ohd .* --color=auto'
 
 # games
-alias minecraft="$HOME/.minecraft/launcher/minecraft-launcher & &> /dev/null"
+alias minecraft="$HOME/.minecraft/launcher/minecraft-launcher & disown &> /dev/null"
 
 # docker
 alias hollywood='docker run --rm -it bcbcarl/hollywood'
@@ -69,7 +69,7 @@ alias owd='cd $OLDPWD'
 alias oldpwd='echo $OLDPWD'
 
 # tmux-sessionizer
-alias tmuxer="$HOME/.local/bin/tmux-sessionizer"
+alias tmuxer=$HOME/.local/bin/tmux-sessionizer
 tmuxh () {
   if [[ -z $(tmux list-sessions | grep home) ]]; then
     tmux new-session -s home -c $HOME -e TMUX_DIR=$HOME
@@ -113,16 +113,17 @@ setopt inc_append_history
 bindkey -v # vim
 
 # history
-HISTFILE="$ZDOTDIR/histfile"
+HISTFILE=$ZDOTDIR/histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
 # autocomplete
 # zstyle ':completion:*' completer _complete _ignored _approximate
-zstyle :compinstall filename "$ZDOTDIR/.zshrc"
+fpath+=$ZDOTDIR/functions
+zstyle :compinstall filename $ZDOTDIR/.zshrc
 autoload -Uz compinit
 compinit
 
 # p10k config
-[[ -f "$ZDOTDIR/.p10k.zsh" ]] && source "$ZDOTDIR/.p10k.zsh"
+[[ -f $ZDOTDIR/.p10k.zsh ]] && source $ZDOTDIR/.p10k.zsh
 
