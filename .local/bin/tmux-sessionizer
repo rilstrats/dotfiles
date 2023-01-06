@@ -9,28 +9,28 @@ fi
 # read
 
 if [[ $# -eq 1 ]]; then
-  selected=$1
+  SELECTED=$1
 elif [[ ! -z $(command -v fd) ]]; then
-  selected=$(fd . $SHORTCUTS --exact-depth 1 --type d | fzf)
+  SELECTED=$(fd . $SHORTCUTS --exact-depth 1 --type d | sort | fzf)
 else
-  selected=$(find $SHORTCUTS -mindepth 1 -maxdepth 1 -type d | sort | fzf)
+  SELECTED=$(find $SHORTCUTS -mindepth 1 -maxdepth 1 -type d | sort | fzf)
 fi
 
-if [[ -z $selected ]]; then
+if [[ -z $SELECTED ]]; then
     exit 0
 fi
 
-selected_name=$(basename "$selected" | tr . _)
-tmux_running=$(pgrep tmux)
+SELECTED_NAME=$(basename "$SELECTED" | tr . _)
+TMUX_RUNNING=$(pgrep tmux)
 
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $selected -e TMUX_DIR=$selected
+if [[ -z $TMUX ]] && [[ -z $TMUX_RUNNING ]]; then
+    tmux new-session -s $SELECTED_NAME -c $SELECTED -e TMUX_DIR=$SELECTED
     exit 0
 fi
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
-    tmux new-session -ds $selected_name -c $selected -e TMUX_DIR=$selected
+if ! tmux has-session -t=$SELECTED_NAME 2> /dev/null; then
+    tmux new-session -ds $SELECTED_NAME -c $SELECTED -e TMUX_DIR=$SELECTED
 fi
 
-tmux switch-client -t $selected_name
+tmux switch-client -t $SELECTED_NAME
 
