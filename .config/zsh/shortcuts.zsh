@@ -1,49 +1,49 @@
-# development
-export DEVPATH="$HOME/dev"
-alias dev="cd $DEVPATH"
-export GOPATH="$DEVPATH"
+# code
+export CODEPATH="$HOME/code"
+alias code="cd $CODEPATH"
+export GOPATH="$CODEPATH"
 
-export DEVSRC="$DEVPATH/src"
-alias devsrc="cd $DEVSRC"
+export CODESRC="$CODEPATH/src"
+alias codesrc="cd $CODESRC"
 
-export DEVBIN="$DEVPATH/bin"
-alias devbin="cd $DEVBIN"
+export CODEBIN="$CODEPATH/bin"
+alias codebin="cd $CODEBIN"
 
-export DEVGH="$DEVSRC/github.com"
-alias devgh="cd $DEVGH"
+export CODEGH="$CODESRC/github.com"
+alias codegh="cd $CODEGH"
 
-export DEVGHRS="$DEVGH/rilstrats"
-alias devghrs="cd $DEVGHRS"
-alias ghrs="cd $DEVGHRS"
+export CODEGHRS="$CODEGH/rilstrats"
+alias codeghrs="cd $CODEGHRS"
+alias ghrs="cd $CODEGHRS"
 
-export DEVGL="$DEVSRC/gitlab.com"
-alias devgl="cd $DEVGL"
+export CODEGL="$CODESRC/gitlab.com"
+alias codegl="cd $CODEGL"
 
-export DEVGLRS="$DEVGL/rilstrats"
-alias devglrs="cd $DEVGLRS"
-alias glrs="cd $DEVGLRS"
+export CODEGLRS="$CODEGL/rilstrats"
+alias codeglrs="cd $CODEGLRS"
+alias glrs="cd $CODEGLRS"
 
 
-# nas
-if [[ -d $HOME/nas ]]; then
+# cloud
+if [[ -d $HOME/cloud ]]; then
 
-  export NAS="$HOME/nas"
-  alias nas="cd $NAS"
+  export CLOUD="$HOME/cloud"
+  alias cloud="cd $CLOUD"
 
-  export NASCOL="$NAS/college"
-  alias nascol="cd $NASCOL"
+  export CLOUDCOL="$CLOUD/college"
+  alias cloudcol="cd $CLOUDCOL"
 
-  export NASSEM="$NASCOL/22-9.fall"
-  alias nassem="cd $NASSEM"
+  export CLOUDSEM="$CLOUDCOL/22-9.fall"
+  alias cloudsem="cd $CLOUDSEM"
 
-  export NASCYBER="$NAS/cyber"
-  alias nascyber="cd $NASCYBER"
+  export CLOUDCYBER="$CLOUD/cyber"
+  alias cloudcyber="cd $CLOUDCYBER"
 
-  export NASCOMP="$NASCYBER/competitions"
-  alias nascomp="cd $NASCOMP"
+  export CLOUDCOMP="$CLOUDCYBER/competitions"
+  alias cloudcomp="cd $CLOUDCOMP"
 
-  export NASNOTES="$NASCYBER/notes"
-  alias nasnotes="cd $NASNOTES"
+  export CLOUDNOTES="$CLOUDCYBER/notes"
+  alias cloudnotes="cd $CLOUDNOTES"
 
 fi
 
@@ -51,5 +51,5 @@ fi
 [[ -f "$ZDOTDIR/.secrets.zsh" ]] && source "$ZDOTDIR/.secrets.zsh"
 
 # shortcuts (used by tmux-sessionizer)
-export SHORTCUTS=($NASSEM $NASCOMP $NASNOTES $DEVGHRS $DEVGLRS $DEVSEC)
+export SHORTCUTS=($CLOUDSEM $CLOUDCOMP $CLOUDNOTES $CODEGHRS $CODEGLRS $CODESEC)
 
