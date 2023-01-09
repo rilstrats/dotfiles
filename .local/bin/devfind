@@ -1,0 +1,7 @@
+#!/usr/bin/zsh
+
+DIR=$1
+
+[[ -z $DIR ]] && DIR=$DEVSRC
+
+fd -HI '.git$' $DIR | sed 's|/\.git||'

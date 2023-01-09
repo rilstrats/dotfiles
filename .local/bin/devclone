@@ -1,0 +1,27 @@
+#!/usr/bin/zsh
+
+URL=$1
+
+[[ -z $URL ]] && read "URL?Please enter repo URL (https or ssh): "
+
+MATCH='(git@|https\:\/\/)(.+)\.(com|net|org)(\:|\/)(.+)\/(.+?)\.git'
+DOMAIN=$(echo $URL | sed -E "s/$MATCH/\2/")
+SUFFIX=$(echo $URL | sed -E "s/$MATCH/\3/")
+USER=$(echo $URL | sed -E "s/$MATCH/\5/")
+REPO=$(echo $URL | sed -E "s/$MATCH/\6/")
+
+SITE="$DOMAIN.$SUFFIX"
+PREFIX="$DEVSRC/$SITE/$USER"
+FULL="$PREFIX/$REPO"
+
+read "INPUT?Is $FULL correct? [y/N]: "
+UPDATE=`echo ${INPUT:0:1} | tr '[:upper:]' '[:lower:]'`
+
+[[ $UPDATE != 'y' ]] && echo "Try: git clone $URL" && exit 0
+
+[[ ! -d $PREFIX ]] && mkdir -p $PREFIX
+
+[[ -d $FULL ]] && echo "Repository already cloned: $FULL" && exit 0
+
+git clone $URL $FULL
+
