@@ -11,7 +11,7 @@ USER=$(echo $URL | sed -E "s/$MATCH/\5/")
 REPO=$(echo $URL | sed -E "s/$MATCH/\6/")
 
 SITE="$DOMAIN.$SUFFIX"
-PREFIX="$DEVSRC/$SITE/$USER"
+PREFIX="$CODESRC/$SITE/$USER"
 FULL="$PREFIX/$REPO"
 
 read "INPUT?Is $FULL correct? [y/N]: "
