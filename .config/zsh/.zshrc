@@ -40,14 +40,12 @@ export PATH=$DEVBIN:$PATH
 ###########
 
 if [[ $EDITOR == $HOME/.local/bin/lvim ]]; then
-  vim () {[[ -z $(echo $PATH | grep nvm) ]] && nvm-setup; $EDITOR $*}
-  sudovim () {[[ -z $(echo $PATH | grep nvm) ]] && nvm-setup; sudo $EDITOR $*}
+  vim() {[[ -z $(echo $PATH | grep nvm) ]] && nvm-setup; $EDITOR $*}
+  sudovim() {[[ -z $(echo $PATH | grep nvm) ]] && nvm-setup; sudo $EDITOR $*}
 else
-  vim () {$EDITOR}
-  sudovim () {sudo $EDITOR}
+  vim() {$EDITOR $*}
+  sudovim() {sudo $EDITOR $*}
 fi
-
-alias tmuxer=$HOME/.local/bin/tmux-sessionizer
 
 # ls
 alias ls='ls --color=auto'
@@ -69,6 +67,7 @@ alias owd='cd $OLDPWD'
 alias oldpwd='echo $OLDPWD'
 
 # tmux-sessionizer
+alias td='cd $TMUX_DIR'
 alias tmuxer=$HOME/.local/bin/tmux-sessionizer
 tmuxh () {
   if [[ -z $(tmux list-sessions | grep home) ]]; then
@@ -77,8 +76,6 @@ tmuxh () {
     tmux attach-session -t home
   fi
 }
-
-alias td='cd $TMUX_DIR'
 
 # files
 case $XDG_CURRENT_DESKTOP in
