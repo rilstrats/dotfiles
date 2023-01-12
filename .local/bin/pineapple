@@ -1,0 +1,10 @@
+#!/bin/bash
+
+TUNNEL=$1
+if [[ -z $TUNNEL ]]; then
+  TUNNEL=enp0s20f0u1u2 
+fi
+
+sudo ip link set $TUNNEL down
+sudo ip addr add 172.16.42.42/255.255.255.0 dev $TUNNEL
+sudo ip link set $TUNNEL up
