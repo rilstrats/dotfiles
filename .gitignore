@@ -30,6 +30,7 @@
 !/.local/bin/tmux-sessionizer
 !/.local/bin/devclone
 !/.local/bin/devfind
+!/.local/bin/pineapple
 
 # zsh
 !/.zshenv
