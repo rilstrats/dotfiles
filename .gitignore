@@ -47,6 +47,9 @@ histfile
 !/.config/lvim/
 /.config/lvim/plugin
 
+# helix
+!/.config/helix
+
 # i3
 !/.config/i3
 !/.config/i3status
