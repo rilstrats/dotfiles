@@ -11,10 +11,10 @@ select = "underline"
 
 [editor.file-picker]
 hidden = false
-ignore = false
-git-ignore = false
-git-global = false
-git-exclude = false
+# ignore = false
+# git-ignore = false
+# git-global = false
+# git-exclude = false
 
 [editor.indent-guides]
 render = true
