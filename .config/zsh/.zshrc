@@ -1,12 +1,12 @@
 # tmux
-if [[ -z $TMUX && $TERM == alacritty ]]; then
-  # same as tmuxh function, just didn't want to define early
+tmux-home() {
   if [[ -z $(tmux list-sessions | grep home) ]]; then
     tmux new-session -s home -c $HOME -e TMUX_DIR=$HOME
   else
     tmux attach-session -t home
   fi
-fi
+}
+[[ -z $TMUX && $TERM == alacritty ]] && tmux-home
 
 # p10k instant prompt (output above, no output below)
 [[ -r ${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh ]] && \
@@ -25,14 +25,14 @@ fi
 # git (includes dotfile management)
 [[ -f $ZDOTDIR/git.zsh ]] && source $ZDOTDIR/git.zsh
 
-# environment (nvm and conda, lazy loaded)
-[[ -f $ZDOTDIR/environment.zsh ]] && source $ZDOTDIR/environment.zsh
+# virtual environments (nvm and conda/mamba, lazy loaded)
+[[ -f $ZDOTDIR/venv.zsh ]] && source $ZDOTDIR/venv.zsh
 
 # shortcuts (and go variables)
 [[ -f $ZDOTDIR/shortcuts.zsh ]] && source $ZDOTDIR/shortcuts.zsh
 
 # path
-export PATH=$DEVBIN:$PATH
+export PATH=$PATH
 
 
 ###########
@@ -69,13 +69,7 @@ alias oldpwd='echo $OLDPWD'
 # tmux-sessionizer
 alias td='cd $TMUX_DIR'
 alias tmuxer=$HOME/.local/bin/tmux-sessionizer
-tmuxh () {
-  if [[ -z $(tmux list-sessions | grep home) ]]; then
-    tmux new-session -s home -c $HOME -e TMUX_DIR=$HOME
-  else
-    tmux attach-session -t home
-  fi
-}
+alias tmuxh=tmux-home
 
 # files
 case $XDG_CURRENT_DESKTOP in
