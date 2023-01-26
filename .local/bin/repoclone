@@ -1,8 +1,11 @@
 #!/usr/bin/zsh
 
 URL=$1
+# PROTO=$($2 | tr '[:upper:]' '[:lower:]')
 
 [[ -z $URL ]] && read "URL?Please enter repo URL (https or ssh): "
+# [[ -z $URL ]] && echo "Usage: repoclone url" 1>&2 && exit 1
+# [[ -z $PROTO ]] && PROTO="ssh"
 
 MATCH='(git@|https\:\/\/)(.+)\.(com|net|org)(\:|\/)(.+)\/(.+?)\.git'
 DOMAIN=$(echo $URL | sed -E "s/$MATCH/\2/")
@@ -15,9 +18,9 @@ PREFIX="$CODESRC/$SITE/$USER"
 FULL="$PREFIX/$REPO"
 
 read "INPUT?Is $FULL correct? [y/N]: "
-UPDATE=`echo ${INPUT:0:1} | tr '[:upper:]' '[:lower:]'`
+PROCEED=$(echo ${INPUT:0:1} | tr '[:upper:]' '[:lower:]')
 
-[[ $UPDATE != 'y' ]] && echo "Try: git clone $URL" && exit 0
+[[ $PROCEED != 'y' ]] && echo "Try: git clone url" && exit 0
 
 [[ ! -d $PREFIX ]] && mkdir -p $PREFIX
 
