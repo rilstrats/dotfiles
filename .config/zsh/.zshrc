@@ -1,12 +1,12 @@
 # tmux
-tmux-home() {
+if [[ -z $TMUX && $TERM == alacritty ]]; then
   if [[ -z $(tmux list-sessions | grep home) ]]; then
     tmux new-session -s home -c $HOME -e TMUX_DIR=$HOME
   else
     tmux attach-session -t home
   fi
-}
-[[ -z $TMUX && $TERM == alacritty ]] && tmux-home
+fi
+
 
 # p10k instant prompt (output above, no output below)
 [[ -r ${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh ]] && \
@@ -56,7 +56,8 @@ alias l.='ls -d .* --color=auto'
 alias ll.='ls -ohd .* --color=auto'
 
 # games
-alias minecraft="$HOME/.minecraft/launcher/minecraft-launcher & disown &> /dev/null"
+alias minecraft="$HOME/.minecraft/launcher/minecraft-launcher &> /dev/null & disown"
+# alias discord="$XDG_CONFIG_HOME/Discord/Discord &> /dev/null & disown"
 
 # docker
 alias hollywood='docker run --rm -it bcbcarl/hollywood'
@@ -70,6 +71,13 @@ alias oldpwd='echo $OLDPWD'
 alias td='cd $TMUX_DIR'
 alias tmuxer=$HOME/.local/bin/tmux-sessionizer
 alias tmuxh=tmux-home
+tmux-home() {
+  if [[ -z $(tmux list-sessions | grep home) ]]; then
+    tmux new-session -s home -c $HOME -e TMUX_DIR=$HOME
+  else
+    tmux attach-session -t home
+  fi
+}
 
 # files
 case $XDG_CURRENT_DESKTOP in
