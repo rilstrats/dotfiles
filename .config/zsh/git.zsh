@@ -28,8 +28,8 @@ gc () {g commit -m $*}
 gpush () {g push $*}
 alias gps=gpush
 
-gac () {ga .; gc $1}
-gacp () {ga .; gc $1; gpush}
+gac () {ga .; gc "$*"}
+gacp () {ga .; gc "$*"; gpush}
 
 grv () {g remote -v $*}
 grvo () {grv | grep origin | head -n 1 | sed "s/^.*\t//g" | sed "s/ (.*$//g"}
