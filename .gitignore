@@ -45,8 +45,7 @@ histfile
 /.config/nvim/plugin
 
 # lvim
-!/.config/lvim/
-/.config/lvim/plugin
+!/.config/lvim/init.lua
 
 # helix
 !/.config/helix
