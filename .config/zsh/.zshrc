@@ -7,20 +7,9 @@ if [[ -z $TMUX && $TERM == alacritty ]]; then
   fi
 fi
 
-
 # p10k instant prompt (output above, no output below)
 [[ -r ${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh ]] && \
   source ${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh
-
-# plugins
-[[ -f $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme ]] && \
-  source $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme
-[[ -f $ZDOTDIR/zsh-vi-mode/zsh-vi-mode.plugin.zsh ]] && \
-  source $ZDOTDIR/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-[[ -f $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
-  source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-[[ -f $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && \
-  source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # git (includes dotfile management)
 [[ -f $ZDOTDIR/git.zsh ]] && source $ZDOTDIR/git.zsh
@@ -67,7 +56,7 @@ alias kali='docker run --rm -it kalilinux/kali-rolling'
 alias owd='cd $OLDPWD'
 alias oldpwd='echo $OLDPWD'
 
-# tmux-sessionizer
+# tmux
 alias td='cd $TMUX_DIR'
 alias tmuxer=$HOME/.local/bin/tmux-sessionizer
 alias tmuxh=tmux-home
@@ -125,4 +114,14 @@ compinit
 
 # p10k config
 [[ -f $ZDOTDIR/.p10k.zsh ]] && source $ZDOTDIR/.p10k.zsh
+
+# plugins
+[[ -f $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme ]] && \
+  source $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme
+[[ -f $ZDOTDIR/zsh-vi-mode/zsh-vi-mode.plugin.zsh ]] && \
+  source $ZDOTDIR/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+[[ -f $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && \
+  source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
+[[ -f $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
+  source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
