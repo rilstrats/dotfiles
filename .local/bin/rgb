@@ -1,25 +1,28 @@
 #!/bin/bash
+
 if [[ -z $(lsmod | grep i2c_dev) ]]; then
   sudo modprobe i2c-dev
 fi
 
-COLOR=$1
+COMMAND="openrgb --noautoconnect"
 
+OPENRGB=$($COMMAND -l | grep -E "^[0-9]") # only list devices once to speed up command
+# echo "$OPENRGB" # quotes are necessary to preserve newlines
+
+COLOR=$1
 if [[ -z $COLOR ]]; then
   read -p "Enter color code: " COLOR
 fi
 
-RAM=$(openrgb -l | grep 'ENE DRAM' | cut -d ':' -f 1)
 
-COMMAND="openrgb"
-
+RAM=$(echo "$OPENRGB" | grep "ENE DRAM" | cut -d ":" -f 1)
 for DEVICE in $RAM; do
   COMMAND="$COMMAND -d $DEVICE -m static -c $COLOR"
 done
 
-GPU=$(openrgb -l | grep 'RTX 3070' | cut -d ':' -f 1)
-
-COMMAND="$COMMAND -d $GPU -m static -c ff0000"
+# GPU
+# GPU=$(echo "$OPENRGB" | grep "RTX 3070" | cut -d ":" -f 1)
+# COMMAND="$COMMAND -d $GPU -m static -c ff0000" # for some reason, the color code ff0000 makes it 00ffff...
 
 $COMMAND
 
