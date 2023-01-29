@@ -112,9 +112,6 @@ zstyle :compinstall filename $ZDOTDIR/.zshrc
 autoload -Uz compinit
 compinit
 
-# p10k config
-[[ -f $ZDOTDIR/.p10k.zsh ]] && source $ZDOTDIR/.p10k.zsh
-
 # plugins
 [[ -f $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme ]] && \
   source $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme
@@ -124,4 +121,7 @@ compinit
   source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 [[ -f $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
   source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# p10k config
+[[ -f $ZDOTDIR/.p10k.zsh ]] && source $ZDOTDIR/.p10k.zsh
 
