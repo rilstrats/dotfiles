@@ -17,8 +17,8 @@ cursor:
 font:
   normal:
     # family: MesloLGS NF
-    family: Go Mono Nerd Font Mono
-    # family: Hack Nerd Font Mono
+    # family: Go Mono Nerd Font Mono
+    family: Hack Nerd Font Mono
 
   size: 12
 

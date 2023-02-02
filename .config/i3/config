@@ -31,7 +31,8 @@ client.background       $background
 
 for_window [class="^.*"] border pixel 4
 
-font pango:Go Mono Nerd Font Mono 16px
+# font pango:Go Mono Nerd Font Mono 16px
+font pango:Hack Nerd Font Mono 16px
 
 # wallpaper
 exec_always --no-startup-id $HOME/.config/i3/wallpaper.sh 
