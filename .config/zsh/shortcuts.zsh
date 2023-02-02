@@ -35,7 +35,7 @@ if [[ -d $HOME/cloud ]]; then
   export CLOUDSEM=$CLOUDCOL/23-1.winter
   alias cloudsem="cd $CLOUDSEM"
 
-  export CLOUDTECH=$CLOUD/tech
+  export CLOUDTECH=$CLOUDPATH/tech
   alias cloudtech="cd $CLOUDTECH"
 
   export CLOUDCYBER=$CLOUDTECH/cyber
@@ -50,8 +50,9 @@ if [[ -d $HOME/cloud ]]; then
 fi
 
 # secret (for sensitive configuration files)
-[[ -f $ZDOTDIR/.secrets.zsh ]] && source $ZDOTDIR/.secrets.zsh
+# [[ -f $ZDOTDIR/.secrets.zsh ]] && source $ZDOTDIR/.secrets.zsh
 
 # shortcuts (used by tmux-sessionizer)
-export SHORTCUTS=($CLOUDSEM $CLOUDCOMP $CLOUDNOTES $CODEGHRS $CODEGLRS $CODESEC)
+# export CODEREPOS=$(repofind $CODESRC | tr '\n' ' ')
+export SHORTCUTS=($CLOUDSEM $CLOUDCOMP)
 

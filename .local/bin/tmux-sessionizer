@@ -8,15 +8,19 @@ fi
 # echo $SHORTCUTS
 # read
 
-if [[ $# == 1 ]]; then
+if [[ ! -z $1 ]]; then
   SELECTED=$1
   [[ -z $(echo $SELECTED | egrep '^/') ]] \
     && [[ -d $(pwd)/$SELECTED ]] \
     && SELECTED=$(pwd)/$SELECTED
 elif [[ ! -z $(command -v fd) ]]; then
-  SELECTED=$(fd . $SHORTCUTS --exact-depth 1 --type d | sort | fzf)
+  FOUND=$(fd . $SHORTCUTS --exact-depth 1 --type d)
+  REPOS=$(repofind $CODESRC)
+  SELECTED=$(echo "$FOUND\n$REPOS" | sort -u | fzf)
 else
-  SELECTED=$(find $SHORTCUTS -mindepth 1 -maxdepth 1 -type d | sort | fzf)
+  FOUND=$(find $SHORTCUTS -mindepth 1 -maxdepth 1 -type d)
+  REPOS=$(repofind $CODESRC)
+  SELECTED=$(echo "$FOUND\n$REPOS" | sort -u | fzf)
 fi
 
 if [[ -z $SELECTED ]]; then
