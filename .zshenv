@@ -9,7 +9,7 @@ export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
 # Coding
 export CODEPATH=$HOME/code
-export GOPATH=$CODEPATH/go
+export GOPATH=$CODEPATH/go # ln -s $CODEPATH/src $GOPATH/src
 export CARGO_HOME=$CODEPATH/cargo
 export RUSTUP_HOME=$CODEPATH/code/rustup
 export NVM_DIR=$CODEPATH/nvm
