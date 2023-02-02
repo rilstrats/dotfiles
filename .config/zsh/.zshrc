@@ -29,8 +29,8 @@ export PATH=$PATH
 ###########
 
 if [[ $EDITOR == $HOME/.local/bin/lvim ]]; then
-  vim() {[[ -z $(echo $PATH | grep nvm) ]] && nvm-setup; $EDITOR $*}
-  sudovim() {[[ -z $(echo $PATH | grep nvm) ]] && nvm-setup; sudo $EDITOR $*}
+  vim() {[[ -z $(echo $PATH | grep nvm) ]] && nvm-lazy-load; $EDITOR $*}
+  sudovim() {[[ -z $(echo $PATH | grep nvm) ]] && nvm-lazy-load; sudo $EDITOR $*}
 else
   vim() {$EDITOR $*}
   sudovim() {sudo $EDITOR $*}
