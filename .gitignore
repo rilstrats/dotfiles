@@ -35,7 +35,7 @@
 # zsh
 !/.zshenv
 !/.config/zsh
-/.config/zsh/functions
+/.config/zsh/zfunc
 histfile
 .zcompdump
 *.zwc
