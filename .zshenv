@@ -4,10 +4,12 @@ export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_STATE_HOME=$HOME/.local/state
 
-# ZDOTDIR
+# config
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
+export RDOTDIR=$XDG_CONFIG_HOME/R
+export R_ENVIRON_USER=$RDOTDIR/Renviron
 
-# Coding
+# coding
 export CODEPATH=$HOME/code
 export GOPATH=$CODEPATH/go # ln -s $CODEPATH/src $GOPATH/src
 export CARGO_HOME=$CODEPATH/cargo

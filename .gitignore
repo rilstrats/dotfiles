@@ -40,6 +40,11 @@ histfile
 .zcompdump
 *.zwc
 
+# R
+!/.config/R
+/.config/R/Rhistory
+/.config/R/rsconnect
+
 # nvim
 !/.config/nvim
 /.config/nvim/plugin
