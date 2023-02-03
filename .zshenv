@@ -17,8 +17,7 @@ export RUSTUP_HOME=$CODEPATH/rustup
 export NVM_DIR=$CODEPATH/nvm
 export MAMBA_DIR=$CODEPATH/mamba
 export CONDA_DIR=$MAMBA_DIR
-# export GEM_HOME=$HOME/code/gems
-# export GEM_PATH=$XDG_CONFIG_HOME/gems
+export GEM_HOME=$HOME/code/gem
 
 # PATH
 export PATH=$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin:$PATH
