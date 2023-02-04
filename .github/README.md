@@ -1,4 +1,4 @@
-# .dotfiles
+# dotfiles
 
 This repo is used to store my personal dotfiles. Enjoy!
 
@@ -34,11 +34,11 @@ You will have to go follow these links and install them to use them:
 Run the following commands to bare clone this repo, checkout this files, and install the submodules.
 
 ```bash
-git clone --bare https://github.com/rilstrats/.dotfiles.git $HOME/.dotfiles.git
+git clone --bare https://github.com/rilstrats/dotfiles.git $XDG_CONFIG_HOME/dotfiles.git
 
-/usr/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME checkout -f
-/usr/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME submodule init
-/usr/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME submodule update
+/usr/bin/git --git-dir=$XDG_CONFIG_HOME/dotfiles.git --work-tree=$HOME checkout -f
+/usr/bin/git --git-dir=$XDG_CONFIG_HOME/dotfiles.git --work-tree=$HOME submodule init
+/usr/bin/git --git-dir=$XDG_CONFIG_HOME/dotfiles.git --work-tree=$HOME submodule update
 
 cd $HOME/.config/i3/i3lock-fancy; sudo make install
 ```
@@ -47,19 +47,19 @@ cd $HOME/.config/i3/i3lock-fancy; sudo make install
 
 Note, if you are cloning this repo, you will not need to create these aliases, they are already in `~/.zshrc`.
 
-```
-echo "alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME'
+```bash
+echo "dotfiles() {/usr/bin/git --git-dir=$XDG_CONFIG_HOME/.dotfiles.git --work-tree=$HOME}
 alias dfs=dotfiles" >> $HOME/.zshrc
 ```
 
 This enables you to use commands such as `dfs status` just like `git status` to manage the dotfiles.
 
-### Laptop
+### High DPI
 
-On a laptop with a high DPI screen, you will want to run this command.
+When using a high DPI screen, you will want to run this command.
 
 ```bash
-ln $HOME/.config/.Xresources.hi-dpi $HOME/.Xresources
+ln $XDG_CONFIG_HOME/Xresources/hi-dpi $HOME/.Xresources
 ```
 
 ### Touchpad

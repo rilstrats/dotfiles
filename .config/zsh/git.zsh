@@ -1,5 +1,5 @@
 # legacy dotfiles
-export DOTFILES="$HOME/.dotfiles.git/"
+export DOTFILES=$XDG_CONFIG_HOME/dotfiles.git
 dotfiles () {/usr/bin/git --git-dir=$DOTFILES --work-tree=$HOME $*}
 alias dfs=dotfiles
 
