@@ -95,9 +95,9 @@ esac
 # zsh #
 #######
 
-# shell
+# options
 # setopt autocd beep extendedglob nomatch notify
-setopt inc_append_history
+setopt inc_append_history hist_ignore_dups
 bindkey -v # vim
 
 # history
