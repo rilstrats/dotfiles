@@ -1,9 +1,6 @@
 # ignore all by default
 /*
 
-# ignore secret files
-*secret*
-
 # repo
 !.gitignore
 !/.gitmodule
@@ -36,9 +33,11 @@
 !/.zshenv
 !/.config/zsh
 /.config/zsh/zfunc
-histfile
-.zcompdump
 *.zwc
+
+# R
+!/.config/R
+/.config/R/rsconnect
 
 # nvim
 !/.config/nvim
@@ -58,8 +57,8 @@ histfile
 !/.config/polybar
 
 # wallpaper
-!/.wallpapers
-/.wallpapers/*.png
+!/.config/wallpapers
+/.config/wallpapers/*.png
 
 # fonts
 !/.fonts
@@ -74,11 +73,13 @@ histfile
 # awesome
 !/.config/awesome
 
-# gtk themes
-# !/.config/gtk-*.0
-
 # vagrant
-!/.vagrant.d
-/.vagrant.d/*
-!/.vagrant.d/Vagrantfile
+!Vagrantfile
 
+# conda
+!/.config/conda
+/.config/conda/*
+!/.config/conda/condarc
+
+# pyton
+!/.config/python3

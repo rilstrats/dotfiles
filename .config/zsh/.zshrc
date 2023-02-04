@@ -90,6 +90,10 @@ case $XDG_CURRENT_DESKTOP in
     ;;
 esac
 
+export GVIMINIT='let $MYGVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/gvimrc" \
+  : "$XDG_CONFIG_HOME/nvim/init.gvim" | source $MYGVIMRC'
+export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" \
+  : "$XDG_CONFIG_HOME/nvim/init.lua" | source $MYVIMRC'
 
 #######
 # zsh #
@@ -101,16 +105,17 @@ setopt inc_append_history hist_ignore_dups
 bindkey -v # vim
 
 # history
-HISTFILE=$ZDOTDIR/histfile
-HISTSIZE=1000
-SAVEHIST=1000
+export HISTFILE=$XDG_STATE_HOME/zsh/history
+export HISTSIZE=1000
+export SAVEHIST=1000
 
 # autocomplete
 # zstyle ':completion:*' completer _complete _ignored _approximate
+zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
 fpath+=$ZDOTDIR/functions
 zstyle :compinstall filename $ZDOTDIR/.zshrc
 autoload -Uz compinit
-compinit
+compinit -d $$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 
 # plugins
 [[ -f $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme ]] && \

@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# WALLPAPER="$HOME/.wallpapers/christ-fishermen"
-WALLPAPER="$HOME/.wallpapers/lost-between"
-# WALLPAPER="$HOME/.wallpapers/tokyo-night"
+# WALLPAPER="$XDG_CONFIG_HOME/wallpapers/christ-fishermen"
+WALLPAPER="$XDG_CONFIG_HOME/wallpapers/lost-between"
+# WALLPAPER="$XDG_CONFIG_HOME/wallpapers/tokyo-night"
 
 if [[ ! -z $(xrandr | grep "eDP-1 connected") ]]; then
   feh --no-fehb \
