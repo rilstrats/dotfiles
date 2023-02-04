@@ -14,6 +14,7 @@ export MAMBA_DIR=$CODEPATH/mamba
 export CONDA_DIR=$MAMBA_DIR
 export GEM_HOME=$CODEPATH/gem
 export VAGRANT_HOME=$CODEPATH/vagrant
+export DOCKER_CONFIG=$CODEPATH/docker
 
 # PATH
 export PATH=$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin:$PATH
@@ -57,6 +58,7 @@ export PYTHONSTARTUP=$XDG_CONFIG_HOME/python3/startup.py
 # export MAMBA_DIR=$CONDA_DIR
 # export GEM_HOME=$XDG_DATA_HOME/gem
 # export VAGRANT_HOME=$XDG_DATA_HOME/vagrant
+# export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker
 
 alias yarn='yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config'
 alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
