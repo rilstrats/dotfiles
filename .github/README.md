@@ -37,8 +37,7 @@ Run the following commands to bare clone this repo, checkout this files, and ins
 git clone --bare https://github.com/rilstrats/dotfiles.git $XDG_CONFIG_HOME/dotfiles.git
 
 /usr/bin/git --git-dir=$XDG_CONFIG_HOME/dotfiles.git --work-tree=$HOME checkout -f
-/usr/bin/git --git-dir=$XDG_CONFIG_HOME/dotfiles.git --work-tree=$HOME submodule init
-/usr/bin/git --git-dir=$XDG_CONFIG_HOME/dotfiles.git --work-tree=$HOME submodule update
+/usr/bin/git --git-dir=$XDG_CONFIG_HOME/dotfiles.git --work-tree=$HOME submodule update --init --remote
 
 cd $HOME/.config/i3/i3lock-fancy; sudo make install
 ```
