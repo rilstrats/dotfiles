@@ -46,9 +46,6 @@ export R_ENVIRON_USER=$XDG_CONFIG_HOME/R/env
 export SOLARGRAPH_CACHE=$XDG_CACHE_HOME/solargraph
 export WGETRC=$XDG_CONFIG_HOME/wgetrc
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
-alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
-alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
-alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 
 # clean code
 # export CARGO_HOME=$XDG_DATA_HOME/cargo
