@@ -83,3 +83,7 @@
 
 # pyton
 !/.config/python3
+
+# user dirs
+!/.config/user-dirs.dirs
+!/.config/user-dirs.locale

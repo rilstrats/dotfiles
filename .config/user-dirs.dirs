@@ -1,0 +1,15 @@
+# XDG_xxx_DIR="$HOME/yyy" or XDG_xxx_DIR="/yyy"
+
+# custom variables aren't supported
+# XDG_CODE_DIR="$HOME/code"
+# XDG_CLOUD_DIR="$HOME/cloud"
+
+XDG_DOCUMENTS_DIR="$HOME/cloud"
+XDG_MUSIC_DIR="$HOME/cloud/music"
+XDG_PICTURES_DIR="$HOME/cloud/pictures"
+XDG_VIDEOS_DIR="$HOME/cloud/videos"
+
+XDG_DOWNLOAD_DIR="$HOME/downloads"
+XDG_DESKTOP_DIR="$HOME"
+XDG_PUBLICSHARE_DIR="/public"
+XDG_TEMPLATES_DIR="$HOME/.config/templates"
