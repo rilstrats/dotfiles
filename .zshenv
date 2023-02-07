@@ -3,6 +3,7 @@ export XDG_CONFIG_HOME=$HOME/.config # configuration
 export XDG_DATA_HOME=$HOME/.local/share # packages
 export XDG_STATE_HOME=$HOME/.local/state # history
 export XDG_CACHE_HOME=$HOME/.cache # non-essential files
+export XDG_BIN_HOME=$HOME/.local/bin # binaries
 
 # code
 export CODEPATH=$HOME/code
@@ -16,7 +17,7 @@ export GEM_HOME=$CODEPATH/gem
 export VAGRANT_HOME=$CODEPATH/vagrant
 
 # PATH
-export PATH=$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin:$PATH
+export PATH=$XDG_BIN_HOME:$CARGO_HOME/bin:$GOPATH/bin:$PATH
 
 # EDITOR
 if [[ ! -z $(command -v lvim) ]]; then
