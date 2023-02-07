@@ -7,7 +7,7 @@ URL=$1
 # [[ -z $URL ]] && echo "Usage: repoclone url" 1>&2 && exit 1
 # [[ -z $PROTO ]] && PROTO="ssh"
 
-MATCH='(git@|https\:\/\/)(.+)\.(com|net|org)(\:|\/)(.+)\/(.+?)\.git'
+MATCH='(git@|https\:\/\/)(.+)\.(com|net|org)(\:|\/)(.+)\/(.+?)(\.git|)'
 DOMAIN=$(echo $URL | sed -E "s/$MATCH/\2/")
 SUFFIX=$(echo $URL | sed -E "s/$MATCH/\3/")
 USER=$(echo $URL | sed -E "s/$MATCH/\5/")
@@ -20,7 +20,7 @@ FULL="$PREFIX/$REPO"
 read "INPUT?Is $FULL correct? [y/N]: "
 PROCEED=$(echo ${INPUT:0:1} | tr '[:upper:]' '[:lower:]')
 
-[[ $PROCEED != 'y' ]] && echo "Try: git clone url" && exit 0
+[[ $PROCEED != 'y' ]] && echo "Try: git clone $URL" && exit 0
 
 [[ ! -d $PREFIX ]] && mkdir -p $PREFIX
 
