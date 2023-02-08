@@ -13,7 +13,7 @@ g () {
   fi
 }
 
-gs () {grvo 2> /dev/null; g status $*}
+gs () {g status $*}
 gd () {g diff $*}
 gm () {g mv $*}
 gr () {g restore $*}
@@ -32,11 +32,11 @@ gac () {ga .; gc "$*"}
 gacp () {ga .; gc "$*"; gpush}
 
 grv () {g remote -v $*}
-grvo () {grv | grep origin | head -n 1 | sed "s/^.*\t//g" | sed "s/ (.*$//g"}
+gro () {grv | grep origin | head -n 1 | sed "s/^.*\t//g" | sed "s/ (.*$//g"}
 
 grso () {g remote set-url origin $*}
 gssh () {
-  repo=$(grvo | sed "s/^.*\.com[/:]//g" | sed "s/\.git$//g")
+  repo=$(gro | sed "s/^.*\.com[/:]//g" | sed "s/\.git$//g")
   read "input?Is git@github.com:$repo.git correct? [y/N]: "
   update=`echo ${input:0:1} | tr '[:upper:]' '[:lower:]'`
 
@@ -45,7 +45,7 @@ gssh () {
     echo "grso git@github.com:USER/REPO.git"
   else
     grso git@github.com:$repo.git
-    echo "Origin updated to $(grvo)"
+    echo "Origin updated to $(gro)"
   fi
 }
 
