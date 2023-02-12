@@ -1,3 +1,6 @@
+# timing
+# zmodload zsh/zprof
+
 # tmux
 if [[ -z $TMUX && $TERM == alacritty ]]; then
   if [[ -z $(tmux list-sessions | grep home) ]]; then
@@ -36,13 +39,27 @@ else
   sudovim() {sudo $EDITOR $*}
 fi
 
+# cat
+# for bat theme use folke/tokyonight.nvim/extras/sublime
+# cp tokyonight_night.tmTheme $HOME/.config/bat/themes
+# bat cache --build
+# bat --list-themes
+export BAT_THEME="tokyonight_night" 
+alias cat=bat
+
 # ls
-alias ls='ls --color=auto'
-alias l='ls -ohA --color=auto'
-alias la='ls -A --color=auto'
-alias ll='ls -oh --color=auto'
-alias l.='ls -d .* --color=auto'
-alias ll.='ls -ohd .* --color=auto'
+# alias ls='ls --color=auto'
+# alias l='ls -ohA --color=auto'
+# alias la='ls -A --color=auto'
+# alias ll='ls -oh --color=auto'
+# alias l.='ls -d .* --color=auto'
+# alias ll.='ls -ohd .* --color=auto'
+alias ls='exa --git'
+alias l='exa --git -la'
+alias la='exa --git -a'
+alias ll='exa --git -l'
+alias l.='exa --git -d .*'
+alias ll.='exa --git -ld .*'
 
 # games
 alias minecraft="$HOME/.minecraft/launcher/minecraft-launcher &> /dev/null & disown"
@@ -135,3 +152,8 @@ compinit -d $$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 # p10k config
 [[ -f $ZDOTDIR/.p10k.zsh ]] && source $ZDOTDIR/.p10k.zsh
 
+# startship
+# eval $(starship init zsh)
+
+# timing
+# zprof

@@ -87,3 +87,6 @@
 # user dirs
 !/.config/user-dirs.dirs
 !/.config/user-dirs.locale
+
+# bat
+!/.config/bat
