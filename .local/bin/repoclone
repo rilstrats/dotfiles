@@ -7,11 +7,15 @@ URL=$1
 # [[ -z $URL ]] && echo "Usage: repoclone url" 1>&2 && exit 1
 # [[ -z $PROTO ]] && PROTO="ssh"
 
-MATCH='(git@|https\:\/\/)(.+)\.(com|net|org)(\:|\/)(.+)\/(.+?)(\.git|)'
+MATCH='(git@|https\:\/\/)(.+?)\.(com|org|net)(\:|\/)(.+?)\/(.+)(\.git|$)'
 DOMAIN=$(echo $URL | sed -E "s/$MATCH/\2/")
+# echo $DOMAIN
 SUFFIX=$(echo $URL | sed -E "s/$MATCH/\3/")
+# echo $SUFFIX
 USER=$(echo $URL | sed -E "s/$MATCH/\5/")
+# echo $USER
 REPO=$(echo $URL | sed -E "s/$MATCH/\6/")
+# echo $REPO
 
 SITE="$DOMAIN.$SUFFIX"
 PREFIX="$CODESRC/$SITE/$USER"
