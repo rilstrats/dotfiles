@@ -44,37 +44,43 @@ fi
 # cp tokyonight_night.tmTheme $HOME/.config/bat/themes
 # bat cache --build
 # bat --list-themes
-export BAT_THEME="tokyonight_night" 
-alias cat=bat
+[[ -z $(command -v bat) ]] && export BAT_THEME="tokyonight_night" && alias cat=bat
 
 # ls
-# alias ls='ls --color=auto'
-# alias l='ls -ohA --color=auto'
-# alias la='ls -A --color=auto'
-# alias ll='ls -oh --color=auto'
-# alias l.='ls -d .* --color=auto'
-# alias ll.='ls -ohd .* --color=auto'
-alias ls='exa --git'
-alias l='exa --git -la'
-alias la='exa --git -a'
-alias ll='exa --git -l'
-alias l.='exa --git -d .*'
-alias ll.='exa --git -ld .*'
+if [[ -z $(command -v exa) ]]; then
+  # ls() {command exa --git}
+  alias ls='exa --git'
+  alias l='exa --git -la'
+  alias la='exa --git -a'
+  alias ll='exa --git -l'
+  alias ll.='exa --git -lad .*'
+else
+  # ls() {command ls --color=auto}
+  alias ls='ls --color=auto'
+  alias l='ls -ohA --color=auto'
+  alias la='ls -A --color=auto'
+  alias ll='ls -oh --color=auto'
+  alias l.='ls -ohAd .* --color=auto'
+fi
+# l() {ls -la}
+# la() {ls -a}
+# ll() {ls -l}
+# l.() {ls -lad .*}
 
 # games
-alias minecraft="$HOME/.minecraft/launcher/minecraft-launcher &> /dev/null & disown"
+# alias minecraft="$HOME/.minecraft/launcher/minecraft-launcher &> /dev/null & disown"
 # alias discord="$XDG_CONFIG_HOME/Discord/Discord &> /dev/null & disown"
 
 # docker
-alias hollywood='docker run --rm -it bcbcarl/hollywood'
-alias kali='docker run --rm -it kalilinux/kali-rolling'
+# alias hollywood='docker run --rm -it bcbcarl/hollywood'
+# alias kali='docker run --rm -it kalilinux/kali-rolling'
 
 # owd
-alias owd='cd $OLDPWD'
-alias oldpwd='echo $OLDPWD'
+od() {cd $OLDPWD}
+owd() {echo $OLDPWD}
 
 # tmux
-alias td='cd $TMUX_DIR'
+td() {cd $TMUX_DIR}
 alias tmuxer=$HOME/.local/bin/tmux-sessionizer
 alias tmuxh=tmux-home
 tmux-home() {
@@ -93,10 +99,10 @@ alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
 # files
 case $XDG_CURRENT_DESKTOP in
   KDE)
-    alias files='dolphin . &> /dev/null &'
+    alias files='dolphin . &> /dev/null & disown'
     ;;
   GNOME)
-    alias files='nautilus . &> /dev/null &'
+    alias files='nautilus . &> /dev/null & disown'
     ;;
   i3 | XFCE)
     if [[ ! -z $(command -v thunar) ]]; then
@@ -152,7 +158,7 @@ compinit -d $$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 # p10k config
 [[ -f $ZDOTDIR/.p10k.zsh ]] && source $ZDOTDIR/.p10k.zsh
 
-# startship
+# starship
 # eval $(starship init zsh)
 
 # timing
