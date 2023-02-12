@@ -6,7 +6,7 @@ fi
 
 COMMAND="openrgb --noautoconnect"
 
-OPENRGB=$($COMMAND -l | grep -E "^[0-9]") # only list devices once to speed up command
+DEVICES=$($COMMAND -l | grep -E "^[0-9]") # only list devices once to speed up script
 # echo "$OPENRGB" # quotes are necessary to preserve newlines
 
 COLOR=$1
@@ -15,7 +15,7 @@ if [[ -z $COLOR ]]; then
 fi
 
 
-RAM=$(echo "$OPENRGB" | grep "ENE DRAM" | cut -d ":" -f 1)
+RAM=$(echo "$DEVICES" | grep "ENE DRAM" | cut -d ":" -f 1)
 for DEVICE in $RAM; do
   COMMAND="$COMMAND -d $DEVICE -m static -c $COLOR"
 done
