@@ -9,8 +9,16 @@ This repo is used to store my personal dotfiles. Enjoy!
 Fedora: 
 
 ```bash
-sudo dnf install i3-gaps rofi polybar tmux alacritty nvim zsh xss-lock xautolock xset scrot wmctrl ImageMagick dunst gh brightnessctl fzf fd-find ripgrep
+sudo dnf install dunst i3 rofi feh
+brightnessctl polybar wmctrl xset \
+alacritty gh nvim tmux zsh fzf \
+ImageMagick xautolock xss-lock \
+bat exa fd-find procs ripgrep sd zoxide
 ```
+
+<!-- ```bash -->
+<!-- cargo install bat bottom du-dust exa fd-find procs ripgrep sd topgrade zoxide -->
+<!-- ``` -->
 
 ### Submodules
 
@@ -36,7 +44,7 @@ Run the following commands to bare clone this repo, checkout this files, and ins
 ```bash
 git clone --bare https://github.com/rilstrats/dotfiles.git $XDG_CONFIG_HOME/dotfiles.git
 
-/usr/bin/git --git-dir=$XDG_CONFIG_HOME/dotfiles.git --work-tree=$HOME checkout -f
+/usr/bin/git --git-dir=$XDG_CONFIG_HOME/dotfiles.git --work-tree=$HOME checkout --force
 /usr/bin/git --git-dir=$XDG_CONFIG_HOME/dotfiles.git --work-tree=$HOME submodule update --init --remote
 
 cd $HOME/.config/i3/i3lock-fancy; sudo make install
@@ -47,7 +55,7 @@ cd $HOME/.config/i3/i3lock-fancy; sudo make install
 Note, if you are cloning this repo, you will not need to create these aliases, they are already in `~/.zshrc`.
 
 ```bash
-echo "dotfiles() {/usr/bin/git --git-dir=$XDG_CONFIG_HOME/.dotfiles.git --work-tree=$HOME}
+echo "dotfiles() {/usr/bin/git --git-dir=$XDG_CONFIG_HOME/.dotfiles.git --work-tree=$HOME $*}
 alias dfs=dotfiles" >> $HOME/.zshrc
 ```
 
