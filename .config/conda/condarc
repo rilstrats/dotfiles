@@ -1,8 +1,8 @@
 channels:
   - conda-forge
 envs_dirs:
-  # - ${XDG_DATA_HOME}/conda/envs
-  - ${CODEPATH}/mamba/envs
+  - ${XDG_DATA_HOME}/conda/envs
+  # - ${CODEPATH}/mamba/envs
 pkgs_dirs:
-  # - ${XDG_CACHE_HOME}/conda/pkgs 
-  - ${CODEPATH}/mamba/pkgs
+  - ${XDG_CACHE_HOME}/conda/pkgs 
+  # - ${CODEPATH}/mamba/pkgs

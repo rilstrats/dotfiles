@@ -4,23 +4,13 @@
 # repo
 !.gitignore
 !/.gitmodule
-
-# .github 
 !/.github/
 
-# .config
-!/.config
-/.config/*
-
-# git
-!/.config/git
-
-# .Xresources
-!/.config/Xresources
-
-# .local/bin
+# .local
 !/.local
 /.local/*
+
+# .local/bin
 !/.local/bin
 /.local/bin/*
 !/.local/bin/rgb
@@ -28,6 +18,39 @@
 !/.local/bin/devclone
 !/.local/bin/devfind
 !/.local/bin/pineapple
+
+# .local/share
+!/.local/share
+/.local/share*
+
+# vagrant
+!/.local/share/vagrant
+/.local/share/vagrant/*
+!/.local/share/vagrant/Vagrantfile
+
+# go
+!/.local/share/go
+/.local/share/go/*
+!/.local/share/go/src
+
+# fonts
+!/.local/share/fonts
+/.local/share/fonts/.uuid
+
+# .config
+!/.config
+/.config/*
+!/.config/alacritty
+!/.config/awesome
+!/.config/bat
+!/.config/git
+!/.config/helix
+!/.config/i3
+!/.config/lvim/init.lua
+!/.config/polybar
+!/.config/python3
+!/.config/tmux/
+!/.config/Xresources
 
 # zsh
 !/.zshenv
@@ -43,50 +66,16 @@
 !/.config/nvim
 /.config/nvim/plugin
 
-# lvim
-!/.config/lvim/init.lua
-
-# helix
-!/.config/helix
-
-# i3
-!/.config/i3
-!/.config/i3status
-
-# polybar
-!/.config/polybar
-
 # wallpaper
 !/.config/wallpapers
 /.config/wallpapers/*.png
-
-# fonts
-!/.fonts
-/.fonts/.uuid
-
-# alacritty
-!/.config/alacritty
-
-# tmux
-!/.config/tmux/
-
-# awesome
-!/.config/awesome
-
-# vagrant
-!Vagrantfile
 
 # conda
 !/.config/conda
 /.config/conda/*
 !/.config/conda/condarc
 
-# pyton
-!/.config/python3
-
 # user dirs
 !/.config/user-dirs.dirs
 !/.config/user-dirs.locale
 
-# bat
-!/.config/bat

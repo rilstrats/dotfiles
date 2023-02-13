@@ -1,8 +1,8 @@
 # code
-# export CODEPATH=$HOME/code # defined in .zshenv
+export CODEPATH=$HOME/code
 alias code="cd $CODEPATH"
 
-export CODESRC=$CODEPATH/src
+export CODESRC=$CODEPATH
 alias codesrc="cd $CODESRC"
 
 # export CODEBIN=$CODEPATH/bin

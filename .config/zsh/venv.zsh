@@ -86,10 +86,10 @@ mamba-lazy-load() {
 # colab #
 #########
 
-colab-install() {
-  mamba-install
-  colab-init
-}
+# colab-install() {
+  # mamba-install
+  # colab-init
+# }
 
 colab-init() {
   mamba create -n colab -c conda-forge python cudatoolkit cudnn \
