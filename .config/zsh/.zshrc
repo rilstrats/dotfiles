@@ -140,7 +140,7 @@ export SAVEHIST=1000
 # autocomplete
 # zstyle ':completion:*' completer _complete _ignored _approximate
 zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
-fpath+=$ZDOTDIR/functions
+export FPATH=$ZDOTDIR/functions:$FPATH
 zstyle :compinstall filename $ZDOTDIR/.zshrc
 autoload -Uz compinit
 compinit -d $$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
