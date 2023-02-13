@@ -44,23 +44,23 @@ fi
 # cp tokyonight_night.tmTheme $HOME/.config/bat/themes
 # bat cache --build
 # bat --list-themes
-[[ -z $(command -v bat) ]] && export BAT_THEME="tokyonight_night" && alias cat=bat
+[[ ! -z $(command -v bat) ]] && export BAT_THEME="tokyonight_night" && alias cat=bat
 
 # ls
-if [[ -z $(command -v exa) ]]; then
+if [[ ! -z $(command -v exa) ]]; then
   # ls() {command exa --git}
   alias ls='exa --git'
   alias l='exa --git -la'
   alias la='exa --git -a'
   alias ll='exa --git -l'
-  alias ll.='exa --git -lad .*'
+  alias l.='exa --git -lad .*'
 else
   # ls() {command ls --color=auto}
   alias ls='ls --color=auto'
-  alias l='ls -ohA --color=auto'
-  alias la='ls -A --color=auto'
-  alias ll='ls -oh --color=auto'
-  alias l.='ls -ohAd .* --color=auto'
+  alias l='ls --color=auto -ohA'
+  alias la='ls --color=auto -A'
+  alias ll='ls --color=auto -oh'
+  alias l.='ls --color=auto -ohAd .*'
 fi
 # l() {ls -la}
 # la() {ls -a}
