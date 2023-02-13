@@ -17,9 +17,9 @@ bat exa fd-find procs ripgrep sd zoxide
 ```
 
 ```bash
-cargo install bottom cargo-update du-dust topgrade
+cargo install bacon bottom cargo-update du-dust topgrade
 ```
-<!-- cargo install bat bottom du-dust exa procs ripgrep sd topgrade zoxide -->
+<!-- cargo install bacon bat bottom du-dust exa procs ripgrep sd topgrade zoxide -->
 
 ### Submodules
 
