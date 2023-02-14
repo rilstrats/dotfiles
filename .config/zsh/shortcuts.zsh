@@ -5,9 +5,6 @@ alias code="cd $CODEPATH"
 export CODESRC=$CODEPATH
 alias codesrc="cd $CODESRC"
 
-# export CODEBIN=$CODEPATH/bin
-# alias codebin="cd $CODEBIN"
-
 export CODEGH=$CODESRC/github.com
 alias codegh="cd $CODEGH"
 
@@ -32,7 +29,7 @@ if [[ -d $HOME/cloud ]]; then
   export CLOUDCOL=$CLOUDPATH/college
   alias cloudcol="cd $CLOUDCOL"
 
-  export CLOUDSEM=$CLOUDCOL/23-1.winter
+  export CLOUDSEM=$CLOUDCOL/2023-01.winter
   alias cloudsem="cd $CLOUDSEM"
 
   export CLOUDTECH=$CLOUDPATH/tech
