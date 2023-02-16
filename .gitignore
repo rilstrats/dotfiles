@@ -47,6 +47,7 @@
 !/.config/helix
 !/.config/i3
 !/.config/lvim/init.lua
+!/.config/npm
 !/.config/polybar
 !/.config/python3
 !/.config/tmux
