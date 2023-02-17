@@ -13,3 +13,6 @@
 [submodule ".config/i3/i3lock-fancy"]
 	path = .config/i3/i3lock-fancy
 	url = https://github.com/meskarune/i3lock-fancy.git
+[submodule ".config/zsh/fast-syntax-highlighting"]
+	path = .config/zsh/fast-syntax-highlighting
+	url = https://github.com/zdharma-continuum/fast-syntax-highlighting

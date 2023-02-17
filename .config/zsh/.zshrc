@@ -152,8 +152,11 @@ compinit -d $$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
   source $ZDOTDIR/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 [[ -f $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && \
   source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
-[[ -f $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
-  source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# [[ -f $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
+  # source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[[ -f $ZDOTDIR/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]] && \
+  source $ZDOTDIR/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
 
 # p10k config
 [[ -f $ZDOTDIR/.p10k.zsh ]] && source $ZDOTDIR/.p10k.zsh
