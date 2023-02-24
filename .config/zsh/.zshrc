@@ -43,10 +43,7 @@ else
 fi
 
 # cat
-# for bat theme use folke/tokyonight.nvim/extras/sublime
-# cp tokyonight_night.tmTheme $HOME/.config/bat/themes
 # bat cache --build
-# bat --list-themes
 [[ -x $(command -v bat) ]] && export BAT_THEME="tokyonight_night" && alias cat=bat
 
 # ls
