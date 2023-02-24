@@ -18,11 +18,12 @@ font:
   normal:
     # family: MesloLGS NF
     # family: Go Mono Nerd Font Mono
-    family: Hack Nerd Font Mono
+    # family: Hack Nerd Font Mono
+    family: Fira Code Nerd Font Mono
 
   size: 12
 
-  scale_with_dpi: true
+scale_with_dpi: true
 
 # TokyoNight Alacritty Colors
 colors:

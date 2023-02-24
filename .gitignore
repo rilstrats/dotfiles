@@ -21,7 +21,7 @@
 
 # .local/share
 !/.local/share
-/.local/share*
+/.local/share/*
 
 # vagrant
 !/.local/share/vagrant
@@ -51,6 +51,7 @@
 !/.config/polybar
 !/.config/python3
 !/.config/tmux
+!/.config/wezterm
 !/.config/wgetrc
 !/.config/Xresources
 
