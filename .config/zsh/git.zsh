@@ -1,38 +1,36 @@
-# legacy dotfiles
+# dotfiles
 export DOTFILES=$XDG_CONFIG_HOME/dotfiles.git
-dotfiles () {/usr/bin/git --git-dir=$DOTFILES --work-tree=$HOME $*}
+export DFS_OPTS="--git-dir=$DOTFILES --work-tree=$HOME"
 alias dfs=dotfiles
-
+dotfiles() {/usr/bin/git $(echo $DFS_OPTS) $*}
 
 # git
-g () {
-  if [[ $PWD == $HOME || $PWD == $XDG_CONFIG_HOME* ]]; then
-    dotfiles $*
-  else
-    /usr/bin/git $*
-  fi
+alias g=git
+git() {
+  [[ $PWD == $HOME || $PWD =~ $XDG_CONFIG_HOME.* ]] && OPTS=$DFS_OPTS
+  /usr/bin/git $(echo $OPTS) $*
 }
 
-gs () {g status $*}
-gd () {g diff $*}
-gm () {g mv $*}
-gr () {g restore $*}
-gp () {echo "Use gpull/gpl or gpush/gps"}
+gs() {g status $*}
+gd() {g diff $*}
+gm() {g mv $*}
+gr() {g restore $*}
+gp() {echo "Use gpull/gpl or gpush/gps"}
 
-gf () {g fetch $*}
-gpull () {g pull $*}
+gf() {g fetch $*}
+gpull() {g pull $*}
 alias gpl=gpull
 
-ga () {g add $*}
-gc () {g commit -m $*}
+ga() {g add $*}
+gc() {g commit -m $*}
 gpush () {g push $*}
 alias gps=gpush
 
-gac () {ga .; gc "$*"}
-gacp () {ga .; gc "$*"; gpush}
+gac() {ga .; gc "$*"}
+gacp() {ga .; gc "$*"; gpush}
 
-grv () {g remote -v $*}
-gro () {grv | grep origin | head -n 1 | sed "s/^.*\t//g" | sed "s/ (.*$//g"}
+grv() {g remote -v $*}
+gro() {grv | grep origin | head -n 1 | sed "s/^.*\t//g" | sed "s/ (.*$//g"}
 
 grso () {g remote set-url origin $*}
 gssh () {
