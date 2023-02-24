@@ -31,6 +31,9 @@ export PATH=$PATH
 # aliases #
 ###########
 
+# open
+alias open=xdg-open
+
 if [[ $EDITOR == $HOME/.local/bin/lvim ]]; then
   vim() {[[ -z $(echo $PATH | grep $NVM_DIR) ]] && nvm-lazy-load; $EDITOR $*}
   sudovim() {[[ -z $(echo $PATH | grep $NVM_DIR) ]] && nvm-lazy-load; sudo $EDITOR $*}
@@ -118,10 +121,8 @@ case $XDG_CURRENT_DESKTOP in
     ;;
 esac
 
-export GVIMINIT='let $MYGVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/gvimrc" \
-  : "$XDG_CONFIG_HOME/nvim/init.gvim" | source $MYGVIMRC'
-export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" \
-  : "$XDG_CONFIG_HOME/nvim/init.lua" | source $MYVIMRC'
+export GVIMINIT='let $MYGVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/gvimrc" : "$XDG_CONFIG_HOME/nvim/init.gvim" | source $MYGVIMRC'
+export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$XDG_CONFIG_HOME/nvim/init.lua" | source $MYVIMRC'
 
 #######
 # zsh #
