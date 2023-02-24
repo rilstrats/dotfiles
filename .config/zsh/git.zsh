@@ -7,8 +7,11 @@ dotfiles() {/usr/bin/git $(echo $DFS_OPTS) $*}
 # git
 alias g=git
 git() {
-  [[ $PWD == $HOME || $PWD =~ $XDG_CONFIG_HOME.* ]] && OPTS=$DFS_OPTS
+  if [[ $PWD == $HOME || $PWD =~ $XDG_CONFIG_HOME.* ]]; then
+    OPTS=$DFS_OPTS
+  fi
   /usr/bin/git $(echo $OPTS) $*
+  unset OPTS
 }
 
 gs() {g status $*}
