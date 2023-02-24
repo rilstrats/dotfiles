@@ -18,11 +18,11 @@ export MAMBA_DIR=$CONDA_DIR
 export PATH=$XDG_BIN_HOME:$CARGO_HOME/bin:$GOPATH/bin:$PATH
 
 # EDITOR
-if [[ ! -z $(command -v lvim) ]]; then
+if [[ -x $(command -v lvim) ]]; then
   export EDITOR=$XDG_BIN_HOME/lvim
-elif [[ ! -z $(command -v nvim) ]]; then
+elif [[ -x $(command -v nvim) ]]; then
   export EDITOR=/usr/bin/nvim
-elif [[ ! -z $(command -v vim) ]]; then
+elif [[ -x $(command -v vim) ]]; then
   export EDITOR=/usr/bin/vim
 else
   export EDITOR=/usr/bin/vi

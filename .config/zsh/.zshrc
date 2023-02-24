@@ -47,10 +47,10 @@ fi
 # cp tokyonight_night.tmTheme $HOME/.config/bat/themes
 # bat cache --build
 # bat --list-themes
-[[ ! -z $(command -v bat) ]] && export BAT_THEME="tokyonight_night" && alias cat=bat
+[[ -x $(command -v bat) ]] && export BAT_THEME="tokyonight_night" && alias cat=bat
 
 # ls
-if [[ ! -z $(command -v exa) ]]; then
+if [[ -x $(command -v exa) ]]; then
   # ls() {command exa --git}
   alias ls='exa --git'
   alias l='exa --git -la'
@@ -100,26 +100,33 @@ alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
 # alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 
 # files
-case $XDG_CURRENT_DESKTOP in
-  KDE)
-    alias files='dolphin . &> /dev/null & disown'
-    ;;
-  GNOME)
-    alias files='nautilus . &> /dev/null & disown'
-    ;;
-  i3 | XFCE)
-    if [[ ! -z $(command -v thunar) ]]; then
-      alias files='thunar . &> /dev/null & disown'
-    elif [[ ! -z $(command -v nautilus) ]]; then
-      alias files='nautilus . &> /dev/null & disown'
-    elif [[ ! -z $(command -v dolphin) ]]; then
-      alias files='dolphin . &> /dev/null & disown'
-    fi
-    ;;
-  *)
-    alias files="echo 'Unsupported Desktop Environment'"
-    ;;
-esac
+files() {
+  DIR=$1
+  [[ -z DIR ]] && DIR='.'
+  case $XDG_CURRENT_DESKTOP in
+    KDE)
+      dolphin $DIR &> /dev/null & disown
+      ;;
+    GNOME)
+      nautilus $DIR &> /dev/null & disown
+      ;;
+    XFCE)
+      thunar $DIR &> /dev/null & disown
+      ;;
+    i3)
+      if [[ -x $(command -v thunar) ]]; then
+        thunar $DIR &> /dev/null & disown
+      elif [[ -x $(command -v nautilus) ]]; then
+        nautilus $DIR &> /dev/null & disown
+      elif [[ -x $(command -v dolphin) ]]; then
+        dolphin $DIR &> /dev/null & disown
+      fi
+      ;;
+    *)
+      echo "Unsupported Desktop Environment"
+      ;;
+  esac
+}
 
 export GVIMINIT='let $MYGVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/gvimrc" : "$XDG_CONFIG_HOME/nvim/init.gvim" | source $MYGVIMRC'
 export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$XDG_CONFIG_HOME/nvim/init.lua" | source $MYVIMRC'
