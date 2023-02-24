@@ -32,7 +32,7 @@ export PATH=$PATH
 ###########
 
 # open
-alias open=xdg-open
+open() {xdg-open $* &> /dev/null & disown}
 
 if [[ $EDITOR == $HOME/.local/bin/lvim ]]; then
   vim() {[[ -z $(echo $PATH | grep $NVM_DIR) ]] && nvm-lazy-load; $EDITOR $*}
