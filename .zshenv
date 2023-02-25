@@ -8,6 +8,7 @@ export XDG_BIN_HOME=$HOME/.local/bin # binaries
 # code
 export CARGO_HOME=$XDG_DATA_HOME/cargo
 export RUSTUP_HOME=$XDG_DATA_HOME/rustup
+export RUSTC_WRAPPER=$CARGO_HOME/bin/sccache
 export GOPATH=$XDG_DATA_HOME/go
 # export GOMODCACHE=$XDG_CACHE_HOME/go/mod
 export NVM_DIR=$XDG_DATA_HOME/nvm
