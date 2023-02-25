@@ -15,9 +15,10 @@
 /.local/bin/*
 !/.local/bin/rgb
 !/.local/bin/tmux-sessionizer
-!/.local/bin/devclone
-!/.local/bin/devfind
+!/.local/bin/repoclone
+!/.local/bin/repofind
 !/.local/bin/pineapple
+!/.local/bin/rust-analyzer
 
 # .local/share
 !/.local/share
