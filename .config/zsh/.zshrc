@@ -2,23 +2,23 @@
 # zmodload zsh/zprof
 
 # tmux
-if [[ -z $TMUX && $TERM == alacritty ]]; then
-  if [[ -z $(tmux list-sessions | grep home) ]]; then
-    tmux new-session -s home -c $HOME -e TMUX_DIR=$HOME
-  else
-    tmux attach-session -t home
-  fi
-fi
+# if [[ -z $TMUX && $TERM == alacritty ]]; then
+#   if [[ -z $(tmux list-sessions | grep home) ]]; then
+#     tmux new-session -s home -c $HOME -e TMUX_DIR=$HOME
+#   else
+#     tmux attach-session -t home
+#   fi
+# fi
 
 # p10k instant prompt (output above, no output below)
-[[ -r ${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh ]] && \
-  source ${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh
+# [[ -r ${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh ]] && \
+# source ${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh
 
 # git (includes dotfile management)
 [[ -f $ZDOTDIR/git.zsh ]] && source $ZDOTDIR/git.zsh
 
 # virtual environments (nvm and conda/mamba, lazy loaded)
-[[ -f $ZDOTDIR/venv.zsh ]] && source $ZDOTDIR/venv.zsh
+# [[ -f $ZDOTDIR/venv.zsh ]] && source $ZDOTDIR/venv.zsh
 
 # shortcuts (and go variables)
 [[ -f $ZDOTDIR/shortcuts.zsh ]] && source $ZDOTDIR/shortcuts.zsh
@@ -46,18 +46,21 @@ fi
 # bat cache --build
 [[ -x $(command -v bat) ]] && export BAT_THEME="tokyonight_night" && alias cat=bat
 
-# ls
+# rg
+[[ -x $(command -v rg) ]] && alias grep=rg
+
+# exa
 if [[ -x $(command -v exa) ]]; then
   # ls() {command exa --git}
-  alias ls='exa --git'
   alias l='exa --git -la'
+  alias ls='exa --git'
   alias la='exa --git -a'
   alias ll='exa --git -l'
   alias l.='exa --git -lad .*'
 else
   # ls() {command ls --color=auto}
-  alias ls='ls --color=auto'
   alias l='ls --color=auto -ohA'
+  alias ls='ls --color=auto'
   alias la='ls --color=auto -A'
   alias ll='ls --color=auto -oh'
   alias l.='ls --color=auto -ohAd .*'
@@ -80,16 +83,17 @@ od() {cd $OLDPWD}
 owd() {echo $OLDPWD}
 
 # tmux
-td() {cd $TMUX_DIR}
-alias tmuxer=$HOME/.local/bin/tmux-sessionizer
-alias tmuxh=tmux-home
-tmux-home() {
-  if [[ -z $(tmux list-sessions | grep home) ]]; then
-    tmux new-session -s home -c $HOME -e TMUX_DIR=$HOME
-  else
-    tmux attach-session -t home
-  fi
-}
+alias tmux=zellij
+# td() {cd $TMUX_DIR}
+# alias tmuxer=$HOME/.local/bin/tmux-sessionizer
+# alias tmuxh=tmux-home
+# tmux-home() {
+#   if [[ -z $(tmux list-sessions | grep home) ]]; then
+#     tmux new-session -s home -c $HOME -e TMUX_DIR=$HOME
+#   else
+#     tmux attach-session -t home
+#   fi
+# }
 
 # clean home
 alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
@@ -151,8 +155,8 @@ autoload -Uz compinit
 compinit -d $$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 
 # plugins
-[[ -f $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme ]] && \
-  source $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme
+# [[ -f $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme ]] && \
+  # source $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme
 [[ -f $ZDOTDIR/zsh-vi-mode/zsh-vi-mode.plugin.zsh ]] && \
   source $ZDOTDIR/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 [[ -f $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && \
@@ -164,10 +168,20 @@ compinit -d $$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 
 
 # p10k config
-[[ -f $ZDOTDIR/.p10k.zsh ]] && source $ZDOTDIR/.p10k.zsh
+# [[ -f $ZDOTDIR/.p10k.zsh ]] && source $ZDOTDIR/.p10k.zsh
+
+# rtx
+eval "$(rtx activate zsh)"
+
+# zoxide
+eval "$(zoxide init zsh)"
+[[ -x $(command -v zoxide) ]] && alias cd=z
+
+# broot
+source /home/rilstrats/.config/broot/launcher/bash/br
 
 # starship
-# eval $(starship init zsh)
+eval "$(starship init zsh)"
 
 # timing
 # zprof
