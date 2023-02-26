@@ -62,6 +62,12 @@
 /.config/zsh/functions
 *.zwc
 
+# fish
+!/.config/fish
+/.config/fish/*
+!/.config/fish/config.fish
+!/.config/fish/conf.d
+
 # R
 !/.config/R
 /.config/R/rsconnect
