@@ -64,9 +64,6 @@ if status is-interactive
     # grep => rg
     test (command -v rg) && alias grep=rg
 
-    # tmux => zellij
-    test (command -v zellij) && alias tmux=zellij
-
     # rtx
     test (command -v zoxide) && rtx activate fish | source
 
