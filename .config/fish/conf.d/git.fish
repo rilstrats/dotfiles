@@ -1,19 +1,23 @@
 # dotfiles
 set -g DOTFILES $XDG_CONFIG_HOME/dotfiles.git
-abbr -a dotfiles git --git-dir=$DOTFILES --work-tree=$HOME
-abbr -a dfs git --git-dir=$DOTFILES --work-tree=$HOME
-
-# TODO
-# implement git function that switches between dfs and git
+# abbr -a dotfiles git --git-dir=$DOTFILES --work-tree=$HOME
+# abbr -a dfs git --git-dir=$DOTFILES --work-tree=$HOME
 
 abbr -a g git
+function git
+    if test $PWD = $HOME -o (echo $PWD | grep $XDG_CONFIG_HOME)
+        /usr/bin/git --git-dir=$DOTFILES --work-tree=$HOME $argv
+    else
+        /usr/bin/git $argv
+    end
+end
 
 abbr -a gs git status
 abbr -a gd git diff
 abbr -a gm git mv
 abbr -a gr git restore
 
-abbr -a gf fit fetch
+abbr -a gf git fetch
 abbr -a gpull git pull
 
 abbr -a ga git add
@@ -22,6 +26,7 @@ abbr -a gcm git commit -m
 abbr -a gpush git push
 
 abbr -a gac 'git add . && git commit'
+abbr -a gacm 'git add . && git commit -m'
 abbr -a gacp 'git add . && git commit && git push' 
 abbr -a gcp 'git commit && git push' 
 
@@ -33,12 +38,12 @@ end
 abbr -a grso git remote set-url origin
 function gssh
     set -f repo (grvo | sed 's/^.*\.com[/:]//g' | sed 's/\.git$//g')
-    read input -P "Is git@github.com:$repo.git correct? [y/N]: "
-    set -f update (string split -l 1 | string lower)
+    read -f input -P "Is git@github.com:$repo.git correct? [y/N]: "
+    set -f update (echo $input | string split "" -f 1 | string lower)
 
-    if [[ ! "$update" == "y" ]]; then
+    if test "$update" != 'y'
         echo "Origin not updated. Update using: "
-        echo "grso git@github.com:USER/REPO.git"
+        echo "git remote set-url origin git@github.com:USER/REPO.git"
     else
         git remote set-url origin git@github.com:$repo.git
         echo "Origin updated to $(grvo)"
