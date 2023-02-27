@@ -55,6 +55,7 @@
 !/.config/wezterm
 !/.config/wgetrc
 !/.config/Xresources
+!/.config/zellij
 
 # zsh
 !/.zshenv
@@ -67,6 +68,10 @@
 /.config/fish/*
 !/.config/fish/config.fish
 !/.config/fish/conf.d
+
+# rtx
+!/.config/rtx
+!/.tool-versions
 
 # R
 !/.config/R
