@@ -10,23 +10,19 @@ export CARGO_HOME=$XDG_DATA_HOME/cargo
 export RUSTUP_HOME=$XDG_DATA_HOME/rustup
 export RUSTC_WRAPPER=$CARGO_HOME/bin/sccache
 export GOPATH=$XDG_DATA_HOME/go
-# export GOMODCACHE=$XDG_CACHE_HOME/go/mod
-export NVM_DIR=$XDG_DATA_HOME/nvm
-export CONDA_DIR=$XDG_DATA_HOME/conda
-export MAMBA_DIR=$CONDA_DIR
 
 # PATH
 export PATH=$XDG_BIN_HOME:$CARGO_HOME/bin:$GOPATH/bin:$PATH
 
 # EDITOR
 if [[ -x $(command -v lvim) ]]; then
-  export EDITOR=$XDG_BIN_HOME/lvim
+  export EDITOR=$(command -v lvim)
 elif [[ -x $(command -v nvim) ]]; then
-  export EDITOR=/usr/bin/nvim
+  export EDITOR=$(command -v nvim)
 elif [[ -x $(command -v vim) ]]; then
-  export EDITOR=/usr/bin/vim
+  export EDITOR=$(command -v vim)
 else
-  export EDITOR=/usr/bin/vi
+  export EDITOR=$(command -v vi)
 fi
 
 # PAGER
