@@ -54,9 +54,7 @@ fi
 
 # cd => zoxide
 if [[ -x $(command -v zoxide) ]]; then
-  eval "$(zoxide init zsh)"
-  alias cd=z
-fi
+  eval "$(zoxide init zsh)" alias cd=z fi
 
 # open => xdg-open
 open() {xdg-open $* &> /dev/null & disown}
@@ -71,4 +69,4 @@ open() {xdg-open $* &> /dev/null & disown}
 [[ -x $(command -v rtx) ]] && eval "$(rtx activate zsh)"
 
 # starship
-[[ -x $(command -v rtx) ]] && eval "$(starship init zsh)"
+[[ -x $(command -v starship) ]] && eval "$(starship init zsh)"
