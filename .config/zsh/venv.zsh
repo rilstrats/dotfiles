@@ -37,6 +37,12 @@ nvm-lazy-load () {
   # [[ ! -z $(command -v ng) ]] && source $(ng completion script) # loads angular autocompletion
 }
 
+if [[ $EDITOR == $HOME/.local/bin/lvim ]]; then
+  vim() {[[ -z $(echo $PATH | grep $NVM_DIR) ]] && nvm-lazy-load; $EDITOR $*}
+  sudovim() {[[ -z $(echo $PATH | grep $NVM_DIR) ]] && nvm-lazy-load; sudo $EDITOR $*}
+fi
+
+
 ###############
 # mamba/conda #
 ###############
