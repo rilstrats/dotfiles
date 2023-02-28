@@ -84,6 +84,9 @@
 !/.config/nvim
 /.config/nvim/plugin
 
+# vim
+!/.config/vim
+
 # wallpaper
 !/.config/wallpapers
 /.config/wallpapers/*.png
