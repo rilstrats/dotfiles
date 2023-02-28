@@ -28,6 +28,7 @@ compinit -d $$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 [[ -f $ZDOTDIR/git.zsh ]] && source $ZDOTDIR/git.zsh
 [[ -f $ZDOTDIR/home.zsh ]] && source $ZDOTDIR/home.zsh
 [[ -f $ZDOTDIR/tmux.zsh ]] && source $ZDOTDIR/tmux.zsh
+[[ -f $ZDOTDIR/colab.zsh ]] && source $ZDOTDIR/colab.zsh
 [[ -f $ZDOTDIR/shortcuts.zsh ]] && source $ZDOTDIR/shortcuts.zsh
 
 # aliases/functions

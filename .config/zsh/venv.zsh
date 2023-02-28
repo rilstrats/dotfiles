@@ -97,41 +97,4 @@ mamba-lazy-load() {
   # colab-init
 # }
 
-colab-init() {
-  mamba create -n colab -c conda-forge python cudatoolkit cudnn \
-    pandas pyspark numpy sklearn-pandas xgboost tensorflow-gpu scikit-learn \
-    jupyter_http_over_ws jupyter_core jupyterlab \
-    altair seaborn matplotlib
-  mamba activate colab
-  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/
-  mkdir -p $CONDA_PREFIX/etc/conda/activate.d
-  echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/' > $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
-  # pip install --upgrade pip
-  jupyter serverextension enable --py jupyter_http_over_ws
-}
-
-colab-gpu() {colab-gpu-test}
-colab-gpu-test() {
-  conda activate colab
-  python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
-}
-
-colab() {
-  conda activate colab
-  jupyter notebook \
-    --NotebookApp.allow_origin='https://colab.research.google.com' \
-    --port=8888 \
-    --NotebookApp.port_retries=0 \
-    --NotebookApp.open_browser=False
-}
-
-colab-enable() {
-  conda activate colab
-  jupyter serverextension enable --py jupyter_http_over_ws
-}
-
-colab-disable() {
-  conda activate colab
-  jupyter serverextension disable --py jupyter_http_over_ws
-}
 
