@@ -29,40 +29,13 @@ compinit -d $$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 [[ -f $ZDOTDIR/home.zsh ]] && source $ZDOTDIR/home.zsh
 [[ -f $ZDOTDIR/tmux.zsh ]] && source $ZDOTDIR/tmux.zsh
 [[ -f $ZDOTDIR/colab.zsh ]] && source $ZDOTDIR/colab.zsh
+[[ -f $ZDOTDIR/files.zsh ]] && source $ZDOTDIR/files.zsh
+[[ -f $ZDOTDIR/zellij.zsh ]] && source $ZDOTDIR/zellij.zsh
 [[ -f $ZDOTDIR/shortcuts.zsh ]] && source $ZDOTDIR/shortcuts.zsh
 
-# aliases/functions
+# OLDPWD
 od() {cd $OLDPWD}
 owd() {echo $OLDPWD}
-open() {xdg-open $* &> /dev/null & disown}
-
-files() {
-  DIR=$1
-  [[ -z DIR ]] && DIR='.'
-  case $XDG_CURRENT_DESKTOP in
-    (KDE)
-      dolphin $DIR &> /dev/null & disown
-      ;;
-    (GNOME)
-      nautilus $DIR &> /dev/null & disown
-      ;;
-    (XFCE)
-      thunar $DIR &> /dev/null & disown
-      ;;
-    (i3)
-      if [[ -x $(command -v thunar) ]]; then
-        thunar $DIR &> /dev/null & disown
-      elif [[ -x $(command -v nautilus) ]]; then
-        nautilus $DIR &> /dev/null & disown
-      elif [[ -x $(command -v dolphin) ]]; then
-        dolphin $DIR &> /dev/null & disown
-      fi
-      ;;
-    (*)
-      echo "Unsupported Desktop Environment"
-      ;;
-  esac
-}
 
 # ls => exa
 if [[ -x $(command -v exa) ]]; then
@@ -84,6 +57,9 @@ if [[ -x $(command -v zoxide) ]]; then
   eval "$(zoxide init zsh)"
   alias cd=z
 fi
+
+# open => xdg-open
+open() {xdg-open $* &> /dev/null & disown}
 
 # cat => bat
 [[ -x $(command -v bat) ]] && alias cat=bat
