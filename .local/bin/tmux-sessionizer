@@ -8,26 +8,30 @@ fi
 # echo $SHORTCUTS
 # read
 
-if [[ ! -z $1 ]]; then
+if [[ -n $1 ]]; then
   SELECTED=$1
-  [[ -z $(echo $SELECTED | egrep '^/') ]] \
-    && [[ -d $(pwd)/$SELECTED ]] \
-    && SELECTED=$(pwd)/$SELECTED
-elif [[ ! -z $(command -v fd) ]]; then
-  FOUND=$(fd . $SHORTCUTS --exact-depth 1 --type d)
-  REPOS=$(repofind $CODESRC)
-  SELECTED=$(echo "$FOUND\n$REPOS" | sort -u | fzf)
+  if [[ $SELECTED == '.' ]]; then
+    SELECTED=$PWD
+  elif [[ ! $SELECTED =~ '^/.*' ]]; then
+    [[ -d $PWD/$SELECTED ]] && SELECTED=$PWD/$SELECTED
+  fi
+# elif [[ ! -z $(command -v fd) ]]; then
+#   FOUND=$(fd . $SHORTCUTS --exact-depth 1 --type d)
+#   REPOS=$(repofind $CODESRC)
+#   SELECTED=$(echo "$HOME\n$FOUND\n$REPOS" | sort -u | fzf)
 else
   FOUND=$(find $SHORTCUTS -mindepth 1 -maxdepth 1 -type d)
   REPOS=$(repofind $CODESRC)
-  SELECTED=$(echo "$FOUND\n$REPOS" | sort -u | fzf)
+  SELECTED=$(echo "$HOME\n$FOUND\n$REPOS" | sort -u | fzf)
 fi
 
-if [[ -z $SELECTED ]]; then
-    exit 0
-fi
+[[ -z $SELECTED ]] && exit 0
 
-SELECTED_NAME=$(basename "$SELECTED" | tr . _)
+if [[ $SELECTED == $HOME ]]; then
+  SELECTED_NAME=home
+else
+  SELECTED_NAME=$(basename "$SELECTED" | tr . _)
+fi
 TMUX_RUNNING=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $TMUX_RUNNING ]]; then

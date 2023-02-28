@@ -1,0 +1,31 @@
+#!/usr/bin/zsh
+
+if [[ -z $SHORTCUTS ]]; then
+  [[ -f "$ZDOTDIR/shortcuts.zsh" ]] && source "$ZDOTDIR/shortcuts.zsh"
+fi
+
+if [[ -n $1 ]]; then
+  ZELLIJ_SESSION_DIR=$1
+  if [[ $ZELLIJ_SESSION_DIR == '.' ]]; then
+    ZELLIJ_SESSION_DIR=$PWD
+  elif [[ ! $ZELLIJ_SESSION_DIR =~ '^/.*' ]]; then
+    [[ -d $PWD/$ZELLIJ_SESSION_DIR ]] && \
+      ZELLIJ_SESSION_DIR=$PWD/$ZELLIJ_SESSION_DIR
+  fi
+else
+  FOUND=$(fd . $SHORTCUTS --exact-depth 1 --type d)
+  REPOS=$(repofind $CODESRC)
+  ZELLIJ_SESSION_DIR=$(echo "$HOME\n$FOUND\n$REPOS" | sort -u | fzf)
+fi
+
+[[ -z $ZELLIJ_SESSION_DIR ]] && exit 0
+
+if [[ $ZELLIJ_SESSION_DIR == $HOME ]]; then
+  ZELLIJ_SESSION_NAME=home
+else
+  ZELLIJ_SESSION_NAME=$(basename "$ZELLIJ_SESSION_DIR")
+fi
+
+export ZELLIJ_SESSION_DIR
+cd $ZELLIJ_SESSION_DIR
+zellij attach --create $ZELLIJ_SESSION_NAME

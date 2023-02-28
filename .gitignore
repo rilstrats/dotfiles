@@ -14,11 +14,14 @@
 !/.local/bin
 /.local/bin/*
 !/.local/bin/rgb
+!/.local/bin/tmux-home
 !/.local/bin/tmux-sessionizer
 !/.local/bin/repoclone
 !/.local/bin/repofind
 !/.local/bin/pineapple
 !/.local/bin/rust-analyzer
+!/.local/bin/zellij-home
+!/.local/bin/zellij-sessionizer
 
 # .local/share
 !/.local/share

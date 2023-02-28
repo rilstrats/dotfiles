@@ -72,6 +72,8 @@ bindsym $mod+d exec --no-startup-id /usr/bin/rofi -show drun
 
 # terminal
 bindsym $mod+Return exec /usr/bin/alacritty
+# bindsym $mod+Shift+Return exec /usr/bin/alacritty -e tmux-home
+bindsym $mod+Shift+Return exec /usr/bin/alacritty -e zellij-sessionizer
 
 # screenshot
 bindsym Print exec /usr/bin/spectacle
