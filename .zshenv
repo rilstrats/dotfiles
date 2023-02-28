@@ -3,16 +3,16 @@ export XDG_CONFIG_HOME=$HOME/.config # configuration
 export XDG_DATA_HOME=$HOME/.local/share # packages
 export XDG_STATE_HOME=$HOME/.local/state # history
 export XDG_CACHE_HOME=$HOME/.cache # non-essential files
-export XDG_BIN_HOME=$HOME/.local/bin # binaries
 
 # code
 export CARGO_HOME=$XDG_DATA_HOME/cargo
 export RUSTUP_HOME=$XDG_DATA_HOME/rustup
 export RUSTC_WRAPPER=$CARGO_HOME/bin/sccache
 export GOPATH=$XDG_DATA_HOME/go
+export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
 # PATH
-export PATH=$XDG_BIN_HOME:$CARGO_HOME/bin:$GOPATH/bin:$PATH
+export PATH=$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin:$PATH
 
 # EDITOR
 if [[ -x $(command -v lvim) ]]; then
@@ -43,5 +43,4 @@ export R_ENVIRON_USER=$XDG_CONFIG_HOME/R/env
 export SOLARGRAPH_CACHE=$XDG_CACHE_HOME/solargraph
 export VAGRANT_HOME=$XDG_DATA_HOME/vagrant
 export WGETRC=$XDG_CONFIG_HOME/wgetrc
-export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
