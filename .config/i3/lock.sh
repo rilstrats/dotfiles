@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# WALLPAPER="$HOME/.wallpapers/christ-fishermen"
-WALLPAPER="$XDG_CONFIG_HOME/wallpapers/lost-between"
-# WALLPAPER="$HOME/.wallpapers/tokyo-night"
+# WALLPAPER="$HOME/.config/wallpapers/christ-fishermen"
+WALLPAPER="$HOME/.config/wallpapers/lost-between"
+# WALLPAPER="$HOME/.config/wallpapers/tokyo-night"
 
 if [[ ! -z $(xrandr | grep "eDP-1 connected") ]]; then
   i3lock -i $WALLPAPER.3240x2160.png
