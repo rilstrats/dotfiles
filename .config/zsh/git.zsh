@@ -20,7 +20,7 @@ gm() {git mv $*}
 gr() {git restore $*}
 
 gf() {git fetch $*}
-gpull() {g pull $*}
+gpull() {git pull $*}
 
 ga() {git add $*}
 gc() {git commit $*}
@@ -29,6 +29,7 @@ gpush() {git push $*}
 
 gac() {ga .; gc}
 gacm() {ga .; gcm $*}
+gacmp() {ga .; gcm $1; gpush}
 gacp() {ga .; gc; gpush}
 gcp() {gc; gpush}
 
