@@ -34,7 +34,7 @@ gcp() {gc; gpush}
 
 grv() {g remote -v}
 grvo() {
-  grv | grep origin | head -n 1 | sed 'ls/^.*\t//g' | sed 's/ (.*$//g'
+  grv | grep origin | head -n 1 | sed 's/^.*\t//g' | sed 's/ (.*$//g'
 }
 
 grso () {g remote set-url origin $*}
