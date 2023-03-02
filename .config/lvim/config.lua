@@ -19,6 +19,11 @@ lvim.transparent_window = true
 vim.opt.relativenumber = true
 vim.opt.wrap = true
 vim.opt.swapfile = true
+vim.opt.scrolloff = 8
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevelstart = 99
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
@@ -173,8 +178,15 @@ lvim.plugins = {
   {
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",
-    setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
-    ft = { "markdown" }
+    ft = { "markdown" },
+    setup = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+      vim.g.mkdp_page_title = ' ${name} '
+    end,
+    -- comfig = function()
+    --   vim.g.mkdp_auto_start = 1
+    --   vim.g.mkdp_page_title = ' ${name} '
+    -- end,
   },
   -- {
   -- "folke/trouble.nvim",
