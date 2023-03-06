@@ -183,11 +183,13 @@ lvim.plugins = {
       vim.g.mkdp_filetypes = { "markdown" }
       vim.g.mkdp_page_title = ' ${name} '
     end,
-    -- comfig = function()
-    --   vim.g.mkdp_auto_start = 1
-    --   vim.g.mkdp_page_title = ' ${name} '
-    -- end,
   },
+  {
+    'andweeb/presence.nvim',
+    config = function()
+      require("presence").setup({})
+    end
+  }
   -- {
   -- "folke/trouble.nvim",
   -- cmd = "TroubleToggle",
