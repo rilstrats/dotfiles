@@ -42,5 +42,6 @@ export PYTHONSTARTUP=$XDG_CONFIG_HOME/python3/startup.py
 export R_ENVIRON_USER=$XDG_CONFIG_HOME/R/env
 export SOLARGRAPH_CACHE=$XDG_CACHE_HOME/solargraph
 export VAGRANT_HOME=$XDG_DATA_HOME/vagrant
+export WAKATIME_HOME=$XDG_CONFIG_HOME/wakatime
 export WGETRC=$XDG_CONFIG_HOME/wgetrc
 
