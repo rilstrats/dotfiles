@@ -252,6 +252,9 @@ lvim.plugins = {
     end
   },
   {
+    "wakatime/vim-wakatime"
+  },
+  {
     "ThePrimeagen/harpoon"
   },
 }
