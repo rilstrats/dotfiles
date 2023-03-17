@@ -44,6 +44,10 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # transparency
 exec --no-startup-id /usr/bin/picom -b
 
+# swap caps and escape
+exec --no-startup-id xmodmap -e "clear lock"
+exec --no-startup-id xmodmap -e "keysym Caps_Lock = Escape"
+
 # gaps
 gaps inner 8
 # gaps outer 2
