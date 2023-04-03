@@ -61,7 +61,8 @@ gaps inner 8
 ########
 
 # megasync
-exec --no-startup-id /usr/bin/megasync
+# exec --no-startup-id /usr/bin/megasync
+exec --no-startup-id /usr/bin/nextcloud
 
 # network manager
 exec --no-startup-id /usr/bin/nm-applet
