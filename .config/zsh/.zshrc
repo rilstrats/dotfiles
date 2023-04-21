@@ -67,6 +67,12 @@ open() {xdg-open $* &> /dev/null & disown}
 # grep => rg
 [[ -x $(command -v rg) ]] && alias grep=rg
 
+# topgrade
+if [[ -x $(command -v topgrade ) ]]; then
+  alias upgrade="topgrade --yes --skip-notify --no-retry"
+  alias update=upgrade
+fi
+
 # rtx
 [[ -x $(command -v rtx) ]] && eval "$(rtx activate zsh)"
 
