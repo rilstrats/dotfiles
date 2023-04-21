@@ -29,7 +29,7 @@ if [[ -d $HOME/cloud ]]; then
   export CLOUDCOL=$CLOUDPATH/college
   alias cloudcol="cd $CLOUDCOL"
 
-  export CLOUDSEM=$CLOUDCOL/2023-01.winter
+  export CLOUDSEM=$CLOUDCOL/2023-04.spring
   alias cloudsem="cd $CLOUDSEM"
 
   export CLOUDTECH=$CLOUDPATH/tech
