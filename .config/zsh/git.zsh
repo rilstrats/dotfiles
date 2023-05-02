@@ -18,12 +18,14 @@ gs() {git status $*}
 gd() {git diff $*}
 gm() {git mv $*}
 gr() {git restore $*}
+greset() {git reset $*}
 
 gf() {git fetch $*}
 gpull() {git pull $*}
 
 ga() {git add $*}
 gc() {git commit $*}
+gca() {git commit --amend $*}
 gcm() {git commit -m $*}
 gpush() {git push $*}
 
