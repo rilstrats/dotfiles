@@ -92,7 +92,7 @@ lvim.builtin.treesitter.ensure_installed = {
   "lua",
   "python",
   "typescript",
-  "tsx",
+  -- "tsx",
   "css",
   "ruby",
   "rust",
@@ -181,9 +181,10 @@ require("lvim.lsp.manager").setup("angularls")
 -- }
 
 lvim.plugins = {
-  -- {
-  --   "nvim-treesitter/nvim-treesitter-angular"
-  -- },
+  { "mrjones2014/nvim-ts-rainbow" },
+  { "wakatime/vim-wakatime" },
+  { "ThePrimeagen/harpoon" },
+  { "nvim-treesitter/nvim-treesitter-angular" },
   {
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",
@@ -230,9 +231,6 @@ lvim.plugins = {
     end,
   },
   {
-    "mrjones2014/nvim-ts-rainbow",
-  },
-  {
     "karb94/neoscroll.nvim",
     event = "WinScrolled",
     config = function()
@@ -250,12 +248,6 @@ lvim.plugins = {
         post_hook = nil, -- Function to run after the scrolling animation ends
       })
     end
-  },
-  {
-    "wakatime/vim-wakatime"
-  },
-  {
-    "ThePrimeagen/harpoon"
   },
 }
 
