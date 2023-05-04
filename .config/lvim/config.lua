@@ -10,9 +10,7 @@ an executable
 
 -- general
 lvim.log.level = "warn"
--- lvim.format_on_save.enabled = false
--- lvim.colorscheme = "lunar"
-lvim.format_on_save = true
+lvim.format_on_save.enabled = true
 lvim.colorscheme = "tokyonight"
 lvim.transparent_window = true
 
@@ -24,8 +22,6 @@ vim.opt.scrolloff = 8
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevelstart = 99
--- to disable icons and use a minimalist setup, uncomment the following
--- lvim.use_icons = false
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -79,24 +75,20 @@ lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
-lvim.builtin.treesitter.rainbow.enable = true
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
   "bash",
-  -- "c",
+  "css",
   "go",
-  -- "java",
   "javascript",
   "json",
   "lua",
   "python",
-  "typescript",
-  -- "tsx",
-  "css",
-  "ruby",
   "rust",
+  "ruby",
   "toml",
+  "typescript",
   "yaml",
 }
 
@@ -104,12 +96,11 @@ lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enable = true
 
 -- generic LSP settings
+
 -- -- make sure server will always be installed even if the server is in skipped_servers list
-lvim.lsp.installer.setup.ensure_installed = {
-  "angularls"
-  --     "sumneko_lua",
-  --     "jsonls",
-}
+-- lvim.lsp.installer.setup.ensure_installed = {
+--   "angularls"
+-- }
 -- -- change UI setting of `LspInstallInfo`
 -- -- see <https://github.com/williamboman/nvim-lsp-installer#default-configuration>
 -- lvim.lsp.installer.setup.ui.check_outdated_servers_on_open = false
@@ -127,9 +118,6 @@ lvim.lsp.installer.setup.ensure_installed = {
 -- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
 -- local opts = {} -- check the lspconfig documentation for a list of all possible options
 -- require("lvim.lsp.manager").setup("pyright", opts)
-
--- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "tsserver", "html" })
-require("lvim.lsp.manager").setup("angularls")
 
 -- ---remove a server from the skipped list, e.g. eslint, or emmet_ls. !!Requires `:LvimCacheReset` to take effect!!
 -- ---`:LvimInfo` lists which server(s) are skipped for the current filetype
@@ -167,7 +155,8 @@ require("lvim.lsp.manager").setup("angularls")
 -- local linters = require "lvim.lsp.null-ls.linters"
 -- linters.setup {
 --   { command = "flake8", filetypes = { "python" } },
---   { -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
+--   {
+--     -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
 --     command = "shellcheck",
 --     ---@usage arguments to pass to the formatter
 --     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
@@ -180,20 +169,8 @@ require("lvim.lsp.manager").setup("angularls")
 --   },
 -- }
 
+-- Additional Plugins
 lvim.plugins = {
-  { "mrjones2014/nvim-ts-rainbow" },
-  { "wakatime/vim-wakatime" },
-  { "ThePrimeagen/harpoon" },
-  { "nvim-treesitter/nvim-treesitter-angular" },
-  {
-    "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    ft = { "markdown" },
-    setup = function()
-      vim.g.mkdp_filetypes = { "markdown" }
-      vim.g.mkdp_page_title = ' ${name} '
-    end,
-  },
   {
     'andweeb/presence.nvim',
     config = function()
@@ -214,10 +191,6 @@ lvim.plugins = {
     end,
   },
   {
-    "folke/trouble.nvim",
-    cmd = "TroubleToggle",
-  },
-  {
     "folke/todo-comments.nvim",
     event = "BufRead",
     config = function()
@@ -225,9 +198,16 @@ lvim.plugins = {
     end,
   },
   {
-    "windwp/nvim-ts-autotag",
-    config = function()
-      require("nvim-ts-autotag").setup()
+    "folke/trouble.nvim",
+    cmd = "TroubleToggle",
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    ft = { "markdown" },
+    setup = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+      vim.g.mkdp_page_title = ' ${name} '
     end,
   },
   {
@@ -249,11 +229,17 @@ lvim.plugins = {
       })
     end
   },
+  { "mrjones2014/nvim-ts-rainbow" },
+  { "nvim-treesitter/nvim-treesitter-angular" },
+  { "ThePrimeagen/harpoon" },
+  { "wakatime/vim-wakatime" },
+  {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
+  },
 }
-
-lvim.builtin.telescope.on_config_done = function(telescope)
-  pcall(telescope.load_extension, "harpoon")
-end
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- vim.api.nvim_create_autocmd("BufEnter", {
