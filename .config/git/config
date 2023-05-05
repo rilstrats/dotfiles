@@ -1,16 +1,17 @@
+[color]
+  ui = auto
+[credential]
+  helper = cache
+[init]
+  defaultBranch = main
+[pull]
+  rebase = true
+[push]
+  default = current
+  autoSetupRemote = true
+
+# user.name and user.email
 [include]
   path = github
 [includeIf "gitdir:~/code/gitlab.com/**"]
   path = gitlab
-[color]
-	ui = auto
-[init]
-	defaultBranch = main
-[push]
-  default = current
-	autoSetupRemote = true
-[pull]
-	rebase = true
-
-[credential]
-	helper = cache
