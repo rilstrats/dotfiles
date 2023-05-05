@@ -1,6 +1,7 @@
-[user]
-	email = code@rilstrats.net
-	name = Riley
+[includeIf "gitdir:~/**"]
+  path = github
+[includeIf "gitdir:~/code/gitlab.com/**"]
+  path = gitlab
 [color]
 	ui = auto
 [init]
