@@ -9,15 +9,22 @@ This repo is used to store my personal dotfiles. Enjoy!
 Fedora: 
 
 ```bash
-sudo dnf install dunst i3 rofi feh
+sudo dnf install cmake nextcloud-client \
+alacritty gh nvim zsh fzf \
+bat exa fd-find ripgrep zoxide
+```
+
+For i3:
+
+```
+sudo dnf install dunst i3 rofi feh \
 brightnessctl polybar wmctrl xset \
-alacritty gh nvim tmux zsh fzf \
-ImageMagick xautolock xss-lock \
-bat exa fd-find procs ripgrep sd zoxide
+ImageMagick xautolock xss-lock 
 ```
 
 ```bash
-cargo install bacon bottom cargo-update du-dust topgrade
+cargo install bacon cargo-update topgrade rtx-cli zellij
+cargo install starship --locked
 ```
 <!-- cargo install bacon bat bottom du-dust exa procs ripgrep sd topgrade zoxide -->
 
@@ -25,7 +32,6 @@ cargo install bacon bottom cargo-update du-dust topgrade
 
 By cloning these dotfiles and setting up the submodules, you are also installing:
 
-- https://github.com/romkatv/powerlevel10k/tree/master
 - https://github.com/zsh-users/zsh-autosuggestions/tree/master
 - https://github.com/zsh-users/zsh-syntax-highlighting/tree/master
 - https://github.com/jeffreytse/zsh-vi-mode/tree/master
@@ -43,11 +49,15 @@ You will have to go follow these links and install them to use them:
 Run the following commands to bare clone this repo, checkout this files, and install the submodules.
 
 ```bash
-git clone --bare https://github.com/rilstrats/dotfiles.git $XDG_CONFIG_HOME/dotfiles.git
+git clone --bare git@github.com:rilstrats/dotfiles.git $HOME/.config/dotfiles.git
 
-/usr/bin/git --git-dir=$XDG_CONFIG_HOME/dotfiles.git --work-tree=$HOME checkout --force
-/usr/bin/git --git-dir=$XDG_CONFIG_HOME/dotfiles.git --work-tree=$HOME submodule update --init --remote
+/usr/bin/git --git-dir=$HOME/.config/dotfiles.git --work-tree=$HOME checkout --force
+/usr/bin/git --git-dir=$HOME/.config/dotfiles.git --work-tree=$HOME submodule update --init --remote
+```
 
+For i3lock:
+
+```
 cd $HOME/.config/i3/i3lock-fancy; sudo make install
 ```
 
