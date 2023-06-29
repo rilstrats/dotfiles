@@ -50,7 +50,6 @@
 !/.config/git
 !/.config/helix
 !/.config/i3
-!/.config/lvim/init.lua
 !/.config/npm
 !/.config/polybar
 !/.config/python3
@@ -71,6 +70,11 @@
 /.config/fish/*
 !/.config/fish/config.fish
 !/.config/fish/conf.d
+
+#lvim
+!/.config/lvim
+/.config/lvim/*
+!/.config/lvim/config.lua
 
 # rtx
 !/.config/rtx
