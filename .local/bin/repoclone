@@ -18,7 +18,7 @@ REPO=$(echo $URL | sed -E "s/$MATCH/\6/")
 # echo $REPO
 
 SITE="$DOMAIN.$SUFFIX"
-PREFIX="$CODESRC/$SITE/$USER"
+PREFIX="$CODEPATH/$SITE/$USER"
 FULL="$PREFIX/$REPO"
 
 read "INPUT?Is $FULL correct? [y/N]: "
