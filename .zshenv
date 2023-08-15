@@ -7,7 +7,7 @@ export XDG_CACHE_HOME=$HOME/.cache # non-essential files
 # code
 export CARGO_HOME=$XDG_DATA_HOME/cargo
 export RUSTUP_HOME=$XDG_DATA_HOME/rustup
-export RUSTC_WRAPPER=$CARGO_HOME/bin/sccache
+# export RUSTC_WRAPPER=$CARGO_HOME/bin/sccache
 export GOPATH=$XDG_DATA_HOME/go
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
@@ -24,6 +24,7 @@ elif [[ -x $(command -v vim) ]]; then
 else
   export EDITOR=$(command -v vi)
 fi
+export VISUAL=$EDITOR
 
 # PAGER
 export PAGER=/usr/bin/less
