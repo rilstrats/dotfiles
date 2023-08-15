@@ -13,6 +13,7 @@
 # .local/bin
 !/.local/bin
 /.local/bin/*
+!/.local/bin/classfind
 !/.local/bin/rgb
 !/.local/bin/tmux-home
 !/.local/bin/tmux-sessionizer

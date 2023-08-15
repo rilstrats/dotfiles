@@ -1,8 +1,8 @@
 #!/usr/bin/zsh
 
-if [[ -z $SHORTCUTS ]]; then
-  [[ -f "$ZDOTDIR/shortcuts.zsh" ]] && source "$ZDOTDIR/shortcuts.zsh"
-fi
+[[ -z $SHORTCUTS ]] && \
+  [[ -f "$ZDOTDIR/shortcuts.zsh" ]] && \
+  source "$ZDOTDIR/shortcuts.zsh"
 
 if [[ -n $1 ]]; then
   ZELLIJ_SESSION_DIR=$1
@@ -13,9 +13,10 @@ if [[ -n $1 ]]; then
       ZELLIJ_SESSION_DIR=$PWD/$ZELLIJ_SESSION_DIR
   fi
 else
-  FOUND=$(fd . $SHORTCUTS --exact-depth 1 --type d)
-  REPOS=$(repofind $CODESRC)
-  ZELLIJ_SESSION_DIR=$(echo "$HOME\n$FOUND\n$REPOS" | sort -u | fzf)
+  FOUND=$(fd -HI . $SHORTCUTS --exact-depth 1 --type d)
+  CLASSES=$(classfind)
+  REPOS=$(repofind)
+  ZELLIJ_SESSION_DIR=$(echo "$HOME\n$FOUND\n$CLASSES\n$REPOS" | sort -u | fzf)
 fi
 
 [[ -z $ZELLIJ_SESSION_DIR ]] && exit 0
