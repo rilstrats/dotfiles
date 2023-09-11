@@ -4,6 +4,8 @@
   [[ -f "$ZDOTDIR/shortcuts.zsh" ]] && \
   source "$ZDOTDIR/shortcuts.zsh"
 
+[[ -z $CLOUDEDU ]] && exit
+
 DIR=$1
 [[ -z $DIR ]] && DIR=$CLOUDEDU
 fd -HI . $DIR --exact-depth 3 --type d
