@@ -1,7 +1,11 @@
 [color]
   ui = auto
+[commit]
+  gpgsign = true
 [credential]
   helper = cache
+[gpg]
+  format = ssh
 [init]
   defaultBranch = main
 [pull]
@@ -9,6 +13,8 @@
 [push]
   default = current
   autoSetupRemote = true
+[user]
+  signingkey = ~/.ssh/id_ed25519.pub
 
 # user.name and user.email
 [include]
