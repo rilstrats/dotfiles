@@ -20,7 +20,7 @@ lvim.colorscheme = "tokyonight"
 lvim.transparent_window = true
 
 vim.opt.relativenumber = true
-vim.opt.wrap = true
+vim.opt.wrap = false
 vim.opt.swapfile = true
 vim.opt.scrolloff = 8
 
