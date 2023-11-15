@@ -3,9 +3,12 @@
   aa = add .
   c = commit
   cm = commit -m
+  cam = commit -am
   acm = commit -am
+  d = diff
   r = restore
   ra = restore .
+  s = status
 [color]
   ui = auto
 [commit]
