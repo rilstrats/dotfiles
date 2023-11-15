@@ -1,14 +1,21 @@
 [alias]
-  a = add
-  aa = add .
   c = commit
-  cm = commit -m
-  cam = commit -am
   acm = commit -am
+  cam = commit -am
+  cm = commit -m
+
+  a = add
   d = diff
+  m = move
   r = restore
-  ra = restore .
   s = status
+
+  u = restore --staged
+  unstage = restore --staged
+
+  origin = remote get-url origin
+  rgo = remote get-url origin
+  rso = remote set-url origin
 [color]
   ui = auto
 [commit]
