@@ -1,3 +1,11 @@
+[alias]
+  a = add
+  aa = add .
+  c = commit
+  cm = commit -m
+  acm = commit -am
+  r = restore
+  ra = restore .
 [color]
   ui = auto
 [commit]
