@@ -21,7 +21,7 @@ font:
     # family: Hack Nerd Font Mono
     family: Fira Code Nerd Font Mono
 
-  size: 12
+  size: 14
 
 scale_with_dpi: true
 
