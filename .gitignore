@@ -23,6 +23,7 @@
 !/.local/bin/rust-analyzer
 !/.local/bin/zellij-home
 !/.local/bin/zellij-sessionizer
+!/.local/bin/git-ssh
 
 # .local/share
 !/.local/share

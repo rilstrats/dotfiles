@@ -1,0 +1,12 @@
+#!/bin/bash
+repo=$(git remote get-url origin | sed 's/^.*\.com[/:]//g' | sed 's/\.git$//g')
+read -p "Is git@github.com:$repo.git correct? [y/N]: "
+update=$(echo ${REPLY:0:1} | tr '[:upper:]' '[:lower:]')
+
+if [[ ! "$update" == "y" ]]; then
+  echo "Origin not updated. Update manually using: "
+  echo "git remote set-url git@github.com:USER/REPO.git"
+else
+  git remote set-url origin git@github.com:$repo.git
+  echo "Origin updated to $(git remote get-url origin)"
+fi
