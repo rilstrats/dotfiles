@@ -88,6 +88,7 @@
 # nvim
 !/.config/nvim
 /.config/nvim/plugin
+/.config/nvim/lazy-lock.json
 
 # vim
 !/.config/vim
