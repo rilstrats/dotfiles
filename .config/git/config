@@ -31,6 +31,10 @@
 [push]
   default = current
   autoSetupRemote = true
+[url "git@github.com:"]
+  pushInsteadOf = https://github.com/
+[url "git@gitlab.com:"]
+  pushInsteadOf = https://gitlab.com/
 [user]
   signingkey = ~/.ssh/id_ed25519.pub
 
