@@ -25,13 +25,27 @@ compinit -d $$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
   source $ZDOTDIR/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 # custom plugins
-[[ -f $ZDOTDIR/git.zsh ]] && source $ZDOTDIR/git.zsh
-[[ -f $ZDOTDIR/home.zsh ]] && source $ZDOTDIR/home.zsh
-[[ -f $ZDOTDIR/tmux.zsh ]] && source $ZDOTDIR/tmux.zsh
-[[ -f $ZDOTDIR/colab.zsh ]] && source $ZDOTDIR/colab.zsh
-[[ -f $ZDOTDIR/files.zsh ]] && source $ZDOTDIR/files.zsh
-[[ -f $ZDOTDIR/zellij.zsh ]] && source $ZDOTDIR/zellij.zsh
+# [[ -f $ZDOTDIR/git.zsh ]] && source $ZDOTDIR/git.zsh
+# [[ -f $ZDOTDIR/home.zsh ]] && source $ZDOTDIR/home.zsh
+# [[ -f $ZDOTDIR/tmux.zsh ]] && source $ZDOTDIR/tmux.zsh
+# [[ -f $ZDOTDIR/colab.zsh ]] && source $ZDOTDIR/colab.zsh
+# [[ -f $ZDOTDIR/files.zsh ]] && source $ZDOTDIR/files.zsh
+# [[ -f $ZDOTDIR/zellij.zsh ]] && source $ZDOTDIR/zellij.zsh
 [[ -f $ZDOTDIR/shortcuts.zsh ]] && source $ZDOTDIR/shortcuts.zsh
+
+export DOTFILES=$XDG_CONFIG_HOME/dotfiles.git
+alias g=git
+alias dfs="git --git-dir=$DOTFILES --work-tree=$HOME"
+alias d=dfs
+alias v=nvim
+
+td() {cd $TMUX_DIR}
+alias tmuxer=$HOME/.local/bin/tmux-sessionizer
+alias tmuxh=$HOME/.local/bin/tmux-home
+
+zd() {cd $ZELLIJ_SESSION_DIR}
+alias zellijer=$HOME/.local/bin/zellij-sessionizer
+alias zellijh=$HOME/.local/bin/zellij-home
 
 # OLDPWD
 od() {cd $OLDPWD}
@@ -53,19 +67,19 @@ else
 fi
 
 # # cd => zoxide
-# if [[ -x $(command -v zoxide) ]]; then
-#   eval "$(zoxide init zsh)"
+if [[ -x $(command -v zoxide) ]]; then
+  eval "$(zoxide init zsh)"
 #   alias cd=z
-# fi
+fi
 
 # open => xdg-open
 open() {xdg-open $* &> /dev/null & disown}
 
 # cat => bat
-[[ -x $(command -v bat) ]] && alias cat=bat
+# [[ -x $(command -v bat) ]] && alias cat=bat
 
 # grep => rg
-[[ -x $(command -v rg) ]] && alias grep=rg
+# [[ -x $(command -v rg) ]] && alias grep=rg
 
 # topgrade
 if [[ -x $(command -v topgrade ) ]]; then
