@@ -2,60 +2,52 @@
 
 This repo is used to store my personal dotfiles. Enjoy!
 
+## Submodules
+
+By cloning these dotfiles and setting up the submodules, you are also installing:
+
+- https://github.com/zsh-users/zsh-syntax-highlighting/tree/master
+- https://github.com/zsh-users/zsh-autosuggestions/tree/master
+- https://github.com/jeffreytse/zsh-vi-mode/tree/master
+- https://github.com/rilstrats/kickstart.nvim
+
 ## Dependencies
 
-### Packages
-
-Fedora: 
+### Fedora
 
 ```bash
-sudo dnf install cmake nextcloud-client \
-alacritty gh nvim zsh fzf \
-bat exa fd-find ripgrep zoxide
+sudo dnf install @development-tools nextcloud-client \
+alacritty neovim zsh fzf \
+bat-cat exa fd-find ripgrep zoxide
 ```
 
-For i3:
+#### i3
 
-```
+```bash
 sudo dnf install dunst i3 rofi feh \
 brightnessctl polybar wmctrl xset \
 ImageMagick xautolock xss-lock 
 ```
 
+### Rust
+
 ```bash
-cargo install bacon cargo-update topgrade rtx-cli zellij
-cargo install starship --locked
+cargo install cargo-binstall cargo-update cargo-quickinstall
+cargo binstall bacon topgrade rtx-cli zellij starship nu
 ```
 <!-- cargo install bacon bat bottom du-dust exa procs ripgrep sd topgrade zoxide -->
 
-### Submodules
-
-By cloning these dotfiles and setting up the submodules, you are also installing:
-
-- https://github.com/zsh-users/zsh-autosuggestions/tree/master
-- https://github.com/zsh-users/zsh-syntax-highlighting/tree/master
-- https://github.com/jeffreytse/zsh-vi-mode/tree/master
-- https://github.com/meskarune/i3lock-fancy
-
-### Other
-
-You will have to go follow these links and install them to use them:
-
-- https://github.com/nvm-sh/nvm
-- https://www.lunarvim.org/01-installing.html
 
 ## Install
 
 Run the following commands to bare clone this repo, checkout this files, and install the submodules.
 
 ```bash
-git clone --bare git@github.com:rilstrats/dotfiles.git $HOME/.config/dotfiles.git
-
-/usr/bin/git --git-dir=$HOME/.config/dotfiles.git --work-tree=$HOME checkout --force
-/usr/bin/git --git-dir=$HOME/.config/dotfiles.git --work-tree=$HOME submodule update --init --remote
+git clone --bare https://github.com/rilstrats/dotfiles.git $HOME/.config/dotfiles.git
+git --git-dir=$HOME/.config/dotfiles.git --work-tree=$HOME checkout --force --recurse-submodules 
+# /usr/bin/git --git-dir=$HOME/.config/dotfiles.git --work-tree=$HOME submodule init --force
 ```
-
-For i3lock:
+### i3
 
 ```
 cd $HOME/.config/i3/i3lock-fancy; sudo make install
