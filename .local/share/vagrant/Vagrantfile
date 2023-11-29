@@ -1,17 +1,17 @@
 # should be placed in $HOME/.vagrant.d/Vagrantfile
-Vagrant.configure("2") do |config|
-  # config.vagrant.plugins = ["vagrant-libvirt"]
-  # config.vm.synced_folder ".", "/vagrant", type: "rsync"
-  config.vm.provider :libvirt do |lv|
-    lv.cpus = 1
-    lv.memory = 2048
-    lv.driver = "kvm"
-    lv.video_vram = 128
-    # lv.video_accel3d = true # TODO: Fix erros this causes
-    lv.video_type = "virtio"
-    lv.graphics_type = "spice"
-    lv.qemu_use_session = false
-    lv.channel :type => "spicevmc", :target_name => "com.redhat.spice.0", :target_type => "virtio"
-    lv.channel :type => "unix", :target_name => "org.qemu.guest_agent.0", :target_type => "virtio"
-  end
-end
+# Vagrant.configure("2") do |config|
+#   # config.vagrant.plugins = ["vagrant-libvirt"]
+#   config.vm.synced_folder ".", "/vagrant", type: "rsync"
+#   config.vm.provider :libvirt do |lv|
+#     lv.cpus = 1
+#     lv.memory = 2048
+#     lv.driver = "qemu"
+#     lv.video_vram = 32
+#     # lv.video_accel3d = true # TODO: Fix errors this causes
+#     lv.video_type = "virtio"
+#     lv.graphics_type = "spice"
+#     lv.qemu_use_session = false
+#     lv.channel :type => "spicevmc", :target_name => "com.redhat.spice.0", :target_type => "virtio"
+#     lv.channel :type => "unix", :target_name => "org.qemu.guest_agent.0", :target_type => "virtio"
+#   end
+# end
