@@ -6,6 +6,7 @@
 
   a = add
   d = diff
+  f = fetch
   m = move
   r = restore
   s = status
@@ -16,6 +17,10 @@
   origin = remote get-url origin
   rgo = remote get-url origin
   rso = remote set-url origin
+
+  subpush = 'push --recurse-submodules=on-demand'
+  subupdate = 'submodule update --remote'
+  subinit = 'submodule update --init'
 [color]
   ui = auto
 [commit]
