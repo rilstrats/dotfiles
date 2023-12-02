@@ -7,7 +7,6 @@ export XDG_CACHE_HOME=$HOME/.cache # non-essential files
 # code
 export CARGO_HOME=$XDG_DATA_HOME/cargo
 export RUSTUP_HOME=$XDG_DATA_HOME/rustup
-# export RUSTC_WRAPPER=$CARGO_HOME/bin/sccache
 export GOPATH=$XDG_DATA_HOME/go
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
@@ -15,9 +14,10 @@ export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 export PATH=$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin:$PATH
 
 # EDITOR
-if [[ -x $(command -v lvim) ]]; then
-  export EDITOR=$(command -v lvim)
-elif [[ -x $(command -v nvim) ]]; then
+# if [[ -x $(command -v lvim) ]]; then
+#   export EDITOR=$(command -v lvim)
+# elif [[ -x $(command -v nvim) ]]; then
+if [[ -x $(command -v nvim) ]]; then
   export EDITOR=$(command -v nvim)
 elif [[ -x $(command -v vim) ]]; then
   export EDITOR=$(command -v vim)
