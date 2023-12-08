@@ -45,7 +45,6 @@ Run the following commands to bare clone this repo, checkout this files, and ins
 ```bash
 git clone --bare https://github.com/rilstrats/dotfiles.git $HOME/.config/dotfiles.git
 git --git-dir=$HOME/.config/dotfiles.git --work-tree=$HOME checkout --force --recurse-submodules 
-# /usr/bin/git --git-dir=$HOME/.config/dotfiles.git --work-tree=$HOME submodule init --force
 ```
 ### i3
 
