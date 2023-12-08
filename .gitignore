@@ -80,7 +80,6 @@
 
 # rtx
 !/.config/rtx
-!/.tool-versions
 
 # R
 !/.config/R
