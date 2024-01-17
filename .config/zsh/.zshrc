@@ -87,8 +87,8 @@ if [[ -x $(command -v topgrade ) ]]; then
   alias update=upgrade
 fi
 
-# rtx
-[[ -x $(command -v rtx) ]] && eval "$(rtx activate zsh)"
+# mise
+[[ -x $(command -v mise) ]] && eval "$(mise activate zsh)"
 
 # starship
 [[ -x $(command -v starship) ]] && eval "$(starship init zsh)"

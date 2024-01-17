@@ -78,8 +78,8 @@
 /.config/lvim/*
 !/.config/lvim/config.lua
 
-# rtx
-!/.config/rtx
+# mise
+!/.config/mise
 
 # R
 !/.config/R
