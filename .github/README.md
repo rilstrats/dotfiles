@@ -33,7 +33,7 @@ ImageMagick xautolock xss-lock
 
 ```bash
 cargo install cargo-binstall cargo-update cargo-quickinstall
-cargo binstall bacon topgrade rtx-cli zellij starship nu
+cargo binstall bacon topgrade mise zellij starship
 ```
 <!-- cargo install bacon bat bottom du-dust exa procs ripgrep sd topgrade zoxide -->
 
