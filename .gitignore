@@ -29,6 +29,10 @@
 !/.local/share
 /.local/share/*
 
+# .local/state
+!/.local/state
+/.local/state/*
+
 # vagrant
 !/.local/share/vagrant
 /.local/share/vagrant/*
@@ -65,7 +69,11 @@
 !/.zshenv
 !/.config/zsh
 /.config/zsh/functions
+!/.local/state/zsh
+/.local/state/zsh/*
+!/.local/state/zsh/.gitkeep
 *.zwc
+.zcompdump
 
 # fish
 !/.config/fish
