@@ -17,17 +17,16 @@ By cloning these dotfiles and setting up the submodules, you are also installing
 
 ```bash
 sudo dnf install @development-tools nextcloud-client \
-alacritty neovim zsh fzf \
-bat-cat exa fd-find ripgrep zoxide
+alacritty neovim zsh fzf bat exa fd-find ripgrep stow zoxide
 ```
 
-#### i3
-
-```bash
-sudo dnf install dunst i3 rofi feh \
-brightnessctl polybar wmctrl xset \
-ImageMagick xautolock xss-lock 
-```
+<!-- #### i3 -->
+<!---->
+<!-- ```bash -->
+<!-- sudo dnf install dunst i3 rofi feh \ -->
+<!-- brightnessctl polybar wmctrl xset \ -->
+<!-- ImageMagick xautolock xss-lock  -->
+<!-- ``` -->
 
 ### Rust
 
@@ -40,53 +39,59 @@ cargo binstall bacon topgrade mise zellij starship
 
 ## Install
 
+I've recently migrated to stow, check out the new commands.
 Run the following commands to bare clone this repo, checkout this files, and install the submodules.
 
 ```bash
-git clone --bare https://github.com/rilstrats/dotfiles.git $HOME/.config/dotfiles.git
-git --git-dir=$HOME/.config/dotfiles.git --work-tree=$HOME checkout --force --recurse-submodules 
-```
-### i3
-
-```
-cd $HOME/.config/i3/i3lock-fancy; sudo make install
+git clone https://github.com/rilstrats/dotfiles.git $HOME/.dotfiles
+cd $HOME/.dotfiles
+git submodule update --init --checkout
+stow .
 ```
 
-### Permanent Aliases
+If you see any errors from the stow command, you will need to delete the conflicting files.
 
-Note, if you are cloning this repo, you will not need to create these aliases, they are already in `~/.zshrc`.
+<!-- ### i3 -->
+<!---->
+<!-- ``` -->
+<!-- cd $HOME/.config/i3/i3lock-fancy; sudo make install -->
+<!-- ``` -->
 
-```bash
-echo "dotfiles() {/usr/bin/git --git-dir=$XDG_CONFIG_HOME/.dotfiles.git --work-tree=$HOME $*}
-alias dfs=dotfiles" >> $HOME/.zshrc
-```
-
-This enables you to use commands such as `dfs status` just like `git status` to manage the dotfiles.
-
-### High DPI
-
-When using a high DPI screen, you will want to run this command.
-
-```bash
-ln $XDG_CONFIG_HOME/Xresources/hi-dpi $HOME/.Xresources
-```
-
-### Touchpad
-
-Edit `/usr/share/X11/xorg.conf.d/40-libinput.conf` to have these in the touchpad section.
-
-```
-        Option "NaturalScrolling" "True"
-        Option "Tapping" "on"
-        Option "TappingButtonMap" "lrm"
-        Option "AccelSpeed" "0.5"
-```
-
-### Power Button Sleep
-
-Edit `/etc/systemd/logind.conf` to have this line
-
-```
-HandlePowerKey=suspend
-```
-
+<!-- ### Permanent Aliases -->
+<!---->
+<!-- Note, if you are cloning this repo, you will not need to create these aliases, they are already in `~/.zshrc`. -->
+<!---->
+<!-- ```bash -->
+<!-- echo "dotfiles() {/usr/bin/git --git-dir=$XDG_CONFIG_HOME/.dotfiles.git --work-tree=$HOME $*} -->
+<!-- alias dfs=dotfiles" >> $HOME/.zshrc -->
+<!-- ``` -->
+<!---->
+<!-- This enables you to use commands such as `dfs status` just like `git status` to manage the dotfiles. -->
+<!---->
+<!-- ### High DPI -->
+<!---->
+<!-- When using a high DPI screen, you will want to run this command. -->
+<!---->
+<!-- ```bash -->
+<!-- ln $XDG_CONFIG_HOME/Xresources/hi-dpi $HOME/.Xresources -->
+<!-- ``` -->
+<!---->
+<!-- ### Touchpad -->
+<!---->
+<!-- Edit `/usr/share/X11/xorg.conf.d/40-libinput.conf` to have these in the touchpad section. -->
+<!---->
+<!-- ``` -->
+<!--         Option "NaturalScrolling" "True" -->
+<!--         Option "Tapping" "on" -->
+<!--         Option "TappingButtonMap" "lrm" -->
+<!--         Option "AccelSpeed" "0.5" -->
+<!-- ``` -->
+<!---->
+<!-- ### Power Button Sleep -->
+<!---->
+<!-- Edit `/etc/systemd/logind.conf` to have this line -->
+<!---->
+<!-- ``` -->
+<!-- HandlePowerKey=suspend -->
+<!-- ``` -->
+<!---->
