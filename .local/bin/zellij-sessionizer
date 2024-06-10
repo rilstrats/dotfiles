@@ -1,10 +1,10 @@
 #!/usr/bin/zsh
 
 if [[ -z $ZELLIJ_SHORTCUTS ]]; then
-  if [[ -f "$ZDOTDIR/zellij-shortcuts.zsh" ]]; then
-    source "$ZDOTDIR/zellij-shortcuts.zsh"
+  if [[ -f "$ZDOTDIR/shortcuts.zsh" ]]; then
+    source "$ZDOTDIR/shortcuts.zsh"
   else
-    echo "ERROR: \$ZELLIJ_SHORTCUTS not set and can't find \$ZDOTDIR/zellij-shortcuts.zsh"
+    echo "ERROR: \$ZELLIJ_SHORTCUTS not set and can't find \$ZDOTDIR/shortcuts.zsh"
     exit
   fi
 fi

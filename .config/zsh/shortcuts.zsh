@@ -2,7 +2,8 @@ ZELLIJ_SHORTCUTS=()
 
 # code
 if [[ -d $HOME/code ]]; then
-  ZELLIJ_SHORTCUTS+=("$(fd -HI '.git$' $HOME/code | sed 's|/\.git||')")
+  export CODEPATH=$HOME/code # necessary cause used by git-codeclone
+  ZELLIJ_SHORTCUTS+=("$(fd -HI '.git$' $CODEPATH | sed 's|/\.git||')")
 fi
 
 # cloud

@@ -24,6 +24,10 @@ compinit -d $$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 [[ -f $ZDOTDIR/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]] && \
   source $ZDOTDIR/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
+# shortcuts
+[[ -f $ZDOTDIR/shortcuts.zsh ]] && $ZDOTDIR/shortcuts.zsh
+
+# aliases
 alias g=git
 alias v=$EDITOR
 alias vi=$EDITOR
@@ -54,14 +58,16 @@ else
   alias l.='ls --color=auto -ohAd .*'
 fi
 
-# # cd => zoxide
+# bat => cat
+[[ -x $(command -v bat) ]] && alias cat=bat
+
+# cd => zoxide
 if [[ -x $(command -v zoxide) ]]; then
-  eval "$(zoxide init zsh)"
-  alias cd=z
+  eval "$(zoxide init --cmd cd zsh)"
 fi
 
 # topgrade
-if [[ -x $(command -v topgrade ) ]]; then
+if [[ -x $(command -v topgrade) ]]; then
   alias upgrade="topgrade --yes --skip-notify --no-retry"
   alias update=upgrade
 fi
@@ -71,3 +77,4 @@ fi
 
 # starship
 [[ -x $(command -v starship) ]] && eval "$(starship init zsh)"
+
