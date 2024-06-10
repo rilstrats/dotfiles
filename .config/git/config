@@ -18,9 +18,13 @@
   rgo = remote get-url origin
   rso = remote set-url origin
 
-  subpush = 'push --recurse-submodules=on-demand'
-  subupdate = 'submodule update --remote'
-  subinit = 'submodule update --init'
+  subpush = push --recurse-submodules=on-demand
+  subupdate = submodule update --remote
+  subinit = submodule update --init --checkout
+
+  cclone = codeclone
+  cc = codeclone
+
 [color]
   ui = auto
 [commit]
