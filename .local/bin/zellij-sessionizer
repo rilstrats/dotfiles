@@ -23,7 +23,7 @@ else
   # CLASSES=$(classfind)
   # REPOS=$(repofind)
   # ZELLIJ_SESSION_DIR=$(echo "$HOME\n$FOUND\n$CLASSES\n$REPOS" | sort -u | fzf)
-  ZELLIJ_SESSION_DIR=$(echo "$ZELLIJ_SHORTCUTS" | sort -u | fzf)
+  ZELLIJ_SESSION_DIR=$(printf "%s\n" $ZELLIJ_SHORTCUTS | sort -u | fzf)
 fi
 
 [[ -z $ZELLIJ_SESSION_DIR ]] && exit 0
