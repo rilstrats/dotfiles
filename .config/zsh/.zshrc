@@ -24,26 +24,14 @@ compinit -d $$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 [[ -f $ZDOTDIR/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]] && \
   source $ZDOTDIR/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
-# custom plugins
-# [[ -f $ZDOTDIR/git.zsh ]] && source $ZDOTDIR/git.zsh
-# [[ -f $ZDOTDIR/home.zsh ]] && source $ZDOTDIR/home.zsh
-# [[ -f $ZDOTDIR/tmux.zsh ]] && source $ZDOTDIR/tmux.zsh
-# [[ -f $ZDOTDIR/colab.zsh ]] && source $ZDOTDIR/colab.zsh
-# [[ -f $ZDOTDIR/files.zsh ]] && source $ZDOTDIR/files.zsh
-# [[ -f $ZDOTDIR/zellij.zsh ]] && source $ZDOTDIR/zellij.zsh
-[[ -f $ZDOTDIR/zellij-shortcuts.zsh ]] && source $ZDOTDIR/zellij-shortcuts.zsh
-
-export DOTFILES=$XDG_CONFIG_HOME/dotfiles.git
 alias g=git
-alias dfs="git --git-dir=$DOTFILES --work-tree=$HOME"
-alias d=dfs
-alias v=nvim
+alias v=$EDITOR
+alias vi=$EDITOR
+alias vim=$EDITOR
 
-td() {cd $TMUX_DIR}
-alias tmuxer=$HOME/.local/bin/tmux-sessionizer
-alias tmuxh=$HOME/.local/bin/tmux-home
-
+# zellij sessionizer
 zd() {cd $ZELLIJ_SESSION_DIR}
+zwd() {echo $ZELLIJ_SESSION_DIR}
 alias zellijer=$HOME/.local/bin/zellij-sessionizer
 alias zellijh=$HOME/.local/bin/zellij-home
 
@@ -71,15 +59,6 @@ if [[ -x $(command -v zoxide) ]]; then
   eval "$(zoxide init zsh)"
   alias cd=z
 fi
-
-# open => xdg-open
-open() {xdg-open $* &> /dev/null & disown}
-
-# cat => bat
-# [[ -x $(command -v bat) ]] && alias cat=bat
-
-# grep => rg
-# [[ -x $(command -v rg) ]] && alias grep=rg
 
 # topgrade
 if [[ -x $(command -v topgrade ) ]]; then
