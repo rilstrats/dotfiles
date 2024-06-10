@@ -51,6 +51,18 @@ stow .
 
 If you see any errors from the stow command, you will need to delete the conflicting files.
 
+## Secrets Management
+
+You will need to set up your secrets using `secret-tool`.
+This is currently only needed for WakaTime.
+Run the command below.
+You will then be prompted for a "password."
+The "password" you input should be your API key.
+
+```sh
+secret-tool store --label="WakaTime API Key" wakatime api_key
+```
+
 <!-- ### i3 -->
 <!---->
 <!-- ``` -->
