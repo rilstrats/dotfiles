@@ -25,7 +25,7 @@ compinit -d $$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
   source $ZDOTDIR/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 # shortcuts
-[[ -f $ZDOTDIR/shortcuts.zsh ]] && $ZDOTDIR/shortcuts.zsh
+[[ -f $ZDOTDIR/shortcuts.zsh ]] && source $ZDOTDIR/shortcuts.zsh
 
 # aliases
 alias g=git
