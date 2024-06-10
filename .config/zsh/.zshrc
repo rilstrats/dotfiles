@@ -69,7 +69,7 @@ fi
 # # cd => zoxide
 if [[ -x $(command -v zoxide) ]]; then
   eval "$(zoxide init zsh)"
-#   alias cd=z
+  alias cd=z
 fi
 
 # open => xdg-open
