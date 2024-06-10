@@ -1,23 +1,29 @@
 #!/usr/bin/zsh
 
-# [[ -z $SHORTCUTS ]] && \
-#   [[ -f "$ZDOTDIR/shortcuts.zsh" ]] && \
-#   source "$ZDOTDIR/shortcuts.zsh"
+if [[ -z $ZELLIJ_SHORTCUTS ]]; then
+  if [[ -f "$ZDOTDIR/zellij-shortcuts.zsh" ]]; then
+    source "$ZDOTDIR/zellij-shortcuts.zsh"
+  else
+    echo "ERROR: \$ZELLIJ_SHORTCUTS not set and can't find \$ZDOTDIR/zellij-shortcuts.zsh"
+    exit
+  fi
+fi
 
 if [[ -n $1 ]]; then
-  ZELLIJ_SESSION_DIR=$1
-  if [[ $ZELLIJ_SESSION_DIR == '.' ]]; then
-    ZELLIJ_SESSION_DIR=$PWD
-  elif [[ ! $ZELLIJ_SESSION_DIR =~ '^/.*' ]]; then
-    [[ -d $PWD/$ZELLIJ_SESSION_DIR ]] && \
-      ZELLIJ_SESSION_DIR=$PWD/$ZELLIJ_SESSION_DIR
-  fi
+  cd $1
+  ZELLIJ_SESSION_DIR=$PWD
+  # if [[ $ZELLIJ_SESSION_DIR == '.' ]]; then
+  #   ZELLIJ_SESSION_DIR=$PWD
+  # elif [[ ! $ZELLIJ_SESSION_DIR =~ '^/.*' ]]; then
+  #   [[ -d $PWD/$ZELLIJ_SESSION_DIR ]] && \
+  #     ZELLIJ_SESSION_DIR=$PWD/$ZELLIJ_SESSION_DIR
+  # fi
 else
   # FOUND=$(fd -HI . $SHORTCUTS --exact-depth 1 --type d)
-  CLASSES=$(classfind)
-  REPOS=$(repofind)
+  # CLASSES=$(classfind)
+  # REPOS=$(repofind)
   # ZELLIJ_SESSION_DIR=$(echo "$HOME\n$FOUND\n$CLASSES\n$REPOS" | sort -u | fzf)
-  ZELLIJ_SESSION_DIR=$(echo "$HOME\n$CLASSES\n$REPOS" | sort -u | fzf)
+  ZELLIJ_SESSION_DIR=$(echo "$ZELLIJ_SHORTCUTS" | sort -u | fzf)
 fi
 
 [[ -z $ZELLIJ_SESSION_DIR ]] && exit 0

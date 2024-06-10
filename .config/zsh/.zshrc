@@ -31,7 +31,7 @@ compinit -d $$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 # [[ -f $ZDOTDIR/colab.zsh ]] && source $ZDOTDIR/colab.zsh
 # [[ -f $ZDOTDIR/files.zsh ]] && source $ZDOTDIR/files.zsh
 # [[ -f $ZDOTDIR/zellij.zsh ]] && source $ZDOTDIR/zellij.zsh
-[[ -f $ZDOTDIR/shortcuts.zsh ]] && source $ZDOTDIR/shortcuts.zsh
+[[ -f $ZDOTDIR/zellij-shortcuts.zsh ]] && source $ZDOTDIR/zellij-shortcuts.zsh
 
 export DOTFILES=$XDG_CONFIG_HOME/dotfiles.git
 alias g=git
