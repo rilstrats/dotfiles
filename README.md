@@ -51,7 +51,7 @@ stow .
 
 If you see any errors from the stow command, you will need to delete the conflicting files.
 
-## Secrets Management
+### Secrets Management
 
 You will need to set up your secrets using `secret-tool`.
 This is currently only needed for WakaTime.
@@ -62,48 +62,10 @@ The "password" you input should be your API key.
 ```sh
 secret-tool store --label="WakaTime API Key" wakatime api_key
 ```
+### Mise
 
-<!-- ### i3 -->
-<!---->
-<!-- ``` -->
-<!-- cd $HOME/.config/i3/i3lock-fancy; sudo make install -->
-<!-- ``` -->
+When installing python, it often spouts warnings/errors.This command fixed these errors:
 
-<!-- ### Permanent Aliases -->
-<!---->
-<!-- Note, if you are cloning this repo, you will not need to create these aliases, they are already in `~/.zshrc`. -->
-<!---->
-<!-- ```bash -->
-<!-- echo "dotfiles() {/usr/bin/git --git-dir=$XDG_CONFIG_HOME/.dotfiles.git --work-tree=$HOME $*} -->
-<!-- alias dfs=dotfiles" >> $HOME/.zshrc -->
-<!-- ``` -->
-<!---->
-<!-- This enables you to use commands such as `dfs status` just like `git status` to manage the dotfiles. -->
-<!---->
-<!-- ### High DPI -->
-<!---->
-<!-- When using a high DPI screen, you will want to run this command. -->
-<!---->
-<!-- ```bash -->
-<!-- ln $XDG_CONFIG_HOME/Xresources/hi-dpi $HOME/.Xresources -->
-<!-- ``` -->
-<!---->
-<!-- ### Touchpad -->
-<!---->
-<!-- Edit `/usr/share/X11/xorg.conf.d/40-libinput.conf` to have these in the touchpad section. -->
-<!---->
-<!-- ``` -->
-<!--         Option "NaturalScrolling" "True" -->
-<!--         Option "Tapping" "on" -->
-<!--         Option "TappingButtonMap" "lrm" -->
-<!--         Option "AccelSpeed" "0.5" -->
-<!-- ``` -->
-<!---->
-<!-- ### Power Button Sleep -->
-<!---->
-<!-- Edit `/etc/systemd/logind.conf` to have this line -->
-<!---->
-<!-- ``` -->
-<!-- HandlePowerKey=suspend -->
-<!-- ``` -->
-<!---->
+```sh
+sudo dnf install libffi-devel sqlite-devel readline-devel bzip2-devel tk-devel
+```
