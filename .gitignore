@@ -1,3 +1,38 @@
-# since changing to stow this file is pretty empty...
-.local/state/zsh/history
+# Ignore all files in .local by default
+/.local/*
 
+# User Executables
+!/.local/bin
+/.local/bin/*
+
+!/.local/bin/rgb
+!/.local/bin/git-*
+!/.local/bin/tmux-*
+!/.local/bin/zellij-*
+
+# Application State
+!/.local/state
+/.local/state/*
+
+!/.local/state/zsh
+/.local/state/zsh/*
+!/.local/state/zsh/.gitkeep
+
+# Application Data
+!/.local/share
+/.local/share/*
+
+!/.local/share/vagrant
+/.local/share/vagrant/*
+!/.local/share/vagrant/Vagrantfile
+
+!/.local/share/go
+/.local/share/go/*
+!/.local/share/go/src
+
+!/.local/share/fonts
+/.local/share/fonts/.uuid
+
+# ZSH Compiled Files
+*.zwc
+.zcompdump
