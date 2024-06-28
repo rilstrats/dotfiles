@@ -26,10 +26,6 @@
 /.local/share/vagrant/*
 !/.local/share/vagrant/Vagrantfile
 
-!/.local/share/go
-/.local/share/go/*
-!/.local/share/go/src
-
 !/.local/share/fonts
 /.local/share/fonts/.uuid
 
