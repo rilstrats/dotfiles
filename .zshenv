@@ -30,20 +30,9 @@ export VISUAL=$EDITOR
 export PAGER=/usr/bin/less
 
 # XDG compliance
-export ANDROID_HOME=$XDG_CONFIG_HOME/android
-export CUDA_CACHE_PATH=$XDG_CACHE_HOME/nv
 export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker
 export GEM_HOME=$XDG_DATA_HOME/gem
-export GTK2_RC_FILES=$XDG_CONFIG_HOME/gtk-2.0/gtkrc
-export JUPYTER_PLATFORM_DIRS="1"
-export KDEHOME=$XDG_CONFIG_HOME/kde
-export MATHEMATICA_USERBASE=$XDG_CONFIG_HOME/mathematica
-export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
-export PYTHONHISTFILE=$XDG_STATE_HOME/python3/history
-export PYTHONSTARTUP=$XDG_CONFIG_HOME/python3/startup.py
-export R_ENVIRON_USER=$XDG_CONFIG_HOME/R/env
-export SOLARGRAPH_CACHE=$XDG_CACHE_HOME/solargraph
 export VAGRANT_HOME=$XDG_DATA_HOME/vagrant
+export VAGRANT_ALIAS_FILE=$XDG_DATA_HOME/vagrant/aliases
 export WAKATIME_HOME=$XDG_CONFIG_HOME/wakatime
-export WGETRC=$XDG_CONFIG_HOME/wgetrc
 
