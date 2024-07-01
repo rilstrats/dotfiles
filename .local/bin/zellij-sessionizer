@@ -28,8 +28,8 @@ fi
 
 [[ -z $ZELLIJ_SESSION_DIR ]] && exit 0
 
-if [[ $ZELLIJ_SESSION_DIR == $HOME ]]; then
-  ZELLIJ_SESSION_NAME=home
+if [[ $ZELLIJ_SESSION_DIR == $HOME/ ]]; then
+  ZELLIJ_SESSION_NAME=HOME
 else
   ZELLIJ_SESSION_NAME=$(basename "$ZELLIJ_SESSION_DIR")
 fi
