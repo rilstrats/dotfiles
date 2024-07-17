@@ -29,6 +29,10 @@
 !/.local/share/fonts
 /.local/share/fonts/.uuid
 
+# Docker
+/.config/docker/*
+!/.config/docker/config.json
+
 # ZSH Compiled Files
 *.zwc
 .zcompdump
