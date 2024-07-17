@@ -25,6 +25,8 @@
   cclone = codeclone
   cc = codeclone
 
+  root = rev-parse --show-toplevel
+
 [color]
   ui = auto
 [commit]
