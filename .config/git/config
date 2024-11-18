@@ -35,8 +35,8 @@
   helper = cache
 [gpg]
   format = ssh
-[init]
-  defaultBranch = main
+; [init]
+;   defaultBranch = main
 [pull]
   rebase = true
 [push]
