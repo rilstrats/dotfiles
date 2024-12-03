@@ -6,9 +6,9 @@ This repo is used to store my personal dotfiles. Enjoy!
 
 By cloning these dotfiles and setting up the submodules, you are also installing:
 
-- https://github.com/zsh-users/zsh-syntax-highlighting/tree/master
-- https://github.com/zsh-users/zsh-autosuggestions/tree/master
-- https://github.com/jeffreytse/zsh-vi-mode/tree/master
+- https://github.com/zdharma-continuum/fast-syntax-highlighting
+- https://github.com/zsh-users/zsh-autosuggestions
+- https://github.com/jeffreytse/zsh-vi-mode
 - https://github.com/rilstrats/kickstart.nvim
 
 ## Dependencies
