@@ -8,9 +8,10 @@ fi
 
 # cloud
 if [[ -d $HOME/cloud ]]; then
-  [[ -d $HOME/cloud/notes ]] && ZELLIJ_SHORTCUTS+=($HOME/cloud/notes/)
-  [[ -d $HOME/cloud/education ]] && ZELLIJ_SHORTCUTS+=($(fd -HI . $HOME/cloud/education --exact-depth 3 --type d))
-  [[ -d $HOME/cloud/tech/cyber ]] && ZELLIJ_SHORTCUTS+=($(fd -HI . $HOME/cloud/tech/cyber --exact-depth 1 --type d))
+  EDU=$HOME/cloud/edu
+  [[ -d $EDU ]] && ZELLIJ_SHORTCUTS+=($(fd -HI . $EDU --exact-depth 3 -t d))
+  CYB=$HOME/cloud/tech/cyber
+  [[ -d $CYB ]] && ZELLIJ_SHORTCUTS+=($(fd -HI . $CYB --exact-depth 1 -t d))
 fi
 
 export ZELLIJ_SHORTCUTS
