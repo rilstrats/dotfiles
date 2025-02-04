@@ -24,6 +24,8 @@
 
 	cclone = codeclone
 	cc = codeclone
+	cinit = codeinit
+	ci = codeinit
 
 	root = rev-parse --show-toplevel
 
