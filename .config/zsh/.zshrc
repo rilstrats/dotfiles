@@ -28,10 +28,10 @@ compinit -d $$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 [[ -f $ZDOTDIR/shortcuts.zsh ]] && source $ZDOTDIR/shortcuts.zsh
 
 # aliases
-alias g=git
-alias v=$EDITOR
-alias vi=$EDITOR
-alias vim=$EDITOR
+# alias g=git
+# alias v=$EDITOR
+# alias vi=$EDITOR
+# alias vim=$EDITOR
 
 # zellij sessionizer
 zd() {cd $ZELLIJ_SESSION_DIR}
