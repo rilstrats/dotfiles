@@ -69,3 +69,12 @@ When installing python, it often spouts warnings/errors.This command fixed these
 ```sh
 sudo dnf install libffi-devel sqlite-devel readline-devel bzip2-devel tk-devel
 ```
+
+### Disks
+
+In `/etc/fstab`:
+
+```
+UUID=1d13b649-09b5-4760-a335-84325fc5ee23 /gaming   btrfs subvol=gaming,defaults,compress=zstd,noatime,autodefrag 0 0
+UUID=1d13b649-09b5-4760-a335-84325fc5ee23 /backitup btrfs subvol=backitup,defaults,compress=zstd,noatime,autodefrag 0 0
+```
