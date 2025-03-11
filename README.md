@@ -78,3 +78,10 @@ In `/etc/fstab`:
 UUID=1d13b649-09b5-4760-a335-84325fc5ee23 /gaming   btrfs subvol=gaming,defaults,compress=zstd,noatime,autodefrag 0 0
 UUID=1d13b649-09b5-4760-a335-84325fc5ee23 /backitup btrfs subvol=backitup,defaults,compress=zstd,noatime,autodefrag 0 0
 ```
+
+The mountpoints must be created and permissions changed:
+
+```sh
+sudo mkdir /gaming /backitup
+sudo chmod 1777 /gaming /backitup
+```
