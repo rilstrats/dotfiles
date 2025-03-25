@@ -44,6 +44,8 @@
 [push]
 	default = current
 	autoSetupRemote = true
+[merge]
+	ff = never
 [url "git@github.com:"]
 	pushInsteadOf = https://github.com/
 [url "git@gitlab.com:"]
