@@ -1,1 +1,11 @@
 mise.local.toml
+
+##################
+# neovim plugins #
+##################
+
+# clangd
+.cache/
+
+# neocmake
+.cmake/
