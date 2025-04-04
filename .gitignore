@@ -9,6 +9,7 @@
 !/.local/bin/git-*
 !/.local/bin/tmux-*
 !/.local/bin/zellij-*
+!/.local/bin/ssh-copy-terminfo
 
 # Application State
 !/.local/state
