@@ -28,7 +28,7 @@
 !/.local/share/vagrant/Vagrantfile
 
 !/.local/share/fonts
-/.local/share/fonts/.uuid
+.uuid
 
 # Docker
 /.config/docker/*
