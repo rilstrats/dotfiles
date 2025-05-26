@@ -45,17 +45,15 @@ owd() {echo $OLDPWD}
 
 # ls => exa
 if [[ -x $(command -v exa) ]]; then
-  alias l='exa --git -la'
-  alias ls='exa --git'
-  alias la='exa --git -a'
-  alias ll='exa --git -l'
-  alias l.='exa --git -lad .*'
+  alias ls='exa --git --group-directories-first'
+  alias la='ls -a'
+  alias ll='ls -l'
+  alias l='ls -la'
 else
-  alias l='ls --color=auto -ohA'
-  alias ls='ls --color=auto'
-  alias la='ls --color=auto -A'
-  alias ll='ls --color=auto -oh'
-  alias l.='ls --color=auto -ohAd .*'
+  alias ls='ls --color=auto --group-directories-first'
+  alias la='ls -A'
+  alias ll='ls -oh'
+  alias l='ls -ohA'
 fi
 
 # bat => cat
