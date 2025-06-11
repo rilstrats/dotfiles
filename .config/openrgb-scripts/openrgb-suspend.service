@@ -1,0 +1,13 @@
+# TODO: Find out why `i2c_dev` isn't available during Before=suspend.target
+
+[Unit]
+Description=Set OpenRGB on suspend
+Before=suspend.target
+
+[Service]
+User=rilstrats
+Type=oneshot
+ExecStart=openrgb --noautoconnect -p red
+
+[Install]
+WantedBy=suspend.target

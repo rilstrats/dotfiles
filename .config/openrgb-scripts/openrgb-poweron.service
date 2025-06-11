@@ -1,0 +1,11 @@
+[Unit]
+Description=Set OpenRGB on resume
+After=graphical.target
+
+[Service]
+User=rilstrats
+Type=oneshot
+ExecStart=openrgb --noautoconnect -p guppie-green-dim
+
+[Install]
+WantedBy=graphical.target
