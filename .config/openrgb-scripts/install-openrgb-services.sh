@@ -14,5 +14,5 @@ sudo systemctl daemon-reload
 
 # enable systemctl scripts
 sudo systemctl enable openrgb-poweron.service
-sudo systemctl enable openrgb-suspend.service
+# sudo systemctl enable openrgb-suspend.service
 sudo systemctl enable openrgb-resume.service
