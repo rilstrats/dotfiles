@@ -7,7 +7,7 @@ Before=suspend.target
 [Service]
 User=rilstrats
 Type=oneshot
-ExecStart=openrgb --noautoconnect -p guppie-green-dim
+ExecStart=openrgb --noautoconnect -p sleeping
 
 [Install]
 WantedBy=suspend.target
