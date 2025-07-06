@@ -1,6 +1,7 @@
 [Unit]
 Description=Set OpenRGB on resume
 After=graphical.target
+Requires=systemd-modules-load.service
 
 [Service]
 User=rilstrats

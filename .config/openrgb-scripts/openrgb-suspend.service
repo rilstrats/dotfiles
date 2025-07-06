@@ -3,6 +3,7 @@
 [Unit]
 Description=Set OpenRGB on suspend
 Before=suspend.target
+Requires=systemd-modules-load.service
 
 [Service]
 User=rilstrats

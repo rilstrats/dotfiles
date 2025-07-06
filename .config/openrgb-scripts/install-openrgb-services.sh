@@ -1,7 +1,7 @@
 # disable systemctl scripts in case they're already loaded
 sudo systemctl disable openrgb-poweron.service
 sudo systemctl disable openrgb-suspend.service
-sudo systemctl disable openrgb-resume.service 
+sudo systemctl disable openrgb-resume.service
 
 # load kernel modules
 sudo modprobe --first-time i2c-dev
@@ -14,5 +14,5 @@ sudo systemctl daemon-reload
 
 # enable systemctl scripts
 sudo systemctl enable openrgb-poweron.service
-# sudo systemctl enable openrgb-suspend.service
+sudo systemctl enable openrgb-suspend.service
 sudo systemctl enable openrgb-resume.service
