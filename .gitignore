@@ -34,6 +34,10 @@
 /.config/docker/*
 !/.config/docker/config.json
 
+# Wakatime
+/.config/wakatime/*
+!/.config/wakatime/.wakatime.cfg
+
 # ZSH Compiled Files
 *.zwc
 .zcompdump
