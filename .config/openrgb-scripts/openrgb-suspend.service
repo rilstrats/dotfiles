@@ -1,14 +1,11 @@
-# TODO: Find out why `i2c_dev` isn't available during Before=suspend.target
-
 [Unit]
-Description=Set OpenRGB on suspend
+Description=Set RGB to sleeping profile on suspend
 Before=suspend.target
-Requires=systemd-modules-load.service
 
 [Service]
-User=rilstrats
+User=riley
 Type=oneshot
-ExecStart=openrgb --noautoconnect -p sleeping
+ExecStart=flatpak run org.openrgb.OpenRGB --noautoconnect -p sleeping
 
 [Install]
 WantedBy=suspend.target

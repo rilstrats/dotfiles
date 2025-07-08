@@ -1,12 +1,11 @@
 [Unit]
-Description=Set OpenRGB on resume
+Description=Set RGB to running profile on poweron
 After=graphical.target
-Requires=systemd-modules-load.service
 
 [Service]
-User=rilstrats
+User=riley
 Type=oneshot
-ExecStart=openrgb --noautoconnect -p running
+ExecStart=flatpak run org.openrgb.OpenRGB --noautoconnect -p running
 
 [Install]
 WantedBy=graphical.target

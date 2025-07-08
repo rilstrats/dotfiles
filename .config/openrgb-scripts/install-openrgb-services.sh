@@ -4,9 +4,9 @@ sudo systemctl disable openrgb-suspend.service
 sudo systemctl disable openrgb-resume.service
 
 # load kernel modules
-sudo modprobe --first-time i2c-dev
-sudo modprobe --first-time i2c-i801
-sudo cp i2c.conf /etc/modules-load.d # set up autoloading
+# sudo modprobe --first-time i2c-dev
+# sudo modprobe --first-time i2c-i801
+# sudo cp i2c.conf /etc/modules-load.d # set up autoloading
 
 # install systemctl scripts
 sudo cp openrgb-poweron.service openrgb-suspend.service openrgb-resume.service /etc/systemd/system
