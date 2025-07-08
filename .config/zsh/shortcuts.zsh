@@ -1,4 +1,4 @@
-ZELLIJ_SHORTCUTS=($HOME/ $HOME/.dotfiles/)
+ZELLIJ_SHORTCUTS=($HOME/ $HOME/.dotfiles/ $HOME/.dotfiles/.config/nvim)
 
 # code
 if [[ -d $HOME/code ]]; then
