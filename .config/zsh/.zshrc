@@ -44,8 +44,8 @@ od() {cd $OLDPWD}
 owd() {echo $OLDPWD}
 
 # ls => exa
-if [[ -x $(command -v exa) ]]; then
-  alias ls='exa --git --group-directories-first'
+if [[ -x $(command -v eza) ]]; then
+  alias ls='eza --git --group-directories-first'
   alias la='ls -a'
   alias ll='ls -l'
   alias l='ls -la'
