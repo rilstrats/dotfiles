@@ -20,6 +20,12 @@ sudo dnf install @development-tools nextcloud-client \
 alacritty neovim zsh fzf bat exa fd-find ripgrep stow zoxide
 ```
 
+### Toolbox
+
+```
+sudo dnf install @development-tools neovim zsh fzf bat fd-find ripgrep stow
+```
+
 <!-- #### i3 -->
 <!---->
 <!-- ```bash -->
@@ -31,8 +37,11 @@ alacritty neovim zsh fzf bat exa fd-find ripgrep stow zoxide
 ### Rust
 
 ```bash
-cargo install cargo-binstall cargo-update cargo-quickinstall
-cargo binstall bacon topgrade mise zellij starship
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --no-modify-path
+cargo install cargo-binstall
+cargo binstall cargo-quickinstall
+cargo binstall bacon cargo-update eza topgreade mise zellij starship
+bat cache --build
 ```
 <!-- cargo install bacon bat bottom du-dust exa procs ripgrep sd topgrade zoxide -->
 
@@ -40,7 +49,7 @@ cargo binstall bacon topgrade mise zellij starship
 ## Install
 
 I've recently migrated to stow, check out the new commands.
-Run the following commands to bare clone this repo, checkout this files, and install the submodules.
+Run the following commands to clone this repo, checkout this files, and install the submodules.
 
 ```bash
 git clone https://github.com/rilstrats/dotfiles.git $HOME/.dotfiles
@@ -75,13 +84,13 @@ sudo dnf install libffi-devel sqlite-devel readline-devel bzip2-devel tk-devel
 In `/etc/fstab`:
 
 ```
-UUID=1d13b649-09b5-4760-a335-84325fc5ee23 /gaming   btrfs subvol=gaming,defaults,compress=zstd,noatime,autodefrag 0 0
-UUID=1d13b649-09b5-4760-a335-84325fc5ee23 /backitup btrfs subvol=backitup,defaults,compress=zstd,noatime,autodefrag 0 0
+UUID=1d13b649-09b5-4760-a335-84325fc5ee23 /mnt/gaming   btrfs subvol=gaming,defaults,compress=zstd,noatime,autodefrag 0 0
+UUID=1d13b649-09b5-4760-a335-84325fc5ee23 /mnt/backitup btrfs subvol=backitup,defaults,compress=zstd,noatime,autodefrag 0 0
 ```
 
 The mountpoints must be created and permissions changed:
 
 ```sh
-sudo mkdir /gaming /backitup
-sudo chmod 1777 /gaming /backitup
+sudo mkdir /mnt/gaming /mnt/backitup
+sudo chmod 1777 /mnt/gaming /mnt//backitup
 ```
