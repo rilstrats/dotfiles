@@ -1,33 +1,34 @@
 #!/usr/bin/zsh
 
-if [[ -z $ZELLIJ_SHORTCUTS ]]; then
+if [[ -z $SESSIONIZER_SHORTCUTS ]]; then
   if [[ -f "$ZDOTDIR/shortcuts.zsh" ]]; then
     source "$ZDOTDIR/shortcuts.zsh"
   else
-    echo "ERROR: \$ZELLIJ_SHORTCUTS not set and can't find \$ZDOTDIR/shortcuts.zsh"
+    echo "ERROR: \$SESSIONIZER_SHORTCUTS not set and can't find \$ZDOTDIR/shortcuts.zsh"
     exit
   fi
 fi
 
 if [[ -n $1 ]]; then
   cd $1
-  ZELLIJ_SESSION_DIR=$PWD
+  SESSIONIZER_DIR=$PWD
+  cd $OLDPWD
 else
   if ! command -v fzf &> /dev/null; then
     echo "ERROR: fzf missing (install fzf or use as 'zellij-sessionizer DIR')"
     exit 1
   fi
-  ZELLIJ_SESSION_DIR=$(printf "%s\n" $ZELLIJ_SHORTCUTS | sort -u | fzf)
+  SESSIONIZER_DIR=$(printf "%s\n" $SESSIONIZER_SHORTCUTS | sort -u | fzf)
 fi
 
-[[ -z $ZELLIJ_SESSION_DIR ]] && exit 0
+[[ -z $SESSIONIZER_DIR ]] && exit 0
 
-if [[ $ZELLIJ_SESSION_DIR == $HOME/ ]]; then
-  ZELLIJ_SESSION_NAME=HOME
+if [[ $SESSIONIZER_DIR == $HOME/ ]]; then
+  SESSIONIZER_NAME=HOME
 else
-  ZELLIJ_SESSION_NAME=$(basename "$ZELLIJ_SESSION_DIR")
+  SESSIONIZER_NAME=$(basename "$SESSIONIZER_DIR")
 fi
 
-export ZELLIJ_SESSION_DIR
-cd $ZELLIJ_SESSION_DIR
-zellij attach --create $ZELLIJ_SESSION_NAME
+export SESSIONIZER_DIR
+cd $SESSIONIZER_DIR
+zellij attach --create $SESSIONIZER_NAME

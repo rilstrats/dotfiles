@@ -1,47 +1,42 @@
 #!/bin/zsh
 
-if [[ -z $SHORTCUTS ]]; then
-  [[ -f "$ZDOTDIR/shortcuts.zsh" ]] && source "$ZDOTDIR/shortcuts.zsh"
+if [[ -z $SESSIONIZER_SHORTCUTS ]]; then
+  if [[ -f "$ZDOTDIR/shortcuts.zsh" ]]; then
+    source "$ZDOTDIR/shortcuts.zsh"
+  else
+    echo "ERROR: \$SESSIONIZER_SHORTCUTS not set and can't find \$ZDOTDIR/shortcuts.zsh"
+    exit
+  fi
 fi
-
-# debugging
-# echo $SHORTCUTS
-# read
 
 if [[ -n $1 ]]; then
-  SELECTED=$1
-  if [[ $SELECTED == '.' ]]; then
-    SELECTED=$PWD
-  elif [[ ! $SELECTED =~ '^/.*' ]]; then
-    [[ -d $PWD/$SELECTED ]] && SELECTED=$PWD/$SELECTED
+  cd $1
+  SESSIONIZER_DIR=$PWD
+  cd $OLDPWD
+else
+  if ! command -v fzf &> /dev/null; then
+    echo "ERROR: fzf missing (install fzf or use as 'tmux-sessionizer DIR')"
+    exit 1
   fi
-# elif [[ ! -z $(command -v fd) ]]; then
-#   FOUND=$(fd . $SHORTCUTS --exact-depth 1 --type d)
-#   REPOS=$(repofind $CODESRC)
-#   SELECTED=$(echo "$HOME\n$FOUND\n$REPOS" | sort -u | fzf)
-else
-  FOUND=$(find $SHORTCUTS -mindepth 1 -maxdepth 1 -type d)
-  REPOS=$(repofind $CODESRC)
-  SELECTED=$(echo "$HOME\n$FOUND\n$REPOS" | sort -u | fzf)
+  SESSIONIZER_DIR=$(printf "%s\n" $SESSIONIZER_SHORTCUTS | sort -u | fzf)
 fi
 
-[[ -z $SELECTED ]] && exit 0
+[[ -z $SESSIONIZER_DIR ]] && exit 0
 
-if [[ $SELECTED == $HOME ]]; then
-  SELECTED_NAME=home
+if [[ $SESSIONIZER_DIR == $HOME ]]; then
+  SESSIONIZER_NAME=HOME
 else
-  SELECTED_NAME=$(basename "$SELECTED" | tr . _)
+  SESSIONIZER_NAME=$(basename "$SESSIONIZER_DIR" | tr . _)
 fi
-TMUX_RUNNING=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $TMUX_RUNNING ]]; then
-    tmux new-session -s $SELECTED_NAME -c $SELECTED -e TMUX_DIR=$SELECTED
+    tmux new-session -s $SESSIONIZER_NAME -c $SESSIONIZER_DIR -e SESSIONIZER_DIR=$SESSIONIZER_DIR
     exit 0
 fi
 
-if ! tmux has-session -t=$SELECTED_NAME 2> /dev/null; then
-    tmux new-session -ds $SELECTED_NAME -c $SELECTED -e TMUX_DIR=$SELECTED
+if ! tmux has-session -t=$SESSIONIZER_NAME 2> /dev/null; then
+    tmux new-session -ds $SESSIONIZER_NAME -c $SESSIONIZER_DIR -e SESSIONIZER_DIR=$SESSIONIZER_DIR
 fi
 
-tmux switch-client -t $SELECTED_NAME
+tmux switch-client -t $SESSIONIZER_NAME
 

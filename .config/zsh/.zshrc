@@ -34,8 +34,8 @@ compinit -d $$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 # alias vim=$EDITOR
 
 # zellij sessionizer
-zd() {cd $ZELLIJ_SESSION_DIR}
-zwd() {echo $ZELLIJ_SESSION_DIR}
+zd() {cd $SESSIONIZER_DIR}
+zwd() {echo $SESSIONIZER_DIR}
 alias zellijer=$HOME/.local/bin/zellij-sessionizer
 alias zellijh=$HOME/.local/bin/zellij-home
 
