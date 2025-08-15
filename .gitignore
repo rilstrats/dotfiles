@@ -38,6 +38,9 @@
 /.config/wakatime/*
 !/.config/wakatime/.wakatime.cfg
 
+# Zellij Plugins
+/.config/zellij/plugins
+
 # ZSH Compiled Files
 *.zwc
 .zcompdump

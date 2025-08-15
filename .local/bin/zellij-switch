@@ -1,1 +1,0 @@
-zellij pipe -p https://github.com/mostafaqanbaryan/zellij-switch/releases/latest/download/zellij-switch.wasm -- "-s rar"

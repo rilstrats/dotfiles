@@ -32,3 +32,12 @@ fi
 export SESSIONIZER_DIR
 cd $SESSIONIZER_DIR
 zellij attach --create $SESSIONIZER_NAME
+
+# work in progress
+# zellij attach --create $SESSIONIZER_NAME options --default-cwd $SESSIONIZER_DIR
+# if [[ -z $ZELLIJ ]]; then
+#   zellij attach --create $SESSIONIZER_NAME options --default-cwd $SESSIONIZER_DIR
+# else
+#   PLUGIN="file:$HOME/.config/zellij/plugins/zellij-switch.wasm"
+#   zellij pipe --plugin $PLUGIN -- "--session ${SESSIONIZER_NAME} --cwd $(echo -n $SESSIONIZER_DIR)"
+# fi
