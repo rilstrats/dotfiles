@@ -23,7 +23,7 @@ fi
 
 [[ -z $SESSIONIZER_DIR ]] && exit 0
 
-if [[ $SESSIONIZER_DIR == $HOME/ ]]; then
+if [[ "$SESSIONIZER_DIR" =~ "$HOME" ]]; then
   SESSIONIZER_NAME=HOME
 else
   SESSIONIZER_NAME=$(basename "$SESSIONIZER_DIR")
