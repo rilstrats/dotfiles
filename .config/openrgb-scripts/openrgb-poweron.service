@@ -5,7 +5,7 @@ After=graphical.target
 [Service]
 User=riley
 Type=oneshot
-ExecStart=flatpak run org.openrgb.OpenRGB --noautoconnect -p running
+ExecStart=openrgb --noautoconnect -p running
 
 [Install]
 WantedBy=graphical.target

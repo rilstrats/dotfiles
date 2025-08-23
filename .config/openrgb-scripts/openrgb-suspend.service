@@ -5,7 +5,7 @@ Before=suspend.target
 [Service]
 User=riley
 Type=oneshot
-ExecStart=flatpak run org.openrgb.OpenRGB --noautoconnect -p sleeping
+ExecStart=openrgb --noautoconnect -p sleeping
 
 [Install]
 WantedBy=suspend.target
