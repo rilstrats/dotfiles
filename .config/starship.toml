@@ -13,6 +13,9 @@ format = "via [$symbol]($style)"
 [cobol]
 format = "via [$symbol]($style)"
 
+[conda]
+ignore_base = false
+
 [crystal]
 format = "via [$symbol]($style)"
 
