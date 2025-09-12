@@ -45,7 +45,7 @@ owd() {echo $OLDPWD}
 
 # ls => exa
 if [[ -x $(command -v eza) ]]; then
-  alias ls='eza --git --group-directories-first'
+  alias ls='eza --icons --git --group-directories-first'
   alias la='ls -a'
   alias ll='ls -l'
   alias l='ls -la'
