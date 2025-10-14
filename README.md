@@ -17,7 +17,7 @@ By cloning these dotfiles and setting up the submodules, you are also installing
 
 ```bash
 sudo dnf install @development-tools nextcloud-client \
-alacritty neovim zsh fzf bat exa fd-find ripgrep stow zoxide
+alacritty neovim zsh fzf bat fd-find ripgrep stow zoxide
 ```
 
 ### Toolbox
@@ -40,7 +40,7 @@ sudo dnf install @development-tools neovim zsh fzf bat fd-find ripgrep stow
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --no-modify-path
 cargo install cargo-binstall
 cargo binstall cargo-quickinstall
-cargo binstall bacon cargo-update eza topgreade mise zellij starship
+cargo binstall bacon cargo-update eza topgrade mise zellij starship
 bat cache --build
 ```
 <!-- cargo install bacon bat bottom du-dust exa procs ripgrep sd topgrade zoxide -->
