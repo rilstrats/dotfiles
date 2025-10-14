@@ -94,3 +94,11 @@ The mountpoints must be created and permissions changed:
 sudo mkdir /mnt/gaming /mnt/backitup
 sudo chmod 1777 /mnt/gaming /mnt//backitup
 ```
+
+### Mailto Links
+
+If you want to use a browser to open mailto links, you must set the permissions in the specific browser, then use this command:
+
+```
+xdg-mime default com.google.Chrome.desktop x-scheme-handler/mailto
+```
