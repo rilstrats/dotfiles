@@ -31,14 +31,10 @@
 
 [color]
 	ui = auto
-[commit]
-	gpgsign = true
 [credential]
 	helper = cache
 [diff]
 	colorMoved = default
-[gpg]
-	format = ssh
 [init]
 	defaultBranch = master
 [push]
@@ -50,14 +46,16 @@
 	pushInsteadOf = https://github.com/
 [url "git@gitlab.com:"]
 	pushInsteadOf = https://gitlab.com/
-[user]
-	signingkey = ~/.ssh/id_ed25519.pub
 
 # user.name and user.email
 [include]
 	path = github
 [includeIf "gitdir:~/code/gitlab.com/**"]
 	path = gitlab
+
+# signing
+[include]
+	path = ~/.config/git/signing
 
 # delta
 [include]
