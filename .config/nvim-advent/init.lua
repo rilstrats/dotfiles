@@ -1,5 +1,7 @@
 print("Advent of Neovim")
 
+require("config.lazy")
+
 -- first arg is mode
 -- :.lua just execs that line
 -- :lua execs the highlighted portion
@@ -14,3 +16,4 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
