@@ -1,0 +1,1 @@
+print("Advent of Neovim")
