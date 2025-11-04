@@ -2,6 +2,13 @@ print("Advent of Neovim")
 
 require("config.lazy")
 
+-- default tab size
+vim.opt.shiftwidth = 4
+
+-- relative line numbers
+vim.opt.number = true
+vim.opt.relativenumber = true
+
 -- first arg is mode
 -- :.lua just execs that line
 -- :lua execs the highlighted portion
