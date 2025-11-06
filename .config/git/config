@@ -1,33 +1,31 @@
 [alias]
-	c = commit
-	acm = commit -am
-	cam = commit -am
-	cm = commit -m
+	; c = commit
+	; acm = commit -am
+	; cam = commit -am
+	; cm = commit -m
+	;
+	; a = add
+	; d = diff
+	; f = fetch
+	; m = move
+	; r = restore
+	; s = status
+	;
+	; u = restore --staged
+	; unstage = restore --staged
+	;
+	; origin = remote get-url origin
+	; rgo = remote get-url origin
+	; rso = remote set-url origin
+	;
+	; subpush = push --recurse-submodules=on-demand
+	; subupdate = submodule update --remote
+	; subinit = submodule update --init --checkout
 
-	a = add
-	d = diff
-	f = fetch
-	m = move
-	r = restore
-	s = status
-
-	u = restore --staged
-	unstage = restore --staged
-
-	origin = remote get-url origin
-	rgo = remote get-url origin
-	rso = remote set-url origin
-
-	subpush = push --recurse-submodules=on-demand
-	subupdate = submodule update --remote
-	subinit = submodule update --init --checkout
-
-	cclone = codeclone
 	cc = codeclone
-	cinit = codeinit
 	ci = codeinit
 
-	root = rev-parse --show-toplevel
+	; root = rev-parse --show-toplevel
 
 [color]
 	ui = auto
