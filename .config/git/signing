@@ -1,0 +1,8 @@
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true
+
+[user]
+	signingkey = 062C4E05EDBB2BCE
+	signingkey = 7498E3D42C29BFEC
