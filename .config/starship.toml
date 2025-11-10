@@ -25,6 +25,7 @@ ignore_base = false
 symbol = " "
 
 [cpp]
+disabled = false
 format = "via [$symbol($name)]($style)"
 symbol = " "
 
@@ -216,15 +217,25 @@ symbol = "󱘗 "
 format = "via [$symbol]($style)"
 symbol = " "
 
+[shell]
+disabled = true
+
 [solidity]
 format = "via [$symbol]($style)"
 
 [status]
 symbol = " "
 
+[sudo]
+disabled = true
+symbol = "󰩪 "
+
 [swift]
 format = "via [$symbol]($style)"
 symbol = " "
+
+[time]
+disabled = true
 
 [typst]
 format = "via [$symbol]($style)"
@@ -242,6 +253,9 @@ symbol = " "
 [zig]
 format = "via [$symbol]($style)"
 symbol = " "
+
+[os]
+disabled = true
 
 [os.symbols]
 AlmaLinux = " "
