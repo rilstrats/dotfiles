@@ -10,6 +10,7 @@
 !/.local/bin/tmux-*
 !/.local/bin/zellij-*
 !/.local/bin/ssh-copy-terminfo
+!/.local/bin/nerdfont-download
 
 # Application State
 !/.local/state
@@ -26,9 +27,6 @@
 !/.local/share/vagrant
 /.local/share/vagrant/*
 !/.local/share/vagrant/Vagrantfile
-
-!/.local/share/fonts
-.uuid
 
 # Docker
 /.config/docker/*

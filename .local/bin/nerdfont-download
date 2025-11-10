@@ -1,0 +1,19 @@
+#!/usr/bin/bash
+if [[ "$#" -gt 0 ]]; then
+	DL_FONTS=("${@}")
+else
+	DL_FONTS=(FiraCode)
+fi
+
+# DL_DIR=$HOME/Downloads/fonts
+DL_DIR=/tmp/fonts
+mkdir -p $DL_DIR
+for FONT in ${DL_FONTS[@]}; do
+	wget -NP $DL_DIR https://github.com/ryanoasis/nerd-fonts/releases/latest/download/$FONT.zip
+	unzip -ud $DL_DIR $DL_DIR/$FONT.zip '*.[ot]tf'
+done
+
+FONT_DIR=$XDG_DATA_HOME/fonts
+mkdir -p $FONT_DIR
+mv -u $DL_DIR/*.[ot]tf $FONT_DIR
+fc-cache -fv
