@@ -6,10 +6,10 @@ $git_commit\
 $git_state\
 $git_metrics\
 $git_status\
-[ ](fg:prev_bg bg:bg)\
 $docker_context\
 $package\
 $c\
+$cpp\
 $cmake\
 $cobol\
 $daml\
@@ -72,11 +72,15 @@ $mise\
 $crystal\
 $custom\
 $sudo\
+[ ](fg:prev_bg bg:bg)\
+$fill\
 $cmd_duration\
+$username\
+$hostname\
+$time\
 $line_break\
 $jobs\
 $battery\
-$time\
 $status\
 $container\
 $netns\
@@ -97,6 +101,7 @@ style = "bg:blue fg:254 bold"
 format = "[](fg:prev_bg bg:blue)[ $path ]($style)[$read_only]($read_only_style)"
 read_only = "󰌾 "
 read_only_style = "fg:red bg:blue"
+# truncation_symbol = "…/"
 
 # git
 
@@ -120,19 +125,34 @@ style = "bg:green fg:black"
 style = "bg:green fg:black"
 format = '([$all_status$ahead_behind ]($style))'
 
-# ssh
+#########
+# right #
+#########
 
-# [user]
+[fill]
+symbol=' '
+
+[cmd_duration]
+format = "[](bg:prev_bg fg:yellow)[ $duration ]($style)"
+style = "bg:yellow fg:black"
+
+
+[username]
+style_root = "bold fg:red bg:black"
+style_user = "fg:yellow bg:black"
+format = "[](bg:prev_bg fg:black)[ $user ]($style)"
 
 [hostname]
 ssh_symbol = " "
+style = "fg:yellow bg:black"
+format = "[@ $hostname ]($style)"
 
-# time
-
-# [cmd_duration]
-#
-# [time]
-# disabled = true
+[time]
+disabled = false
+use_12hr = true
+format = "[](bg:prev_bg fg:white)[ $time ]($style)"
+style = "bg:white fg:black"
+time_format = "%-I:%M %p"
 
 #############
 # languages #
