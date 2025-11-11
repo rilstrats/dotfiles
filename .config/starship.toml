@@ -1,3 +1,143 @@
+format = """
+$os\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+[ ](fg:prev_bg bg:bg)\
+$docker_context\
+$package\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$fennel\
+$fortran\
+$gleam\
+$golang\
+$guix_shell\
+$haskell\
+$haxe\
+$helm\
+$java\
+$julia\
+$kotlin\
+$gradle\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$opa\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$quarto\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$solidity\
+$swift\
+$terraform\
+$typst\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$nix_shell\
+$conda\
+$meson\
+$spack\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$nats\
+$direnv\
+$env_var\
+$mise\
+$crystal\
+$custom\
+$sudo\
+$cmd_duration\
+$line_break\
+$jobs\
+$battery\
+$time\
+$status\
+$container\
+$netns\
+$shell\
+$character"""
+
+###########
+# primary #
+###########
+
+[os]
+disabled = false
+style = 'bg:white fg:black'
+format = '[ $symbol]($style)'
+
+[directory]
+style = "bg:blue fg:254 bold"
+format = "[](fg:prev_bg bg:blue)[ $path ]($style)[$read_only]($read_only_style)"
+read_only = "󰌾 "
+read_only_style = "fg:red bg:blue"
+
+# git
+
+[git_branch]
+symbol = " "
+style = "bg:green fg:black"
+format = "[](fg:prev_bg bg:green)[ $symbol$branch(:$remote_branch) ]($style)"
+
+[git_commit]
+style = "bg:green fg:black"
+tag_symbol = "  "
+
+[git_state]
+style = "bg:green fg:black"
+
+# [git_metrics]
+# added_style = "bg:green fg:black"
+# deleted_style = "bg:green fg:red"
+
+[git_status]
+style = "bg:green fg:black"
+format = '([$all_status$ahead_behind ]($style))'
+
+# ssh
+
+# [user]
+
+[hostname]
+ssh_symbol = " "
+
+# time
+
+# [cmd_duration]
+#
+# [time]
+# disabled = true
+
+#############
+# languages #
+#############
+
 [aws]
 symbol = " "
 
@@ -44,9 +184,6 @@ symbol = " "
 format = "via [$symbol]($style)"
 symbol = " "
 
-[directory]
-read_only = " 󰌾"
-
 [docker_context]
 symbol = " "
 
@@ -80,12 +217,6 @@ symbol = " "
 [gcloud]
 symbol = " "
 
-[git_branch]
-symbol = " "
-
-[git_commit]
-tag_symbol = "  "
-
 [gleam]
 format = "via [$symbol]($style)"
 
@@ -113,9 +244,6 @@ format = "via [$symbol]($style)"
 
 [hg_branch]
 symbol = " "
-
-[hostname]
-ssh_symbol = " "
 
 [java]
 format = "via [$symbol]($style)"
@@ -234,9 +362,6 @@ symbol = "󰩪 "
 format = "via [$symbol]($style)"
 symbol = " "
 
-[time]
-disabled = true
-
 [typst]
 format = "via [$symbol]($style)"
 
@@ -253,9 +378,6 @@ symbol = " "
 [zig]
 format = "via [$symbol]($style)"
 symbol = " "
-
-[os]
-disabled = true
 
 [os.symbols]
 AlmaLinux = " "
