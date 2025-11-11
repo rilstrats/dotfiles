@@ -101,6 +101,8 @@ style = "bg:blue fg:254 bold"
 format = "[](fg:prev_bg bg:blue)[ $path ]($style)[$read_only]($read_only_style)"
 read_only = "󰌾 "
 read_only_style = "fg:red bg:blue"
+# fish_style_pwd_dir_length = 1
+# truncation_length  = 3
 # truncation_symbol = "…/"
 
 # git
