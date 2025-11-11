@@ -1,11 +1,16 @@
 format = """
 $os\
 $directory\
+(\
+[](fg:prev_bg bg:green)\
 $git_branch\
 $git_commit\
 $git_state\
 $git_metrics\
 $git_status\
+)\
+(\
+[](fg:prev_bg bg:yellow)\
 $docker_context\
 $package\
 $c\
@@ -60,7 +65,6 @@ $nix_shell\
 $conda\
 $meson\
 $spack\
-$memory_usage\
 $aws\
 $gcloud\
 $openstack\
@@ -70,9 +74,12 @@ $direnv\
 $env_var\
 $mise\
 $crystal\
+[ ](bg:yellow)\
+)\
+$memory_usage\
 $custom\
 $sudo\
-[ ](fg:prev_bg bg:bg)\
+[](fg:prev_bg bg:bg)\
 $fill\
 $cmd_duration\
 $username\
@@ -85,7 +92,8 @@ $status\
 $container\
 $netns\
 $shell\
-$character"""
+$character
+"""
 
 ###########
 # primary #
@@ -110,7 +118,7 @@ read_only_style = "fg:red bg:blue"
 [git_branch]
 symbol = " "
 style = "bg:green fg:black"
-format = "[](fg:prev_bg bg:green)[ $symbol$branch(:$remote_branch) ]($style)"
+format = "[ $symbol$branch(:$remote_branch) ]($style)"
 
 [git_commit]
 style = "bg:green fg:black"
@@ -156,222 +164,12 @@ format = "[](bg:prev_bg fg:white)[ $time ]($style)"
 style = "bg:white fg:black"
 time_format = "%-I:%M %p"
 
-#############
-# languages #
-#############
-
-[aws]
-symbol = " "
-
-[buf]
-format = "with [$symbol]($style)"
-symbol = " "
-
-[bun]
-format = "via [$symbol]($style)"
-symbol = " "
-
-[c]
-format = "via [$symbol($name)]($style)"
-symbol = " "
-
-[cmake]
-format = "via [$symbol]($style)"
-symbol = " "
-
-[cobol]
-format = "via [$symbol]($style)"
-
-[conda]
-ignore_base = false
-symbol = " "
-
-[cpp]
-disabled = false
-format = "via [$symbol($name)]($style)"
-symbol = " "
-
-[crystal]
-format = "via [$symbol]($style)"
-symbol = " "
-
-[daml]
-format = "via [$symbol]($style)"
-
-[dart]
-format = "via [$symbol]($style)"
-symbol = " "
-
-[deno]
-format = "via [$symbol]($style)"
-symbol = " "
-
-[docker_context]
-symbol = " "
-
-[dotnet]
-format = "[$symbol( $tfm )]($style)"
-# format = "[$symbol(󰓾 $tfm )]($style)"
-# format = "[$symbol(󰩷 $tfm )]($style)"
-
-[elixir]
-format = "via [$symbol]($style)"
-symbol = " "
-
-[elm]
-format = "via [$symbol]($style)"
-symbol = " "
-
-[erlang]
-format = "via [$symbol]($style)"
-
-[fennel]
-format = "via [$symbol]($style)"
-symbol = " "
-
-[fortran]
-format = "via [$symbol]($style)"
-symbol = " "
-
-[fossil_branch]
-symbol = " "
-
-[gcloud]
-symbol = " "
-
-[gleam]
-format = "via [$symbol]($style)"
-
-[golang]
-format = "via [$symbol]($style)"
-symbol = " "
-
-[gradle]
-format = "via [$symbol]($style)"
-symbol = " "
-
-[guix_shell]
-symbol = " "
-
-[haskell]
-format = "via [$symbol]($style)"
-symbol = " "
-
-[haxe]
-format = "via [$symbol]($style)"
-symbol = " "
-
-[helm]
-format = "via [$symbol]($style)"
-
-[hg_branch]
-symbol = " "
-
-[java]
-format = "via [$symbol]($style)"
-symbol = " "
-
-[julia]
-format = "via [$symbol]($style)"
-symbol = " "
-
-[kotlin]
-format = "via [$symbol]($style)"
-symbol = " "
-
-[lua]
-format = "via [$symbol]($style)"
-symbol = " "
-
-[memory_usage]
-symbol = "󰍛 "
-
-[meson]
-format = "via [$symbol]($style)"
-symbol = "󰔷 "
-
-[mojo]
-format = "with [$symbol]($style)"
-
-[nim]
-format = "via [$symbol]($style)"
-symbol = "󰆥 "
-
-[nix_shell]
-symbol = " "
-
-[nodejs]
-format = "via [$symbol]($style)"
-symbol = " "
-
-[ocaml]
-format = "via [$symbol(\\($switch_indicator$switch_name\\) )]($style)"
-symbol = " "
-
-[odin]
-format = "via [$symbol]($style)"
-
-[opa]
-format = "via [$symbol]($style)"
-
-[package]
-symbol = "󰏗 "
-
-[perl]
-format = "via [$symbol]($style)"
-symbol = " "
-
-[php]
-format = "via [$symbol]($style)"
-symbol = " "
-
-[pijul_channel]
-symbol = " "
-
-[pixi]
-format = "via [$symbol($environment )]($style)"
-symbol = "󰏗 "
-
-[pulumi]
-format = "via [$symbol$stack]($style)"
-
-[purescript]
-format = "via [$symbol]($style)"
-
-[python]
-format = "via [$symbol(\\($virtualenv\\) )]($style)"
-symbol = " "
-
-[quarto]
-format = "via [$symbol]($style)"
-
-[raku]
-format = "via [$symbol]($style)"
-
-[red]
-format = "via [$symbol]($style)"
-
-[rlang]
-format = "via [$symbol]($style)"
-symbol = "󰟔 "
-
-[ruby]
-format = "via [$symbol]($style)"
-symbol = " "
-
-[rust]
-format = "via [$symbol]($style)"
-symbol = "󱘗 "
-
-[scala]
-format = "via [$symbol]($style)"
-symbol = " "
+#########
+# other #
+#########
 
 [shell]
 disabled = true
-
-[solidity]
-format = "via [$symbol]($style)"
 
 [status]
 symbol = " "
@@ -380,26 +178,305 @@ symbol = " "
 disabled = true
 symbol = "󰩪 "
 
+[memory_usage]
+symbol = "󰍛 "
+style = "bg:yellow fg:black" # lang background
+
+
+#############
+# languages #
+#############
+
+[aws]
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[buf]
+format = "[ $symbol]($style)"
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[bun]
+format = "[ $symbol]($style)"
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[c]
+format = '[ $symbol(\($name\) )]($style)'
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[cmake]
+format = "[ $symbol]($style)"
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[cobol]
+format = "[ $symbol]($style)"
+style = "bg:yellow fg:black" # lang background
+
+[conda]
+ignore_base = false
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[cpp]
+disabled = false
+format = '[ $symbol(\($name\) )]($style)'
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[crystal]
+format = "[ $symbol]($style)"
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[daml]
+format = "[ $symbol]($style)"
+style = "bg:yellow fg:black" # lang background
+
+[dart]
+format = "[ $symbol]($style)"
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[deno]
+format = "[ $symbol]($style)"
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[docker_context]
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[dotnet]
+format = "[ $symbol( $tfm )]($style)"
+# format = "[ $symbol(󰓾 $tfm )]($style)"
+# format = "[ $symbol(󰩷 $tfm )]($style)"
+style = "bg:yellow fg:black" # lang background
+
+[elixir]
+format = "[ $symbol]($style)"
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[elm]
+format = "[ $symbol]($style)"
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[erlang]
+format = "[ $symbol]($style)"
+style = "bg:yellow fg:black" # lang background
+
+[fennel]
+format = "[ $symbol]($style)"
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[fortran]
+format = "[ $symbol]($style)"
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[fossil_branch]
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[gcloud]
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[gleam]
+format = "[ $symbol]($style)"
+style = "bg:yellow fg:black" # lang background
+
+[golang]
+format = "[ $symbol]($style)"
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[gradle]
+format = "[ $symbol]($style)"
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[guix_shell]
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[haskell]
+format = "[ $symbol]($style)"
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[haxe]
+format = "[ $symbol]($style)"
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[helm]
+format = "[ $symbol]($style)"
+style = "bg:yellow fg:black" # lang background
+
+[hg_branch]
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[java]
+format = "[ $symbol]($style)"
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[julia]
+format = "[ $symbol]($style)"
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[kotlin]
+format = "[ $symbol]($style)"
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[lua]
+format = "[ $symbol]($style)"
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[meson]
+format = "[ $symbol]($style)"
+symbol = "󰔷 "
+style = "bg:yellow fg:black" # lang background
+
+[mojo]
+format = "[ $symbol]($style)"
+style = "bg:yellow fg:black" # lang background
+
+[nim]
+format = "[ $symbol]($style)"
+symbol = "󰆥 "
+style = "bg:yellow fg:black" # lang background
+
+[nix_shell]
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[nodejs]
+format = "[ $symbol]($style)"
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[ocaml]
+format = "[ $symbol(\\($switch_indicator$switch_name\\))]($style)"
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[odin]
+format = "[ $symbol]($style)"
+style = "bg:yellow fg:black" # lang background
+
+[opa]
+format = "[ $symbol]($style)"
+style = "bg:yellow fg:black" # lang background
+
+[package]
+symbol = "󰏗 "
+style = "bg:yellow fg:black" # lang background
+
+[perl]
+format = "[ $symbol]($style)"
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[php]
+format = "[ $symbol]($style)"
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[pijul_channel]
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[pixi]
+format = "[ $symbol($environment)]($style)"
+symbol = "󰏗 "
+style = "bg:yellow fg:black" # lang background
+
+[pulumi]
+format = "[ $symbol$stack]($style)"
+style = "bg:yellow fg:black" # lang background
+
+[purescript]
+format = "[ $symbol]($style)"
+style = "bg:yellow fg:black" # lang background
+
+[python]
+format = "[ $symbol(\\($virtualenv\\) )]($style)"
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[quarto]
+format = "[ $symbol]($style)"
+style = "bg:yellow fg:black" # lang background
+
+[raku]
+format = "[ $symbol]($style)"
+style = "bg:yellow fg:black" # lang background
+
+[red]
+format = "[ $symbol]($style)"
+style = "bg:yellow fg:black" # lang background
+
+[rlang]
+format = "[ $symbol]($style)"
+symbol = "󰟔 "
+style = "bg:yellow fg:black" # lang background
+
+[ruby]
+format = "[ $symbol]($style)"
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[rust]
+format = "[ $symbol]($style)"
+symbol = "󱘗 "
+style = "bg:yellow fg:black" # lang background
+
+[scala]
+format = "[ $symbol]($style)"
+symbol = " "
+style = "bg:yellow fg:black" # lang background
+
+[solidity]
+format = "[ $symbol]($style)"
+style = "bg:yellow fg:black" # lang background
+
 [swift]
-format = "via [$symbol]($style)"
+format = "[ $symbol]($style)"
 symbol = " "
+style = "bg:yellow fg:black" # lang background
 
 [typst]
-format = "via [$symbol]($style)"
+format = "[ $symbol]($style)"
+style = "bg:yellow fg:black" # lang background
 
 [vagrant]
-format = "via [$symbol]($style)"
+format = "[ $symbol]($style)"
+style = "bg:yellow fg:black" # lang background
 
 [vlang]
-format = "via [$symbol]($style)"
+format = "[ $symbol]($style)"
+style = "bg:yellow fg:black" # lang background
 
 [xmake]
-format = "via [$symbol]($style)"
+format = "[ $symbol]($style)"
 symbol = " "
+style = "bg:yellow fg:black" # lang background
 
 [zig]
-format = "via [$symbol]($style)"
+format = "[ $symbol]($style)"
 symbol = " "
+style = "bg:yellow fg:black" # lang background
 
 [os.symbols]
 AlmaLinux = " "
