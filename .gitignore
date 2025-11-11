@@ -42,3 +42,6 @@
 # ZSH Compiled Files
 *.zwc
 .zcompdump
+
+# git signing
+/.config/git/signing

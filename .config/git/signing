@@ -1,7 +1,0 @@
-[commit]
-	gpgsign = true
-[tag]
-	gpgsign = true
-[user]
-	signingkey = 7498E3D42C29BFEC ; riley@desktop
-	signingkey = 062C4E05EDBB2BCE ; riley@laptop-isu
