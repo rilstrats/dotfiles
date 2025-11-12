@@ -386,6 +386,7 @@ style = "bg:yellow fg:black" # lang background
 [package]
 symbol = "󰏗 "
 style = "bg:yellow fg:black" # lang background
+format = "[ $symbol$version]($style)"
 
 [perl]
 format = "[ $symbol]($style)"
