@@ -148,13 +148,13 @@ style = "bg:yellow fg:black"
 
 
 [username]
-style_root = "bold fg:red bg:black"
-style_user = "fg:yellow bg:black"
-format = "[](bg:prev_bg fg:black)[ $user ]($style)"
+style_root = "bold fg:red bg:bright-black"
+style_user = "fg:yellow bg:bright-black"
+format = "[](bg:prev_bg fg:bright-black)[ $user ]($style)"
 
 [hostname]
 ssh_symbol = " "
-style = "fg:yellow bg:black"
+style = "fg:yellow bg:bright-black"
 format = "[@ $hostname ]($style)"
 
 [time]
