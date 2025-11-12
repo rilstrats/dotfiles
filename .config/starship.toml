@@ -82,9 +82,9 @@ $sudo\
 [](fg:prev_bg bg:bg)\
 $fill\
 $cmd_duration\
+$time\
 $username\
 $hostname\
-$time\
 $line_break\
 $jobs\
 $battery\
@@ -101,7 +101,7 @@ $character
 
 [os]
 disabled = false
-style = 'bg:white fg:black'
+style = 'bg:bright-white fg:black'
 format = '[ $symbol]($style)'
 
 [directory]
@@ -123,16 +123,18 @@ format = "[ $symbol$branch(:$remote_branch) ]($style)"
 [git_commit]
 style = "bg:green fg:black"
 tag_symbol = "  "
+format = '[\($hash$tag\) ]($style)'
 
 [git_state]
-style = "bg:green fg:black"
+style = "bg:green fg:black bold"
+format = '[\($state( $progress_current/$progress_total\)) ]($style)'
 
 # [git_metrics]
 # added_style = "bg:green fg:black"
 # deleted_style = "bg:green fg:red"
 
 [git_status]
-style = "bg:green fg:black"
+style = "bg:green fg:black bold"
 format = '([$all_status$ahead_behind ]($style))'
 
 #########
@@ -143,26 +145,28 @@ format = '([$all_status$ahead_behind ]($style))'
 symbol=' '
 
 [cmd_duration]
-format = "[](bg:prev_bg fg:yellow)[ $duration ]($style)"
-style = "bg:yellow fg:black"
+format = "[](bg:prev_bg fg:purple)[ $duration ]($style)"
+style = "bg:purple fg:black"
 
+[time]
+# disabled = false
+use_12hr = true
+format = "[](bg:prev_bg fg:cyan)[ $time ]($style)"
+style = "bg:cyan fg:black"
+time_format = "%-I:%M %p"
 
 [username]
-style_root = "bold fg:red bg:bright-black"
-style_user = "fg:yellow bg:bright-black"
+# show_always = true
+style_root = "bold fg:red bg:bright-black bold"
+style_user = "fg:green bg:bright-black bold"
 format = "[](bg:prev_bg fg:bright-black)[ $user ]($style)"
 
 [hostname]
-ssh_symbol = " "
+# ssh_only = false
+# ssh_symbol = " "
+ssh_symbol = "@"
 style = "fg:yellow bg:bright-black"
 format = "[@ $hostname ]($style)"
-
-[time]
-disabled = false
-use_12hr = true
-format = "[](bg:prev_bg fg:white)[ $time ]($style)"
-style = "bg:white fg:black"
-time_format = "%-I:%M %p"
 
 #########
 # other #
