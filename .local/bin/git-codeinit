@@ -3,15 +3,6 @@
 DEFAULT_DOMAIN="github.com"
 DEFAULT_USER="rilstrats"
 
-if [[ -z $CODEPATH ]]; then
-  if [[ -f "$ZDOTDIR/shortcuts.zsh" ]]; then
-    source "$ZDOTDIR/shortcuts.zsh"
-  else
-    echo "ERROR: \$CODEPATH not set and can't find \$ZDOTDIR/shortcuts.zsh"
-    exit
-  fi
-fi
-
 LOC=$1
 
 [[ -z $LOC ]] && read "LOC?Please enter repo location: "

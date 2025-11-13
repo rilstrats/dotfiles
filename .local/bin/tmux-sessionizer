@@ -1,42 +1,16 @@
-#!/bin/zsh
-
-if [[ -z $SESSIONIZER_SHORTCUTS ]]; then
-  if [[ -f "$ZDOTDIR/shortcuts.zsh" ]]; then
-    source "$ZDOTDIR/shortcuts.zsh"
-  else
-    echo "ERROR: \$SESSIONIZER_SHORTCUTS not set and can't find \$ZDOTDIR/shortcuts.zsh"
-    exit
-  fi
-fi
-
-if [[ -n $1 ]]; then
-  cd $1
-  SESSIONIZER_DIR=$PWD
-  cd $OLDPWD
-else
-  if ! command -v fzf &> /dev/null; then
-    echo "ERROR: fzf missing (install fzf or use as 'tmux-sessionizer DIR')"
-    exit 1
-  fi
-  SESSIONIZER_DIR=$(printf "%s\n" $SESSIONIZER_SHORTCUTS | sort -u | fzf)
-fi
-
-[[ -z $SESSIONIZER_DIR ]] && exit 0
-
-if [[ $SESSIONIZER_DIR == $HOME ]]; then
-  SESSIONIZER_NAME=HOME
-else
-  SESSIONIZER_NAME=$(basename "$SESSIONIZER_DIR" | tr . _)
-fi
+#!/bin/bash
+source .config/sessionizer
+sessionizer "$@"
+sessionizer_name=$(echo $SESSIONIZER_NAME | tr . _)
 
 if [[ -z $TMUX ]] && [[ -z $TMUX_RUNNING ]]; then
-    tmux new-session -s $SESSIONIZER_NAME -c $SESSIONIZER_DIR -e SESSIONIZER_DIR=$SESSIONIZER_DIR
+    tmux new-session -s $sessionizer_name -c $sessionizer_dir -e SESSIONIZER_DIR=$sessionizer_dir
     exit 0
 fi
 
-if ! tmux has-session -t=$SESSIONIZER_NAME 2> /dev/null; then
-    tmux new-session -ds $SESSIONIZER_NAME -c $SESSIONIZER_DIR -e SESSIONIZER_DIR=$SESSIONIZER_DIR
+if ! tmux has-session -t=$sessionizer_name 2> /dev/null; then
+    tmux new-session -ds $sessionizer_name -c $sessionizer_dir -e SESSIONIZER_DIR=$sessionizer_dir
 fi
 
-tmux switch-client -t $SESSIONIZER_NAME
+tmux switch-client -t $sessionizer_name
 

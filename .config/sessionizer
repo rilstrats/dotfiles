@@ -1,0 +1,58 @@
+#!/bin/bash
+sessionizer_shortcuts=($HOME/ $HOME/.dotfiles/)
+
+# code
+if [[ -d $CODEPATH ]]; then
+  if command -v fd &> /dev/null; then
+    sessionizer_shortcuts+=(\
+      $(fd -HI '.git$' $CODEPATH | sed 's|\.git/||'))
+  else
+    sessionizer_shortcuts+=(\
+      $(find $CODEPATH -name ".git" | sed 's|\.git||'))
+  fi
+fi
+
+# cloud
+if [[ -d $HOME/cloud ]]; then
+  edu=$HOME/cloud/edu
+  cyb=$HOME/cloud/tech/cyber
+
+  if command -v fd &> /dev/null; then
+    [[ -d $edu ]] && sessionizer_shortcuts+=(\
+      $(fd -u . $edu --exact-depth 3 -t d))
+    [[ -d $cyb ]] && sessionizer_shortcuts+=(\
+      $(fd -u . $cyb --exact-depth 1 -t d))
+  else
+    [[ -d $edu ]] && sessionizer_shortcuts+=(\
+      $(find $edu -mindepth 3 -maxdepth 3 -type d))
+    [[ -d $cyb ]] && sessionizer_shortcuts+=(\
+      $(find $cyb -mindepth 3 -maxdepth 3 -type d))
+  fi
+fi
+
+sessionizer() {
+  if [[ -n $1 ]]; then
+    sessionizer_dir=$(realpath $1)
+  else
+    if ! command -v fzf &> /dev/null; then
+      echo "ERROR: install fzf or specify dir: $(basename $0) DIR"
+      exit 1
+    fi
+
+    sessionizer_dir=$(printf "%s\n" "${sessionizer_shortcuts[@]}" |\
+      sed 's|/$||'| sort -u | fzf)
+  fi
+
+  [[ -z $sessionizer_dir ]] && {
+    echo "EXIT: session dir not chosen"
+    exit
+  }
+
+  if [[ $sessionizer_dir == $HOME ]]; then
+    sessionizer_name=HOME
+  else
+    sessionizer_name=$(basename "$sessionizer_dir")
+  fi
+}
+
+

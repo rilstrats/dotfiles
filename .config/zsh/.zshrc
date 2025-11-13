@@ -24,9 +24,6 @@ compinit -d $$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 [[ -f $ZDOTDIR/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]] && \
   source $ZDOTDIR/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
-# shortcuts
-[[ -f $ZDOTDIR/shortcuts.zsh ]] && source $ZDOTDIR/shortcuts.zsh
-
 # aliases
 # alias g=git
 # alias v=$EDITOR
@@ -34,8 +31,8 @@ compinit -d $$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 # alias vim=$EDITOR
 
 # zellij sessionizer
-zd() {cd $SESSIONIZER_DIR}
-zwd() {echo $SESSIONIZER_DIR}
+sd() {cd $SESSIONIZER_DIR}
+swd() {echo $SESSIONIZER_DIR}
 alias zellijer=$HOME/.local/bin/zellij-sessionizer
 alias zellijh=$HOME/.local/bin/zellij-home
 

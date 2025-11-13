@@ -5,6 +5,7 @@ export XDG_STATE_HOME=$HOME/.local/state # history
 export XDG_CACHE_HOME=$HOME/.cache # non-essential files
 
 # code
+export CODEPATH=$HOME/code
 export CARGO_HOME=$XDG_DATA_HOME/cargo
 export RUSTUP_HOME=$XDG_DATA_HOME/rustup
 export GOPATH=$XDG_DATA_HOME/go

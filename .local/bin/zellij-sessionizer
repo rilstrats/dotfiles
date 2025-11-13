@@ -1,43 +1,15 @@
-#!/usr/bin/zsh
+#!/bin/bash
+source .config/sessionizer
+sessionizer "$@"
 
-if [[ -z $SESSIONIZER_SHORTCUTS ]]; then
-  if [[ -f "$ZDOTDIR/shortcuts.zsh" ]]; then
-    source "$ZDOTDIR/shortcuts.zsh"
-  else
-    echo "ERROR: \$SESSIONIZER_SHORTCUTS not set and can't find \$ZDOTDIR/shortcuts.zsh"
-    exit
-  fi
-fi
-
-if [[ -n $1 ]]; then
-  cd $1
-  SESSIONIZER_DIR=$PWD
-  cd $OLDPWD
+if [[ -z $ZELLIJ ]]; then
+  SESSIONIZER_DIR=$sessionizer_dir \
+  zellij attach --create $sessionizer_name \
+  options --default-cwd $sessionizer_dir
 else
-  if ! command -v fzf &> /dev/null; then
-    echo "ERROR: fzf missing (install fzf or use as 'zellij-sessionizer DIR')"
-    exit 1
-  fi
-  SESSIONIZER_DIR=$(printf "%s\n" $SESSIONIZER_SHORTCUTS | sort -u | fzf)
+  echo "ERROR: already in zellij"
+  # PLUGIN="file:$HOME/.config/zellij/plugins/zellij-switch.wasm"
+  # SESSIONIZER_DIR=$SESSIONIZER_DIR \
+  # zellij pipe --plugin $PLUGIN \
+  # -- "--session $SESSIONIZER_NAME --cwd $SESSIONIZER_DIR"
 fi
-
-[[ -z $SESSIONIZER_DIR ]] && exit 0
-
-if [[ "$SESSIONIZER_DIR" == "$HOME" || "$SESSIONIZER_DIR" == "$HOME/" ]]; then
-  SESSIONIZER_NAME=HOME
-else
-  SESSIONIZER_NAME=$(basename "$SESSIONIZER_DIR")
-fi
-
-export SESSIONIZER_DIR
-cd $SESSIONIZER_DIR
-zellij attach --create $SESSIONIZER_NAME
-
-# work in progress
-# zellij attach --create $SESSIONIZER_NAME options --default-cwd $SESSIONIZER_DIR
-# if [[ -z $ZELLIJ ]]; then
-#   zellij attach --create $SESSIONIZER_NAME options --default-cwd $SESSIONIZER_DIR
-# else
-#   PLUGIN="file:$HOME/.config/zellij/plugins/zellij-switch.wasm"
-#   zellij pipe --plugin $PLUGIN -- "--session ${SESSIONIZER_NAME} --cwd $(echo -n $SESSIONIZER_DIR)"
-# fi
