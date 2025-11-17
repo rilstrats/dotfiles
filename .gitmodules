@@ -10,3 +10,6 @@
 [submodule ".config/nvim"]
 	path = .config/nvim
 	url = https://github.com/rilstrats/kickstart.nvim.git
+[submodule ".config/lazyvim"]
+	path = .config/lazyvim
+	url = git@github.com:rilstrats/lazyvim.git
