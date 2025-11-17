@@ -2,6 +2,8 @@ print("Advent of Neovim")
 
 -- default tab size
 vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+vim.opt.expandtab = true
 
 -- relative line numbers
 vim.opt.number = true
