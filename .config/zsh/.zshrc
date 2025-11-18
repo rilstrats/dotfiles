@@ -5,8 +5,8 @@ bindkey -v # vim
 
 # history
 export HISTFILE=$XDG_STATE_HOME/zsh/history
-export HISTSIZE=1000
-export SAVEHIST=1000
+export HISTSIZE=10000
+export SAVEHIST=10000
 
 # autocomplete
 # zstyle ':completion:*' completer _complete _ignored _approximate
@@ -24,21 +24,11 @@ compinit -d $$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 [[ -f $ZDOTDIR/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]] && \
   source $ZDOTDIR/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
-# aliases
-# alias g=git
-# alias v=$EDITOR
-# alias vi=$EDITOR
-# alias vim=$EDITOR
-
 # zellij sessionizer
 sd() {cd $SESSIONIZER_DIR}
 swd() {echo $SESSIONIZER_DIR}
 alias zellijer=$HOME/.local/bin/zellij-sessionizer
 alias zellijh=$HOME/.local/bin/zellij-home
-
-# OLDPWD
-od() {cd $OLDPWD}
-owd() {echo $OLDPWD}
 
 # ls => exa
 if [[ -x $(command -v eza) ]]; then
@@ -51,14 +41,6 @@ else
   alias la='ls -A'
   alias ll='ls -oh'
   alias l='ls -ohA'
-fi
-
-# bat => cat
-[[ -x $(command -v bat) ]] && alias cat=bat
-
-# cd => zoxide
-if [[ -x $(command -v zoxide) ]]; then
-  eval "$(zoxide init zsh)"
 fi
 
 # topgrade
