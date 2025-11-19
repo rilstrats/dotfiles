@@ -91,8 +91,8 @@ UUID=1d13b649-09b5-4760-a335-84325fc5ee23 /mnt/backitup btrfs subvol=backitup,de
 The mountpoints must be created and permissions changed:
 
 ```sh
-sudo mkdir /mnt/gaming /mnt/backitup
-sudo chmod 1777 /mnt/gaming /mnt//backitup
+sudo mkdir /gaming /backitup
+sudo chmod 1777 /gaming /backitup
 ```
 
 ### Mailto Links
