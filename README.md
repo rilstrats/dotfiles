@@ -15,16 +15,23 @@ By cloning these dotfiles and setting up the submodules, you are also installing
 
 ### Fedora
 
+#### CLI Apps
+
 ```bash
-sudo dnf install @development-tools nextcloud-client \
-alacritty neovim zsh fzf bat fd-find ripgrep stow zoxide
+sudo dnf install @development-tools \
+bat fd-find fzf neovim ripgrep stow zsh
+bat cache --build
 ```
 
-### Toolbox
+#### GUI Apps
 
+```bash
+sudo dnf install alacritty nextcloud-client steam
+flatpak remote-add --if-not-exists flathub \
+https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install brave discord obsidian
 ```
-sudo dnf install @development-tools neovim zsh fzf bat fd-find ripgrep stow
-```
+
 
 <!-- #### i3 -->
 <!---->
@@ -37,11 +44,11 @@ sudo dnf install @development-tools neovim zsh fzf bat fd-find ripgrep stow
 ### Rust
 
 ```bash
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --no-modify-path
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs |\
+sh -s -- --no-modify-path -y
 cargo install cargo-binstall
 cargo binstall cargo-quickinstall
 cargo binstall bacon cargo-update eza topgrade mise zellij starship
-bat cache --build
 ```
 <!-- cargo install bacon bat bottom du-dust exa procs ripgrep sd topgrade zoxide -->
 
