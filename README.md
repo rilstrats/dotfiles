@@ -18,9 +18,14 @@ By cloning these dotfiles and setting up the submodules, you are also installing
 #### CLI Apps
 
 ```bash
-sudo dnf install @development-tools \
-bat fd-find fzf neovim ripgrep stow zsh
+sudo dnf install bat fd-find fzf git neovim ripgrep stow zsh
 bat cache --build
+```
+
+#### Development
+
+```bash
+sudo dnf install cmake gcc gcc-c++ gdb golang make
 ```
 
 #### GUI Apps
@@ -46,9 +51,16 @@ flatpak install brave discord obsidian
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs |\
 sh -s -- --no-modify-path -y
-cargo install cargo-binstall
+curl -L --proto '=https' --tlsv1.2 -sSf \
+https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 cargo binstall cargo-quickinstall
-cargo binstall bacon cargo-update eza topgrade mise zellij starship
+cargo binstall cargo-update eza topgrade zellij starship
+```
+
+#### Development
+
+```bash
+cargo binstall bacon mise
 ```
 <!-- cargo install bacon bat bottom du-dust exa procs ripgrep sd topgrade zoxide -->
 
