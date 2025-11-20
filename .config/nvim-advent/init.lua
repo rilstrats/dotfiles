@@ -36,3 +36,5 @@ vim.o.confirm = true
 require("config.lazy")
 require("config.keymaps")
 require("config.terminal")
+
+vim.cmd.colorscheme "tokyonight"

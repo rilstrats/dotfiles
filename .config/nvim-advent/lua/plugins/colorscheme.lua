@@ -3,8 +3,9 @@ return {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    opts = {},
-    config = function() vim.cmd.colorscheme "tokyonight" end,
+    opts = {
+      style = "night",
+      transparent = true
+    },
   },
-  { 'xiyaowong/transparent.nvim', lazy = false },
 }
