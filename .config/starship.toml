@@ -102,7 +102,7 @@ $character
 [os]
 disabled = false
 style = 'bg:bright-white fg:black'
-format = '[ $symbol]($style)'
+format = '[ $symbol ]($style)'
 
 [directory]
 style = "bg:blue fg:254 bold"
