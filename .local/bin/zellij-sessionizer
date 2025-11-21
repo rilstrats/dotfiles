@@ -1,5 +1,5 @@
 #!/bin/bash
-source .config/sessionizer
+source ~/.config/sessionizer
 sessionizer "$@"
 
 if [[ -z $ZELLIJ ]]; then

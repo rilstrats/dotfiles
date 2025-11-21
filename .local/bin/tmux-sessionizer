@@ -1,5 +1,5 @@
 #!/bin/bash
-source .config/sessionizer
+source ~/.config/sessionizer
 sessionizer "$@"
 sessionizer_name=$(echo $SESSIONIZER_NAME | tr . _)
 
