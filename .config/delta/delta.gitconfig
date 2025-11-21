@@ -16,4 +16,4 @@
     conflictStyle = zdiff3
 
 [include]
-    path = ~/.config/delta/themes/tokyonight_night.gitconfig
+    path = themes/tokyonight_moon.gitconfig
