@@ -55,7 +55,7 @@
 
 # signing
 [include]
-	path = ~/.config/git/signing
+	path = signing
 
 # delta
 [include]
