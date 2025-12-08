@@ -1,0 +1,8 @@
+#!/bin/bash
+if [[ "$1" == "clone" ]]; then
+    git codeclone "${@:2}"
+elif [[ "$1" == "init" ]]; then
+    git codeinit "${@:2}"
+else
+    echo "Usage: git code (clone|init) [args]"
+fi

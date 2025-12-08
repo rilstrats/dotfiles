@@ -22,8 +22,8 @@
 	; subupdate = submodule update --remote
 	; subinit = submodule update --init --checkout
 
-	cc = codeclone
-	ci = codeinit
+	; cc = codeclone
+	; ci = codeinit
 
 	; root = rev-parse --show-toplevel
 
