@@ -4,9 +4,8 @@ default_domain="github.com"
 default_user="rilstrats"
 
 input=$1
-[[ -z $input ]] && read -p "Please enter repo location: " input
+[[ -z $input ]] && read -p "Please enter path: " input
 [[ -z $input ]] && echo "Exit: No input supplied" && exit
-
 
 matches=($(echo $input | grep -oP '([^\/]*[^\/])'))
 
@@ -19,27 +18,28 @@ elif [[ ${#matches[@]} -le 3 ]]; then
     exec 2>/dev/null
     domain=${matches[-3]:-$default_domain}
     user=${matches[-2]:-$default_user}
-    repo=${matches[-1]}
+    name=${matches[-1]}
     # restore bash warnings for rest of script
     exec 2>&3
     exec 3>&-
-    rel_path=$domain/$user/$repo
+    local_path=$domain/$user/$name
 else
-    rel_path=""
+    local_path=""
     for match in ${matches[@]}; do
-        rel_path+=$match/
+        local_path+=$match/
     done
-    rel_path=${rel_path::-1}
+    local_path=${local_path::-1}
 fi
 
-abs_path="$CODEPATH/$rel_path"
+abs_path="$CODEPATH/$local_path"
 
-read -p "Is $abs_path correct? [y/N]: " input
+echo -e "path:\t$abs_path"
+read -p "Is the above value correct? [y/N]: " input
 proceed=$(echo ${input:0:1} | tr '[:upper:]' '[:lower:]')
 
-[[ $proceed != 'y' ]] && echo "Exit: please make manually!" && exit
+[[ $proceed != 'y' ]] && echo "Exit: please init manually!" && exit
 
-[[ -d $abs_path ]] && echo "Exit: repository already exists" && exit
+[[ -d $abs_path ]] && echo "Exit: path already exists" && exit
 
 mkdir -p $abs_path
 git init $abs_path

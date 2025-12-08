@@ -1,34 +1,81 @@
-#!/usr/bin/zsh
+#!/bin/bash
 
-URL=$1
-# PROTO=$($2 | tr '[:upper:]' '[:lower:]')
+default_proto="git@"
+default_domain="github.com"
+default_user="rilstrats"
 
-[[ -z $URL ]] && read "URL?Please enter repo URL (https or ssh): "
-# [[ -z $URL ]] && echo "Usage: repoclone url" 1>&2 && exit 1
-# [[ -z $PROTO ]] && PROTO="ssh"
+input=$1
+[[ -z $input ]] && read -p "Please enter repo: " input
+[[ -z $input ]] && echo "Exit: No input supplied" && exit
 
-MATCH='(git@|https\:\/\/)(.+?)\.(com|org|net)(\:|\/)(.+?)\/(.+)(\.git|$)'
-DOMAIN=$(echo $URL | sed -E "s/$MATCH/\2/")
-# echo $DOMAIN
-SUFFIX=$(echo $URL | sed -E "s/$MATCH/\3/")
-# echo $SUFFIX
-USER=$(echo $URL | sed -E "s/$MATCH/\5/")
-# echo $USER
-REPO=$(echo $URL | sed -E "s/$MATCH/\6/")
-# echo $REPO
+matches=($(echo $input | grep -oP '(git@|https\:\/\/|[^\/\:]*)'))
+if [[ ${#matches[@]} -eq 0 ]]; then
+    echo "Error: failed to find any matches"
+    exit 1
+fi
 
-SITE="$DOMAIN.$SUFFIX"
-PREFIX="$CODEPATH/$SITE/$USER"
-FULL="$PREFIX/$REPO"
+if [[ ${matches[0]} == "git@" || ${matches[0]} == "https://" ]]; then
+    proto=${matches[0]}
+    # remove first item from array
+    matches=(${matches[@]:1})
+else
+    proto=$default_proto
+fi
+[[ $proto == "git@" ]] && domain_sep=":" || domain_sep="/"
 
-read "INPUT?Is $FULL correct? [y/N]: "
-PROCEED=$(echo ${INPUT:0:1} | tr '[:upper:]' '[:lower:]')
+repo=$proto
 
-[[ $PROCEED != 'y' ]] && echo "Try: git clone $URL" && exit 0
+if [[ ${#matches[@]} -eq 0 ]]; then
+    echo "Error: failed to find any matches"
+    exit 1
+elif [[ ${#matches[@]} -le 3 ]]; then
+    # quiet stupid bash warnings
+    exec 3>&2
+    exec 2>/dev/null
+    domain=${matches[-3]:-$default_domain}
+    user=${matches[-2]:-$default_user}
+    name=${matches[-1]}
+    # restore bash warnings for rest of script
+    exec 2>&3
+    exec 3>&-
 
-[[ ! -d $PREFIX ]] && mkdir -p $PREFIX
+    local_path=$domain/$user/$name
+    repo+=$domain$domain_sep$user/$name
+else
+    url_sep=$domain_sep
+    local_path=""
+    for match in ${matches[@]}; do
+        local_path+=$match/
+        repo+=$match$url_sep
+        url_sep="/"
+    done
+    local_path=${local_path::-1}
+    repo=${repo::-1}
+fi
 
-[[ -d $FULL ]] && echo "Repository already cloned: $FULL" && exit 0
+# deal with trailing .git
+if [[ $local_path == *.git ]]; then
+    local_path=${local_path::-4}
+fi
+if [[ $repo != *.git ]]; then
+    repo+=.git
+fi
 
-git clone $URL $FULL
+abs_path="$CODEPATH/$local_path"
 
+echo -e "repo:\t$repo"
+echo -e "path:\t$abs_path"
+read -p "Are the above values correct? [y/N]: " input
+proceed=$(echo ${input:0:1} | tr '[:upper:]' '[:lower:]')
+
+[[ $proceed != 'y' ]] && echo "Exit: please clone manually" && exit
+
+git ls-remote $repo &> /dev/null || {
+    echo "Exit: repo doesn't exist"
+    exit 
+}
+
+[[ -d $abs_path ]] && echo "Exit: path already exists" && exit
+
+mkdir -p $abs_path
+git clone $repo $abs_path
