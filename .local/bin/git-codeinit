@@ -1,40 +1,45 @@
-#!/usr/bin/env zsh
+#!/bin/bash
 
-DEFAULT_DOMAIN="github.com"
-DEFAULT_USER="rilstrats"
+default_domain="github.com"
+default_user="rilstrats"
 
-LOC=$1
+input=$1
+[[ -z $input ]] && read -p "Please enter repo location: " input
+[[ -z $input ]] && echo "Exit: No input supplied" && exit
 
-[[ -z $LOC ]] && read "LOC?Please enter repo location: "
-MATCH='^(([^\/]*?[^\/])\/)??(([^\/]*?[^\/])\/)?([^\/]*?[^\/])$'
-# non-matching groups don't work in sed (?:)
 
-DOMAIN=$(echo $LOC | sed -E "s/$MATCH/\2/")
-USER=$(echo $LOC | sed -E "s/$MATCH/\4/")
-REPO=$(echo $LOC | sed -E "s/$MATCH/\5/")
+matches=($(echo $input | grep -oP '([^\/]*[^\/])'))
 
-# double lazy ?? doesn't work so this is necessary
-# if domain is full and user is empty
-if [[ -n $DOMAIN && -z $USER ]]; then
-  # swap the two
-  USER=$DOMAIN
-  DOMAIN=$DEFAULT_DOMAIN
+if [[ ${#matches[@]} -eq 0 ]]; then
+    echo "Error: failed to find any matches"
+    exit 1
+elif [[ ${#matches[@]} -le 3 ]]; then
+    # quiet stupid bash warnings
+    exec 3>&2
+    exec 2>/dev/null
+    domain=${matches[-3]:-$default_domain}
+    user=${matches[-2]:-$default_user}
+    repo=${matches[-1]}
+    # restore bash warnings for rest of script
+    exec 2>&3
+    exec 3>&-
+    rel_path=$domain/$user/$repo
 else
-  # else fill in the defaults
-  [[ -z $DOMAIN ]] && DOMAIN=$DEFAULT_DOMAIN
-  [[ -z $USER ]] && USER=$DEFAULT_USER
+    rel_path=""
+    for match in ${matches[@]}; do
+        rel_path+=$match/
+    done
+    rel_path=${rel_path::-1}
 fi
 
-[[ -z $REPO ]] && echo "No user input!" && exit 1
+abs_path="$CODEPATH/$rel_path"
 
-FULL="$CODEPATH/$DOMAIN/$USER/$REPO"
+read -p "Is $abs_path correct? [y/N]: " input
+proceed=$(echo ${input:0:1} | tr '[:upper:]' '[:lower:]')
 
-read "INPUT?Is $FULL correct? [y/N]: "
-PROCEED=$(echo ${INPUT:0:1} | tr '[:upper:]' '[:lower:]')
+[[ $proceed != 'y' ]] && echo "Exit: please make manually!" && exit
 
-[[ $PROCEED != 'y' ]] && echo "Please make manually!" && exit 0
+[[ -d $abs_path ]] && echo "Exit: repository already exists" && exit
 
-[[ -d $FULL ]] && echo "Repository already exists: $FULL" && exit 0
-
-mkdir -p $FULL
-git init $FULL
+mkdir -p $abs_path
+git init $abs_path
