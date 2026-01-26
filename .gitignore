@@ -28,6 +28,18 @@
 /.local/share/vagrant/*
 !/.local/share/vagrant/Vagrantfile
 
+!/.local/share/zsh
+/.local/share/zsh/*
+!/.local/share/zsh/.gitkeep
+
+# cache
+!/.cache
+/.cache/*
+
+!/.cache/zsh
+/.cache/zsh/*
+!/.cache/zsh/.gitkeep
+
 # Docker
 /.config/docker/*
 !/.config/docker/config.json

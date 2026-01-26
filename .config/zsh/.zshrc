@@ -1,28 +1,32 @@
 # options
 # setopt autocd beep extendedglob nomatch notify
-setopt inc_append_history hist_ignore_dups
+setopt SHARE_HISTORY EXTENDED_HISTORY HIST_REDUCE_BLANKS
+setopt HIST_IGNORE_DUPS HIST_EXPIRE_DUPS_FIRST
 bindkey -v # vim
 
 # history
 export HISTFILE=$XDG_STATE_HOME/zsh/history
-export HISTSIZE=10000
-export SAVEHIST=10000
+export HISTSIZE=99999
+export SAVEHIST=88888
 
 # autocomplete
-# zstyle ':completion:*' completer _complete _ignored _approximate
 zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
-export FPATH=$ZDOTDIR/functions:$FPATH
-zstyle :compinstall filename $ZDOTDIR/.zshrc
+export FPATH=$ZDOTDIR/func:$FPATH
+# The following lines were added by compinstall
+zstyle ':completion:*' completer _complete _ignored
+zstyle :compinstall filename '/home/riley/.config/zsh/.zshrc'
+
 autoload -Uz compinit
-compinit -d $$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
+compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
+# End of lines added by compinstall
 
 # plugins
-[[ -f $ZDOTDIR/zsh-vi-mode/zsh-vi-mode.plugin.zsh ]] && \
-  source $ZDOTDIR/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-[[ -f $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && \
-  source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
-[[ -f $ZDOTDIR/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]] && \
-  source $ZDOTDIR/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+[[ -f $XDG_DATA_HOME/zsh/vi-mode/zsh-vi-mode.plugin.zsh ]] && \
+  source $XDG_DATA_HOME/zsh/vi-mode/zsh-vi-mode.plugin.zsh
+[[ -f $XDG_DATA_HOME/zsh/autosuggestions/zsh-autosuggestions.zsh ]] && \
+  source $XDG_DATA_HOME/zsh/autosuggestions/zsh-autosuggestions.zsh
+[[ -f $XDG_DATA_HOME/zsh/fsh/fast-syntax-highlighting.plugin.zsh ]] && \
+  source $XDG_DATA_HOME/zsh/fsh/fast-syntax-highlighting.plugin.zsh
 
 # zellij sessionizer
 sd() {cd $SESSIONIZER_DIR}
@@ -30,9 +34,17 @@ swd() {echo $SESSIONIZER_DIR}
 alias zellijer=$HOME/.local/bin/zellij-sessionizer
 alias zellijh=$HOME/.local/bin/zellij-home
 
+if [[ $TERM == "alacritty" || $TERM == "xterm-256color" ]]; then
+  use_nerd_font=1
+fi
+
 # ls => exa
 if [[ -x $(command -v eza) ]]; then
-  alias ls='eza --icons --git --group-directories-first'
+  if [[ -n $use_nerd_font ]]; then
+    alias ls='eza --git --group-directories-first --icons'
+  else
+    alias ls='eza --git --group-directories-first'
+  fi
   alias la='ls -a'
   alias ll='ls -l'
   alias l='ls -la'
@@ -53,5 +65,7 @@ fi
 [[ -x $(command -v mise) ]] && eval "$(mise activate zsh)"
 
 # starship
-[[ -x $(command -v starship) ]] && eval "$(starship init zsh)"
+[[ -x $(command -v starship) ]] && \
+  [[ -n $use_nerd_font ]] && \
+  eval "$(starship init zsh)"
 

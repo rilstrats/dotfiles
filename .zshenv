@@ -33,6 +33,10 @@ export PAGER=/usr/bin/less
 # XDG compliance
 export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker
 export GEM_HOME=$XDG_DATA_HOME/gem
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java
+export JUPYTER_PLATFORM_DIRS=1
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+export PASSWORD_STORE_DIR=$XDG_DATA_HOME/pass
 export VAGRANT_HOME=$XDG_DATA_HOME/vagrant
 export VAGRANT_ALIAS_FILE=$XDG_DATA_HOME/vagrant/aliases
 export WAKATIME_HOME=$XDG_CONFIG_HOME/wakatime
