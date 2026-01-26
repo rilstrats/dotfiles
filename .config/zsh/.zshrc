@@ -1,13 +1,21 @@
 # options
-# setopt autocd beep extendedglob nomatch notify
-setopt SHARE_HISTORY EXTENDED_HISTORY HIST_REDUCE_BLANKS
-setopt HIST_IGNORE_DUPS HIST_EXPIRE_DUPS_FIRST
+# share history between sessions
+setopt SHARE_HISTORY
+# save timestamp as well as command
+setopt EXTENDED_HISTORY
+# remove extra whitespace from commands
+setopt HIST_REDUCE_BLANKS
+# if the same command is run twice in a row, only save the first
+setopt HIST_IGNORE_DUPS 
+# when trimming the history file, remove duplicates first
+setopt HIST_EXPIRE_DUPS_FIRST
 bindkey -v # vim
 
 # history
 export HISTFILE=$XDG_STATE_HOME/zsh/history
-export HISTSIZE=99999
-export SAVEHIST=88888
+# it is recommended that HISTSIZE be 20% larger than SAVEHIST
+export HISTSIZE=120000
+export SAVEHIST=100000
 
 # autocomplete
 zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
