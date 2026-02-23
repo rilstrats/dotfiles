@@ -42,7 +42,9 @@ swd() {echo $SESSIONIZER_DIR}
 alias zellijer=$HOME/.local/bin/zellij-sessionizer
 alias zellijh=$HOME/.local/bin/zellij-home
 
-if [[ $TERM == "alacritty" || $TERM == "xterm-256color" ]]; then
+if [[ $TERM == "alacritty" ||\
+      $TERM == "xterm-256color" ||\
+      $TERM == "tmux-256color" ]]; then
   use_nerd_font=1
 fi
 
