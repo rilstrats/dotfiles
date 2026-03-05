@@ -31,6 +31,11 @@
 !/.local/share/zsh
 /.local/share/zsh/*
 !/.local/share/zsh/.gitkeep
+!/.local/share/zsh/plugins
+
+!/.local/share/zsh/func
+/.local/share/zsh/func/*
+!/.local/share/zsh/func/.gitkeep
 
 # cache
 !/.cache

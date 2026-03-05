@@ -19,7 +19,7 @@ export SAVEHIST=100000
 
 # autocomplete
 zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
-export FPATH=$ZDOTDIR/func:$FPATH
+export FPATH=$XDG_DATA_HOME/zsh/func:$FPATH
 # The following lines were added by compinstall
 zstyle ':completion:*' completer _complete _ignored
 zstyle :compinstall filename '/home/riley/.config/zsh/.zshrc'
@@ -29,12 +29,13 @@ compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 # End of lines added by compinstall
 
 # plugins
-[[ -f $XDG_DATA_HOME/zsh/vi-mode/zsh-vi-mode.plugin.zsh ]] && \
-  source $XDG_DATA_HOME/zsh/vi-mode/zsh-vi-mode.plugin.zsh
-[[ -f $XDG_DATA_HOME/zsh/autosuggestions/zsh-autosuggestions.zsh ]] && \
-  source $XDG_DATA_HOME/zsh/autosuggestions/zsh-autosuggestions.zsh
-[[ -f $XDG_DATA_HOME/zsh/fsh/fast-syntax-highlighting.plugin.zsh ]] && \
-  source $XDG_DATA_HOME/zsh/fsh/fast-syntax-highlighting.plugin.zsh
+zplugins=$XDG_DATA_HOME/zsh/plugins
+[[ -f $zplugins/vi-mode/zsh-vi-mode.plugin.zsh ]] && \
+  source $zplugins/vi-mode/zsh-vi-mode.plugin.zsh
+[[ -f $zplugins/autosuggestions/zsh-autosuggestions.zsh ]] && \
+  source $zplugins/autosuggestions/zsh-autosuggestions.zsh
+[[ -f $zplugins/fsh/fast-syntax-highlighting.plugin.zsh ]] && \
+  source $zplugins/fsh/fast-syntax-highlighting.plugin.zsh
 
 # zellij sessionizer
 sd() {cd $SESSIONIZER_DIR}
@@ -75,7 +76,7 @@ fi
 [[ -x $(command -v mise) ]] && eval "$(mise activate zsh)"
 
 # starship
-[[ -x $(command -v starship) ]] && \
-  [[ -n $use_nerd_font ]] && \
+if [[ -x $(command -v starship) && -n $use_nerd_font ]]; then
   eval "$(starship init zsh)"
+fi
 
