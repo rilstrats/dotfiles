@@ -11,6 +11,9 @@
 !/.local/bin/zellij-*
 !/.local/bin/ssh-copy-terminfo
 !/.local/bin/nerdfont-download
+!/.local/bin/brave-browser
+!/.local/bin/google-chrome
+!/.local/bin/bw
 
 # Application State
 !/.local/state

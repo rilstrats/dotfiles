@@ -1,0 +1,4 @@
+#!/bin/bash
+[[ -x /usr/bin/bw ]] && \
+    bw "$@" || \
+    flatpak run --command=bw com.bitwarden.desktop "$@"
