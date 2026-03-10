@@ -6,7 +6,9 @@ setopt EXTENDED_HISTORY
 # remove extra whitespace from commands
 setopt HIST_REDUCE_BLANKS
 # if the same command is run twice in a row, only save the first
-setopt HIST_IGNORE_DUPS 
+setopt HIST_IGNORE_DUPS
+# if a space is prepended don't add command to history
+setopt HIST_IGNORE_SPACE
 # when trimming the history file, remove duplicates first
 setopt HIST_EXPIRE_DUPS_FIRST
 bindkey -v # vim
