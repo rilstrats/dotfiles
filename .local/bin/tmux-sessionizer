@@ -1,15 +1,17 @@
 #!/bin/bash
 source ~/.config/sessionizer
 sessionizer "$@"
-sessionizer_name=$(echo $SESSIONIZER_NAME | tr . _)
+sessionizer_name=${sessionizer_name/./_}
 
 if [[ -z $TMUX ]] && [[ -z $TMUX_RUNNING ]]; then
-    tmux new-session -s $sessionizer_name -c $sessionizer_dir -e SESSIONIZER_DIR=$sessionizer_dir
+    tmux new-session -s $sessionizer_name -c $sessionizer_dir \
+        -e SESSIONIZER_DIR=$sessionizer_dir
     exit 0
 fi
 
 if ! tmux has-session -t=$sessionizer_name 2> /dev/null; then
-    tmux new-session -ds $sessionizer_name -c $sessionizer_dir -e SESSIONIZER_DIR=$sessionizer_dir
+    tmux new-session -ds $sessionizer_name -c $sessionizer_dir \
+        -e SESSIONIZER_DIR=$sessionizer_dir
 fi
 
 tmux switch-client -t $sessionizer_name

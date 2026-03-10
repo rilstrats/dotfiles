@@ -39,9 +39,11 @@ zplugins=$XDG_DATA_HOME/zsh/plugins
 [[ -f $zplugins/fsh/fast-syntax-highlighting.plugin.zsh ]] && \
   source $zplugins/fsh/fast-syntax-highlighting.plugin.zsh
 
-# zellij sessionizer
+# sessionizer
 sd() {cd $SESSIONIZER_DIR}
 swd() {echo $SESSIONIZER_DIR}
+alias tmuxer=$HOME/.local/bin/tmux-sessionizer
+alias tmuxh=$HOME/.local/bin/tmux-home
 alias zellijer=$HOME/.local/bin/zellij-sessionizer
 alias zellijh=$HOME/.local/bin/zellij-home
 

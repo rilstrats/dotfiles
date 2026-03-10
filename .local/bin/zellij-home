@@ -1,3 +1,4 @@
 #!/usr/bin/bash
-cd $HOME
-zellij attach --create HOME
+
+zellij-sessionizer $HOME
+
