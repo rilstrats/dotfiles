@@ -55,9 +55,13 @@
 # Wakatime
 /.config/wakatime/*
 !/.config/wakatime/.wakatime.cfg
+!/.config/wakatime/wakatime.cfg
 
 # Zellij Plugins
 /.config/zellij/plugins
+
+# Zellij Plugins
+/.config/helix/runtime
 
 # ZSH Compiled Files
 *.zwc
