@@ -1,12 +1,13 @@
 #! /usr/bin/env bash
+
 if [[ -z $1 ]]; then
 	echo "Error: No user@host"
-	echo "Usage: ssh-copy-alacritty user@host"
+	echo "Usage: $0 user@host"
 	exit 1
 fi
 
 if [[ $2 == "-t" || $2 == "--test" ]]; then
-	echo "Testing testing..." | ssh "$1" 'cat /dev/stdin > ssh-copy-terminfo-test'
+	echo "Testing testing..." | ssh "$1" 'cat - > ssh-copy-terminfo-test'
 	if [[ $? == 0 ]]; then
 		echo "Tentative Success: Please use 'ssh $1' and"
 		echo "look for ~/ssh-copy-terminfo-test to confirm"
@@ -14,10 +15,10 @@ if [[ $2 == "-t" || $2 == "--test" ]]; then
 		echo "Tentative Failure: Please use 'ssh $1' and"
 		echo "look for ~/ssh-copy-terminfo-test to confirm"
 	fi
-	exit 0
+	exit
 fi
 
-infocmp | ssh "$1" 'tic -x /dev/stdin'
+infocmp -x | ssh "$1" 'tic -x -'
 if [[ $? == 0 ]]; then
 	echo "Tentative Success: Please use 'ssh $1' and"
 	echo "look for /usr/share/terminfo/${TERM:0:1}/$TERM to confirm"
