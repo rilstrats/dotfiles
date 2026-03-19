@@ -11,12 +11,16 @@ vim.opt.relativenumber = true
 
 vim.g.have_nerd_font = true
 
+-- cliboard
+vim.g.clipboard = 'osc52'
+
 -- leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- copied from kickstart.nvim
 vim.o.mouse = 'a'
+vim.o.showmode = false
 vim.o.breakindent = true
 vim.o.undofile = true
 vim.o.ignorecase = true
@@ -35,6 +39,6 @@ vim.o.confirm = true
 
 require("config.lazy")
 require("config.keymaps")
-require("config.terminal")
+-- require("config.terminal")
 
 vim.cmd.colorscheme "tokyonight"
