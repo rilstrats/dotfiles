@@ -15,20 +15,17 @@ export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 export PATH=$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin:$PATH
 
 # EDITOR
-# if [[ -x $(command -v lvim) ]]; then
-#   export EDITOR=$(command -v lvim)
-# elif [[ -x $(command -v nvim) ]]; then
-if [[ -x $(command -v nvim) ]]; then
-  export EDITOR=$(command -v nvim)
-elif [[ -x $(command -v vim) ]]; then
-  export EDITOR=$(command -v vim)
+if command -v nvim &> /dev/null; then
+  export EDITOR=nvim
+elif command -v vim &> /dev/null; then
+  export EDITOR=vim
 else
-  export EDITOR=$(command -v vi)
+  export EDITOR=vi
 fi
 export VISUAL=$EDITOR
 
 # PAGER
-export PAGER=/usr/bin/less
+export PAGER=less
 
 # XDG compliance
 export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker

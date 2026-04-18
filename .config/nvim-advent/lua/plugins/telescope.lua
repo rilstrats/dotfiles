@@ -1,13 +1,38 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
-    tag = 'v0.1.9',
+    version = '*',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release --target install' }
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+
     },
     config = function()
-      require('telescope').setup { extensions = { fzf = {} } }
+      local vimgrep_arguments = {
+        unpack(require('telescope.config').values.vimgrep_arguments),
+      }
+      -- search hidden
+      table.insert(vimgrep_arguments, '--hidden')
+      -- don't search git
+      table.insert(vimgrep_arguments, '--glob')
+      table.insert(vimgrep_arguments, '!**/.git/*')
+
+      local telescope = require('telescope')
+      require('telescope').setup({
+        defaults = {
+          vimgrep_arguments = vimgrep_arguments,
+        },
+        pickers = {
+          find_command = {
+            'rg',
+            '--files',
+            '--hidden',
+            '--glob',
+            '!**/.git/*'
+          },
+        },
+      })
       require('telescope').load_extension('fzf')
       vim.keymap.set("n", "<leader>sf", require('telescope.builtin').find_files)
       vim.keymap.set("n", "<leader>sg", require('telescope.builtin').live_grep)
@@ -23,7 +48,7 @@ return {
           cwd = vim.fn.stdpath("data") .. "/lazy"
         }
       end)
-      require "config.telescope.multigrep".setup()
+      require("config.telescope.multigrep").setup()
     end
   },
 }

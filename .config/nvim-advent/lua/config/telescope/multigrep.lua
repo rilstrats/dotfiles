@@ -17,12 +17,12 @@ local live_multigrep = function(opts)
       local pieces = vim.split(prompt, "  ")
       local args = { "rg" }
       if pieces[1] then
-        table.insert(args, "-e")
+        table.insert(args, "--regexp")
         table.insert(args, pieces[1])
       end
 
       if pieces[2] then
-        table.insert(args, "-g")
+        table.insert(args, "--glob")
         table.insert(args, pieces[2])
       end
 
@@ -45,7 +45,7 @@ local live_multigrep = function(opts)
 end
 
 M.setup = function()
-  vim.keymap.set("n", "smg", live_multigrep)
+  vim.keymap.set("n", "<leader>smg", live_multigrep)
 end
 
 return M

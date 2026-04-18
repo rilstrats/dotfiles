@@ -84,3 +84,7 @@ if [[ -x $(command -v starship) && -n $use_nerd_font ]]; then
   eval "$(starship init zsh)"
 fi
 
+alias lvim="NVIM_APPNAME=lazyvim nvim"
+alias avim="NVIM_APPNAME=nvim-advent nvim"
+alias kvim="NVIM_APPNAME=nvim-kickstart nvim"
+alias mvim="NVIM_APPNAME=nvim-minimax nvim"
