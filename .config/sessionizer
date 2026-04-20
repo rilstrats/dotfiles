@@ -1,5 +1,5 @@
 #!/bin/bash
-sessionizer_shortcuts=($HOME/ $HOME/.dotfiles/)
+sessionizer_shortcuts=($HOME $HOME/.dotfiles $HOME/.dotfiles/.config/nvim)
 
 # code
 if [[ -d $CODEPATH ]]; then
@@ -39,8 +39,9 @@ sessionizer() {
       exit 1
     fi
 
+    # LC_COLLATE=C forces sorting by ASCII values
     sessionizer_dir=$(printf "%s\n" "${sessionizer_shortcuts[@]}" |\
-      sed 's|/$||'| sort -u | fzf)
+      sed 's|/$||'| LC_COLLATE=C sort -u | fzf)
   fi
 
   [[ -z $sessionizer_dir ]] && {
