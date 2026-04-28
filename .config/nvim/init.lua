@@ -39,9 +39,23 @@ vim.diagnostic.config({
       [vim.diagnostic.severity.HINT] = "󰌶 ",
     },
   },
-  -- virtual_lines = { current_line = true },
-  -- virtual_lines = true,
 })
+
+local telescope_hook = function(ev)
+  local name, kind = ev.data.spec.name, ev.data.kind
+  if name == "telescope-fzf-native.nvim" and (kind == "install" or kind == "update") then
+    vim.system({ "make" }, { cwd = ev.data.path }):wait()
+  end
+end
+vim.api.nvim_create_autocmd("PackChanged", { callback = telescope_hook })
+
+local luasnip_hook = function(ev)
+  local name, kind = ev.data.spec.name, ev.data.kind
+  if name == "luasnip" and (kind == "install" or kind == "update") then
+    vim.system({ "make", "install_jsregexp" }, { cwd = ev.data.path }):wait()
+  end
+end
+vim.api.nvim_create_autocmd("PackChanged", { callback = luasnip_hook })
 
 vim.pack.add({
   "https://github.com/lewis6991/gitsigns.nvim",
@@ -149,14 +163,6 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     end
   end,
 })
-
-local hooks = function(ev)
-  local name, kind = ev.data.spec.name, ev.data.kind
-  if name == "telescope-fzf-native.nvim" and (kind == "install" or kind == "update") then
-    vim.system({ "make" }, { cwd = ev.data.path }):wait()
-  end
-end
-vim.api.nvim_create_autocmd("PackChanged", { callback = hooks })
 
 require("telescope").setup({
   extensions = {
