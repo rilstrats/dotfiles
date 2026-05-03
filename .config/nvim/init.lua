@@ -185,14 +185,12 @@ vim.keymap.set("n", "<leader>fh", tsb.help_tags, { desc = "[H]elp" })
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = {
-    lua_ls = {},
-    stylua = {},
-    pyright = {},
-    rust_analyzer = {},
-    bashls = {
-      filetypes = { "bash", "sh", "zsh" },
-    },
-    clangd = { cmd = { "clangd", "--fallback-style=webkit" } },
+    "lua_ls",
+    "stylua",
+    "pyright",
+    "rust_analyzer",
+    "bashls",
+    "clangd",
   },
 })
 
