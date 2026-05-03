@@ -194,16 +194,43 @@ require("mason-lspconfig").setup({
   },
 })
 
+-- Attempts to format only changed lines, but falls back to formatting the entire file.
+-- https://github.com/stevearc/conform.nvim/issues/92
+local function conform_format_on_save_callback()
+  local filetypes_to_format_entire_file = { "lua", "rust" }
+  if vim.tbl_contains(filetypes_to_format_entire_file, vim.bo.filetype) then
+    require("conform").format()
+    return
+  end
+
+  local hunks = require("gitsigns").get_hunks()
+
+  -- format untracked files
+  if hunks == nil then
+    require("conform").format()
+    return
+  end
+
+  -- format each hunk, starting from bottom of file
+  for i = #hunks, 1, -1 do
+    local hunk = hunks[i]
+    if hunk ~= nil and hunk.type ~= "delete" then
+      local first_row = hunk.added.start
+      local last_row = first_row + hunk.added.count
+      local last_col = vim.api.nvim_buf_get_lines(0, last_row - 2, last_row - 1, true)[1]:len()
+      local range = { start = { first_row, 0 }, ["end"] = { last_row - 1, last_col } }
+      local opts = vim.tbl_deep_extend("keep", { range = range }, require("conform").default_format_opts)
+      require("conform").format(opts)
+    end
+  end
+end
+
 require("conform").setup({
   default_format_opts = {
     lsp_format = "fallback",
   },
   formatters_by_ft = { lua = { "stylua" } },
-  format_on_save = {
-    -- These options will be passed to conform.format()
-    timeout_ms = 500,
-    lsp_format = "fallback",
-  },
+  format_on_save = conform_format_on_save_callback,
 })
 
 require("lazydev").setup({
