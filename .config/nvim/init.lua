@@ -84,6 +84,7 @@ vim.pack.add({
   "https://github.com/windwp/nvim-autopairs",
   "https://github.com/nvim-neo-tree/neo-tree.nvim",
   "https://github.com/MunifTanjim/nui.nvim",
+  "https://github.com/rafamadriz/friendly-snippets",
 })
 
 require("fidget").setup()
@@ -213,6 +214,8 @@ require("lazydev").setup({
     { path = "${3rd}/luv/library", words = { "vim%.uv" } },
   },
 })
+
+require("luasnip.loaders.from_vscode").lazy_load()
 
 require("blink.cmp").setup(
   --- @module 'blink.cmp'
