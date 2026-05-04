@@ -86,6 +86,15 @@ vim.pack.add({
   "https://github.com/nvim-neo-tree/neo-tree.nvim",
   "https://github.com/MunifTanjim/nui.nvim",
   "https://github.com/rafamadriz/friendly-snippets",
+  -- TODO: setup treesitter using one of the following:
+  -- "https://github.com/romus204/tree-sitter-manager.nvim",
+  -- "https://github.com/arborist-ts/arborist.nvim",
+  -- "https://github.com/reybits/ts-forge.nvim"
+  -- TODO: setup markdown editing using one of the following:
+  -- "http://github.com/MeanderingProgrammer/render-markdown.nvim",
+  -- "https://github.com/OXY2DEV/markview.nvim/tree/main#-installation",
+  -- "https://github.com/iamcco/markdown-preview.nvim",
+  -- "https://github.com/toppair/peek.nvim",
 })
 
 require("fidget").setup()
