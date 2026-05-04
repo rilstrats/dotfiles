@@ -198,6 +198,8 @@ require("mason-tool-installer").setup({
   },
 })
 
+vim.lsp.config("bashls", { filetypes = { "sh", "bash", "zsh" } })
+
 -- Attempts to format only changed lines, but falls back to formatting the entire file.
 -- https://github.com/stevearc/conform.nvim/issues/92
 local function conform_format_on_save_callback()
