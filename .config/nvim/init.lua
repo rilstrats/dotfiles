@@ -69,8 +69,9 @@ vim.pack.add({
   "https://github.com/nvim-telescope/telescope.nvim",
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/mason-org/mason.nvim",
-  "https://github.com/stevearc/conform.nvim",
   "https://github.com/mason-org/mason-lspconfig.nvim",
+  "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim",
+  "https://github.com/stevearc/conform.nvim",
   "https://github.com/folke/lazydev.nvim",
   {
     src = "https://github.com/saghen/blink.cmp",
@@ -183,7 +184,8 @@ vim.keymap.set("n", "<leader>fb", tsb.buffers, { desc = "[B]uffers" })
 vim.keymap.set("n", "<leader>fh", tsb.help_tags, { desc = "[H]elp" })
 
 require("mason").setup()
-require("mason-lspconfig").setup({
+require("mason-lspconfig").setup({ ensure_installed = {} })
+require("mason-tool-installer").setup({
   ensure_installed = {
     "lua_ls",
     "stylua",
