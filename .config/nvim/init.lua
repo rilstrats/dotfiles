@@ -194,6 +194,7 @@ require("mason-tool-installer").setup({
     "ruff",
     "rust_analyzer",
     "bashls",
+    "beautysh",
     "clangd",
   },
 })
@@ -235,7 +236,13 @@ require("conform").setup({
   default_format_opts = {
     lsp_format = "fallback",
   },
-  formatters_by_ft = { lua = { "stylua" } },
+  formatters_by_ft = {
+    lua = { "stylua" },
+    bash = { "beautysh" },
+    sh = { "beautysh" },
+    zsh = { "beautysh" },
+    python = { "ruff" },
+  },
   format_on_save = conform_format_on_save_callback,
 })
 
