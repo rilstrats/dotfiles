@@ -107,6 +107,7 @@ require("which-key").setup(
     icons = { mappings = true },
     spec = {
       { "<leader>f", group = "[F]ind" },
+      { "<leader>c", group = "[C]onform (Format)" },
     },
   }
 )
@@ -235,6 +236,9 @@ require("conform").setup({
   formatters_by_ft = { lua = { "stylua" } },
   format_on_save = conform_format_on_save_callback,
 })
+
+vim.keymap.set("n", "<leader>cf", require("conform").format, { desc = "Format [F]ile" })
+vim.keymap.set("n", "<leader>cm", conform_format_on_save_callback, { desc = "Format [M]odifications" })
 
 require("lazydev").setup({
   library = {
