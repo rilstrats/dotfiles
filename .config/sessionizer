@@ -5,10 +5,10 @@ sessionizer_shortcuts=($HOME $HOME/.dotfiles $HOME/.dotfiles/.config/nvim)
 if [[ -d $CODEPATH ]]; then
   if command -v fd &> /dev/null; then
     sessionizer_shortcuts+=(\
-      $(fd -HI '.git$' $CODEPATH | sed 's|\.git/||'))
+      $(fd -HI '.git$' $CODEPATH | sed 's|\.git/\?||'))
   else
     sessionizer_shortcuts+=(\
-      $(find $CODEPATH -name ".git" | sed 's|\.git||'))
+      $(find $CODEPATH -name ".git" | sed 's|\.git/\?||'))
   fi
 fi
 
