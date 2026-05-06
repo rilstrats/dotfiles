@@ -43,9 +43,7 @@ zplugins=$XDG_DATA_HOME/zsh/plugins
 sd() {cd $SESSIONIZER_DIR}
 swd() {echo $SESSIONIZER_DIR}
 alias tmuxer=$HOME/.local/bin/tmux-sessionizer
-alias tmuxh=$HOME/.local/bin/tmux-home
 alias zellijer=$HOME/.local/bin/zellij-sessionizer
-alias zellijh=$HOME/.local/bin/zellij-home
 
 if [[ $TERM =~ ^(alacritty|xterm-256color|tmux-256color)$ ]]; then
     use_nerd_font=1
@@ -81,8 +79,3 @@ fi
 if [[ -x $(command -v starship) && -n $use_nerd_font ]]; then
     eval "$(starship init zsh)"
 fi
-
-alias lvim="NVIM_APPNAME=lazyvim nvim"
-alias avim="NVIM_APPNAME=nvim-advent nvim"
-alias kvim="NVIM_APPNAME=nvim-kickstart nvim"
-alias mvim="NVIM_APPNAME=nvim-minimax nvim"
