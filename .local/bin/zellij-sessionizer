@@ -3,13 +3,13 @@ source ~/.config/sessionizer
 sessionizer "$@"
 
 if [[ -z $ZELLIJ ]]; then
-  SESSIONIZER_DIR=$sessionizer_dir \
-  zellij attach --create $sessionizer_name \
-  options --default-cwd $sessionizer_dir
+    SESSIONIZER_DIR=$sessionizer_dir \
+        zellij attach --create $sessionizer_name \
+        options --default-cwd $sessionizer_dir
 else
-  echo "ERROR: already in zellij"
-  # PLUGIN="file:$HOME/.config/zellij/plugins/zellij-switch.wasm"
-  # SESSIONIZER_DIR=$SESSIONIZER_DIR \
-  # zellij pipe --plugin $PLUGIN \
-  # -- "--session $SESSIONIZER_NAME --cwd $SESSIONIZER_DIR"
+    echo "ERROR: already in zellij"
+    # PLUGIN="file:$HOME/.config/zellij/plugins/zellij-switch.wasm"
+    # SESSIONIZER_DIR=$SESSIONIZER_DIR \
+        # zellij pipe --plugin $PLUGIN \
+        # -- "--session $SESSIONIZER_NAME --cwd $SESSIONIZER_DIR"
 fi

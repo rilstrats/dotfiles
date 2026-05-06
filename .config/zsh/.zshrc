@@ -33,11 +33,11 @@ compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 # plugins
 zplugins=$XDG_DATA_HOME/zsh/plugins
 [[ -f $zplugins/vi-mode/zsh-vi-mode.plugin.zsh ]] && \
-  source $zplugins/vi-mode/zsh-vi-mode.plugin.zsh
+    source $zplugins/vi-mode/zsh-vi-mode.plugin.zsh
 [[ -f $zplugins/autosuggestions/zsh-autosuggestions.zsh ]] && \
-  source $zplugins/autosuggestions/zsh-autosuggestions.zsh
+    source $zplugins/autosuggestions/zsh-autosuggestions.zsh
 [[ -f $zplugins/fsh/fast-syntax-highlighting.plugin.zsh ]] && \
-  source $zplugins/fsh/fast-syntax-highlighting.plugin.zsh
+    source $zplugins/fsh/fast-syntax-highlighting.plugin.zsh
 
 # sessionizer
 sd() {cd $SESSIONIZER_DIR}
@@ -47,33 +47,31 @@ alias tmuxh=$HOME/.local/bin/tmux-home
 alias zellijer=$HOME/.local/bin/zellij-sessionizer
 alias zellijh=$HOME/.local/bin/zellij-home
 
-if [[ $TERM == "alacritty" ||\
-      $TERM == "xterm-256color" ||\
-      $TERM == "tmux-256color" ]]; then
-  use_nerd_font=1
+if [[ $TERM == "alacritty" || $TERM == "xterm-256color" || $TERM == "tmux-256color" ]]; then
+    use_nerd_font=1
 fi
 
 # ls => exa
 if [[ -x $(command -v eza) ]]; then
-  if [[ -n $use_nerd_font ]]; then
-    alias ls='eza --git --group-directories-first --icons'
-  else
-    alias ls='eza --git --group-directories-first'
-  fi
-  alias la='ls -a'
-  alias ll='ls -l'
-  alias l='ls -la'
+    if [[ -n $use_nerd_font ]]; then
+        alias ls='eza --git --group-directories-first --icons'
+    else
+        alias ls='eza --git --group-directories-first'
+    fi
+    alias la='ls -a'
+    alias ll='ls -l'
+    alias l='ls -la'
 else
-  alias ls='ls --color=auto --group-directories-first'
-  alias la='ls -A'
-  alias ll='ls -oh'
-  alias l='ls -ohA'
+    alias ls='ls --color=auto --group-directories-first'
+    alias la='ls -A'
+    alias ll='ls -oh'
+    alias l='ls -ohA'
 fi
 
 # topgrade
 if [[ -x $(command -v topgrade) ]]; then
-  alias upgrade="topgrade --yes --skip-notify --no-retry"
-  alias update=upgrade
+    alias upgrade="topgrade --yes --skip-notify --no-retry"
+    alias update=upgrade
 fi
 
 # mise
@@ -81,7 +79,7 @@ fi
 
 # starship
 if [[ -x $(command -v starship) && -n $use_nerd_font ]]; then
-  eval "$(starship init zsh)"
+    eval "$(starship init zsh)"
 fi
 
 alias lvim="NVIM_APPNAME=lazyvim nvim"

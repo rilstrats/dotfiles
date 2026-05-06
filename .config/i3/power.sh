@@ -10,11 +10,11 @@ pkill xautolock
 pkill xss-lock
 
 if [[ ! -z $(echo $HOST | grep laptop) ]]; then
-  SCREEN=$(( LAPTOP_SCREEN * 60 )) # converted to seconds
-  SLEEP=$LAPTOP_SLEEP
+    SCREEN=$(( LAPTOP_SCREEN * 60 )) # converted to seconds
+    SLEEP=$LAPTOP_SLEEP
 else
-  SCREEN=$(( DESKTOP_SCREEN * 60 )) # converted to seconds
-  SLEEP=$DESKTOP_SLEEP
+    SCREEN=$(( DESKTOP_SCREEN * 60 )) # converted to seconds
+    SLEEP=$DESKTOP_SLEEP
 fi
 
 /usr/bin/xset dpms $SCREEN

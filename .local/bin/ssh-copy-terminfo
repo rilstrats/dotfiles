@@ -1,28 +1,28 @@
 #! /usr/bin/env bash
 
 if [[ -z $1 ]]; then
-	echo "Error: No user@host"
-	echo "Usage: $0 user@host"
-	exit 1
+    echo "Error: No user@host"
+    echo "Usage: $0 user@host"
+    exit 1
 fi
 
 if [[ $2 == "-t" || $2 == "--test" ]]; then
-	echo "Testing testing..." | ssh "$1" 'cat - > ssh-copy-terminfo-test'
-	if [[ $? == 0 ]]; then
-		echo "Tentative Success: Please use 'ssh $1' and"
-		echo "look for ~/ssh-copy-terminfo-test to confirm"
-	else
-		echo "Tentative Failure: Please use 'ssh $1' and"
-		echo "look for ~/ssh-copy-terminfo-test to confirm"
-	fi
-	exit
+    echo "Testing testing..." | ssh "$1" 'cat - > ssh-copy-terminfo-test'
+    if [[ $? == 0 ]]; then
+        echo "Tentative Success: Please use 'ssh $1' and"
+        echo "look for ~/ssh-copy-terminfo-test to confirm"
+    else
+        echo "Tentative Failure: Please use 'ssh $1' and"
+        echo "look for ~/ssh-copy-terminfo-test to confirm"
+    fi
+    exit
 fi
 
 infocmp -x | ssh "$1" 'tic -x -'
 if [[ $? == 0 ]]; then
-	echo "Tentative Success: Please use 'ssh $1' and"
-	echo "look for /usr/share/terminfo/${TERM:0:1}/$TERM to confirm"
+    echo "Tentative Success: Please use 'ssh $1' and"
+    echo "look for /usr/share/terminfo/${TERM:0:1}/$TERM to confirm"
 else
-	echo "Tentative Failure: Please use 'ssh $1' and"
-	echo "look for /usr/share/terminfo/${TERM:0:1}/$TERM to confirm"
+    echo "Tentative Failure: Please use 'ssh $1' and"
+    echo "look for /usr/share/terminfo/${TERM:0:1}/$TERM to confirm"
 fi

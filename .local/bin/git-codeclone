@@ -72,7 +72,7 @@ proceed=$(echo ${input:0:1} | tr '[:upper:]' '[:lower:]')
 
 git ls-remote $repo &> /dev/null || {
     echo "Exit: repo doesn't exist"
-    exit 
+    exit
 }
 
 [[ -d $abs_path ]] && echo "Exit: path already exists" && exit

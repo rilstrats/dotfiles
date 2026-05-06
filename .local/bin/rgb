@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ -z $(lsmod | grep i2c_dev) ]]; then
-  sudo modprobe i2c-dev
+    sudo modprobe i2c-dev
 fi
 
 COMMAND="openrgb --noautoconnect"
@@ -11,13 +11,13 @@ DEVICES=$($COMMAND -l | grep -E "^[0-9]") # only list devices once to speed up s
 
 COLOR=$1
 if [[ -z $COLOR ]]; then
-  read -p "Enter color code: " COLOR
+    read -p "Enter color code: " COLOR
 fi
 
 
 RAM=$(echo "$DEVICES" | grep "ENE DRAM" | cut -d ":" -f 1)
 for DEVICE in $RAM; do
-  COMMAND="$COMMAND -d $DEVICE -m static -c $COLOR"
+    COMMAND="$COMMAND -d $DEVICE -m static -c $COLOR"
 done
 
 # GPU

@@ -8,14 +8,14 @@ polybar-msg cmd quit
 date >> /tmp/polybar.log
 
 # loop through each monitor
-for MONITOR in $(polybar -m | sed 's/:.*$//g'); do 
+for MONITOR in $(polybar -m | sed 's/:.*$//g'); do
     export MONITOR
 
     if [[ $MONITOR == "eDP-1" ]]; then
-      polybar laptop &>> /tmp/polybar.log & disown
+        polybar laptop &>> /tmp/polybar.log & disown
 
     else
-      polybar desktop &>> /tmp/polybar.log & disown
+        polybar desktop &>> /tmp/polybar.log & disown
     fi
 
     sleep 0.5
